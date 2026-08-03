@@ -104,8 +104,14 @@ def economics(view, p):
 
     # --- tile budget ------------------------------------------------------
     tiles = len(view.unlocked_tiles())
+    # Wheat is sized independently of the flock, not just as feed supply.
+    # It is the second unbounded sink (log curve) AND the town pulls ~639 units
+    # of it out of the market per season, so its price rises through the game
+    # rather than crashing. Selling it raw earns ~$35/action, the same as an egg,
+    # with no $300 bird, no coop, no starvation risk and a 2-4 day cycle.
     pl.want_wheat_tiles = min(int(tiles * p["wheat_tile_share"]),
                               max(p["min_wheat_tiles"],
+                                  p["wheat_tiles_target"],
                                   int(round(p["target_geese"] * p["wheat_tiles_per_animal"]))))
     # Melon pays nothing for 10 days. Planting it during the cash-starved
     # opening starves the flock of capital exactly when birds compound hardest.
