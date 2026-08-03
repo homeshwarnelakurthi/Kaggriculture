@@ -37,11 +37,14 @@ OPPONENTS = {
     "melonrush": {"melon_tiles": 32, "target_geese": 12},     # contests melon hard
 }
 
+# `current` is melon32/geese14 (round-4 winner). It sits next to a cliff --
+# melon28/geese14 collapses outright -- so the point of this run is robustness
+# across archetypes, not another point on the melon curve.
 CANDIDATES = {
-    "current":     {},
-    "m32-geese14": {"melon_tiles": 32, "target_geese": 14},
-    "m24-geese20": {"melon_tiles": 24, "target_geese": 20},
-    "balanced":    {"melon_tiles": 26, "target_geese": 20},
+    "current":     {},                                        # m32 / g14
+    "m28-geese18": {"melon_tiles": 28, "target_geese": 18},   # previous default
+    "m24-geese20": {"melon_tiles": 24, "target_geese": 20},   # conservative
+    "m36-geese10": {"melon_tiles": 36, "target_geese": 10},   # further along the curve
 }
 
 
