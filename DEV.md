@@ -172,3 +172,46 @@ Conclusions, all negative and all worth keeping:
 
 Nothing from this investigation was shipped; defaults are unchanged and verified
 at $61,929.
+
+## Milk is the biggest uncollected opportunity (diagnosed 2026-08-03, NOT fixed)
+
+Milk is the single largest product in the game: ~438 units of town demand per
+season at a $160 base = ~$70k sustainable, and a cow returns ~$208/day for the
+same actions and same 1 wheat/day as a $94/day goose.
+
+We collect none of it. Measured on the v5 build, seed 42:
+
+    day   cows  sheep  empty pasture   milk price
+      6      0      0              2        190
+     14      2      6              1        231
+     22      0      5              4        276
+     29      0      5              4        325
+
+Milk market inventory ended at -387: the town drained 387 units and NOBODY
+supplied any, so price rose from $160 to $331. Four pastures stood empty all
+game. At the 8-cow target that is roughly $50k left on the table.
+
+**Mechanism.** `pl.want_animals` is derived from `wheat_flow`, which is derived
+from `view.count_plants("WHEAT")` — the count currently IN THE GROUND. Wheat is
+a 4-day crop, so that number oscillates between 0 and ~25 as the field rotates.
+Every time it dips, the animal target collapses; sheep are filled first, so cows
+absorb the entire shortfall. And because the target is `max(animals_now, ...)`,
+a starved animal ratchets the target permanently downward.
+
+**Attempted fix that FAILED.** Sizing capacity off allocated wheat tiles instead
+of planted count stabilised the target at 6 sheep / 8 cows correctly — and
+dropped results from $72,776 to ~$15,400 (6 seeds), regardless of the
+feed-purchase setting. Front-loading $2,000 of livestock starves strawberry of
+the capital it needs.
+
+**The lesson, now seen three times.** What looks like a conservatism gate is
+usually acting as a PACING mechanism. The reserve, the seed budget, and now the
+wheat-flow oscillation all turned out to be pacing spend over time. Removing any
+of them causes a collapse; the working fix each time is a RATE limit, not a
+level change (cf. seed_buy_rate, which is what unlocked strawberry).
+
+**So the real fix is an animal purchase rate limit**, mirroring seed_buy_rate,
+combined with the stable capacity measure. Not attempted yet.
+
+Nothing shipped from this investigation; v5 defaults verified restored at
+$72,776 mean / $65,624 worst.
