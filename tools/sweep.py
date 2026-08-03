@@ -63,16 +63,20 @@ def _episode(job):
 
 
 # Candidate configs. Keep the list short: every entry costs n_seeds episodes.
+# Round 2. Round 1 established: melon scales (16 >> 6), the flock is
+# labour-bound (28 geese < 22), and >12 hands bankrupts us. Melon's pot floors
+# near 200 units and 16 tiles x 6 x 2 cycles ~= 192, so probe past that and
+# trade coops for melon tiles.
+# Round 3. Baseline is now melon24 (round 2 winner, 90% vs the old default).
+# Melon was monotonic to 24 tiles; find where it turns over, and re-test
+# trading coops for melon now that acreage is much larger.
 CANDIDATES = {
-    "base":        {},
-    # max_hands never binds: hand_value_per_action*24 caps the fib walk at 12.
-    "hands13":     {"hand_value_per_action": 10.0, "max_hands": 16},
-    "hands15":     {"hand_value_per_action": 26.0, "max_hands": 18},
-    "geese28":     {"target_geese": 28},
-    "melon16":     {"melon_tiles": 16},
-    "melon6":      {"melon_tiles": 6},
-    "tiles9":      {"tiles_per_unit": 9.0},
-    "fatreserve":  {"ops_reserve_base": 700.0},
+    "base":          {},
+    "melon28":       {"melon_tiles": 28},
+    "melon32":       {"melon_tiles": 32},
+    "m28-geese18":   {"melon_tiles": 28, "target_geese": 18},
+    "m24-geese18":   {"target_geese": 18},
+    "m24-geese26":   {"target_geese": 26},
 }
 
 
