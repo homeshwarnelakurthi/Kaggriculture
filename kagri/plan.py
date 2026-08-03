@@ -35,7 +35,8 @@ def target_hands(view, p):
 class Plan:
     __slots__ = ("days_left", "reserve", "want_animals", "want_coops",
                  "allow_land", "want_wheat_tiles", "want_melon_tiles",
-                 "wheat_flow", "endgame", "target_hands", "workable")
+                 "wheat_flow", "endgame", "target_hands", "workable",
+                 "want_pastures", "want_by_animal", "want_straw_tiles")
 
     def __repr__(self):
         return (f"Plan(animals={self.want_animals} coops={self.want_coops} "
@@ -81,14 +82,35 @@ def economics(view, p):
         pl.want_animals = animals_now
     elif can_feed:
         by_feed = int(pl.wheat_flow / max(0.1, p["feed_per_animal_day"]))
-        pl.want_animals = min(p["target_geese"], max(animals_now, by_feed))
+        total_target = int(p["target_sheep"] + p["target_cows"] + p["target_geese"])
+        pl.want_animals = min(total_target, max(animals_now, by_feed))
     else:
         pl.want_animals = animals_now
 
-    # Build coops just ahead of the birds, never far ahead — an empty coop is
-    # a tile that could have been growing their feed.
-    pl.want_coops = min(p["target_geese"],
-                        animals_now + view.shed.get("GOOSE", 0) + p["coop_lead"])
+    # Split the flock budget across species by value per action: sheep, then
+    # cows, then geese. All three cost the same 1 wheat/day and the same
+    # feed/care/harvest actions, so this ordering is close to free money.
+    budget = pl.want_animals
+    pl.want_by_animal = {}
+    for kind, key in (("SHEEP", "target_sheep"), ("COW", "target_cows"),
+                      ("GOOSE", "target_geese")):
+        take = min(int(p[key]), max(0, budget))
+        pl.want_by_animal[kind] = take
+        budget -= take
+
+    def _structures_for(structure, lead):
+        """Build just ahead of the animals, never far — an empty structure is a
+        tile that could have been growing their feed."""
+        placed = sum(view.count_animals(k) for k, s in ANIMALS.items()
+                     if s["structure"] == structure)
+        held = sum(view.shed.get(k, 0) for k, s in ANIMALS.items()
+                   if s["structure"] == structure)
+        want = sum(n for k, n in pl.want_by_animal.items()
+                   if ANIMALS[k]["structure"] == structure)
+        return min(want, placed + held + lead)
+
+    pl.want_coops = _structures_for("COOP", p["coop_lead"])
+    pl.want_pastures = _structures_for("PASTURE", p["coop_lead"])
 
     # --- land -------------------------------------------------------------
     # Also quietly fixes the (h,h) hand-spawn trap, which costs us a hand a day.
@@ -120,13 +142,27 @@ def economics(view, p):
     else:
         pl.want_melon_tiles = 0
 
+    # Strawberry: the third-highest sustainable product ($64k of town demand)
+    # and the only premium one that needs no feed, so it contests that pot
+    # without the wheat overhead that caps how much livestock we can run.
+    # Needs 10 days to first yield, then produces on days 10/12/14/16.
+    if view.day <= p["straw_last_plant_day"] and pl.days_left >= 11:
+        pl.want_straw_tiles = p["strawberry_tiles"]
+    else:
+        pl.want_straw_tiles = 0
+
     # Clamp the whole tile budget to what the crew can actually service.
     # Animals are the most action-hungry role, so they claim their share first.
     budget = pl.workable
-    animal_slots = min(pl.want_coops, int(budget / p["animal_labour_cost"]))
+    want_struct = pl.want_coops + pl.want_pastures
+    animal_slots = min(want_struct, int(budget / p["animal_labour_cost"]))
     budget -= int(animal_slots * p["animal_labour_cost"])
-    pl.want_coops = animal_slots
+    # Pastures hold the high-value animals, so they keep their slots first.
+    pl.want_pastures = min(pl.want_pastures, animal_slots)
+    pl.want_coops = max(0, animal_slots - pl.want_pastures)
     pl.want_wheat_tiles = max(0, min(pl.want_wheat_tiles, budget))
     budget -= pl.want_wheat_tiles
+    pl.want_straw_tiles = max(0, min(pl.want_straw_tiles, budget))
+    budget -= pl.want_straw_tiles
     pl.want_melon_tiles = max(0, min(pl.want_melon_tiles, budget))
     return pl

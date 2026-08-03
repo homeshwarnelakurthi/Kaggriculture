@@ -166,7 +166,9 @@ def step_toward(view, pos, target):
 
 
 # Actions each role costs per day — drives how close to the shed it should sit.
-ROLE_ACTION_LOAD = {"ANIMAL": 4.0, "WHEAT": 1.75, "CARROT": 2.0, "MELON": 1.15}
+# Strawberry: plant + daily water over ~17 days + 4 harvests ≈ 1.3 actions/day.
+ROLE_ACTION_LOAD = {"ANIMAL": 4.0, "WHEAT": 1.75, "CARROT": 2.0,
+                    "STRAWBERRY": 1.3, "MELON": 1.15}
 
 
 def plan_layout(view, p, plan):
@@ -189,7 +191,8 @@ def plan_layout(view, p, plan):
                 roles[(x, y)] = "ANIMAL"
                 continue
             if kind == "PLANT":
-                roles[(x, y)] = t["crop"] if t["crop"] in ("MELON", "WHEAT", "CARROT") else "CARROT"
+                crop = t["crop"]
+                roles[(x, y)] = crop if crop in ("MELON", "WHEAT", "CARROT", "STRAWBERRY") else "CARROT"
                 continue
             if kind == "WEED":
                 free.append((x, y))
@@ -202,16 +205,18 @@ def plan_layout(view, p, plan):
     have_animals = sum(1 for r in roles.values() if r == "ANIMAL")
     have_melon = sum(1 for r in roles.values() if r == "MELON")
     have_wheat = sum(1 for r in roles.values() if r == "WHEAT")
+    have_straw = sum(1 for r in roles.values() if r == "STRAWBERRY")
 
     # How many tiles each role still wants. Wheat is sized first because feed
     # capacity is the hard gate on the whole animal engine.
     want = {
         "WHEAT": max(0, plan.want_wheat_tiles - have_wheat),
-        "ANIMAL": max(0, plan.want_coops - have_animals),
+        "ANIMAL": max(0, plan.want_coops + plan.want_pastures - have_animals),
+        "STRAWBERRY": max(0, plan.want_straw_tiles - have_straw),
         "MELON": max(0, plan.want_melon_tiles - have_melon),
     }
     budget = len(free)
-    for role in ("WHEAT", "ANIMAL", "MELON"):
+    for role in ("WHEAT", "ANIMAL", "STRAWBERRY", "MELON"):
         want[role] = min(want[role], budget)
         budget -= want[role]
 

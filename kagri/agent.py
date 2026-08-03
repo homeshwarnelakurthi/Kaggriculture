@@ -1,8 +1,8 @@
 """Top-level policy: market orders + unit assignment."""
 
-from .constants import ANIMALS, CROPS
+from .constants import ANIMALS, CROPS, MARKET_PARAMS
 from .farm import View, plan_layout, step_toward
-from .market import marginal_value
+from .market import marginal_value, price
 from .params import merge
 from .plan import economics
 from .tasks import generate
@@ -30,11 +30,14 @@ def plan_market(view, p, plan):
     # Count birds we OWN, not just the ones already standing in a coop. Sizing
     # feed off placed animals alone sells the wheat out from under a flock
     # still waiting in the shed, and they starve the day they are placed.
-    animals = view.count_animals() + view.shed.get("GOOSE", 0) + view.carried("GOOSE")
+    animals = view.count_animals() + sum(view.shed.get(k, 0) + view.carried(k)
+                                         for k in ANIMALS)
     # Keep feed back unless the season is over and wheat is just inventory.
     feed_reserve = 0 if plan.endgame else int(round(animals * p["wheat_feed_reserve_days"]))
 
     # --- sell -------------------------------------------------------------
+    shed_total = sum(view.shed.values())
+    under_pressure = shed_total >= p["shed_pressure_cap"] or plan.endgame
     sellable = []
     for item, n in view.shed.items():
         if n <= 0 or item in ANIMALS:
@@ -42,10 +45,12 @@ def plan_market(view, p, plan):
         qty = n - feed_reserve if item == "WHEAT" else n
         if qty <= 0:
             continue
+        qty = _meterable(item, view.minv.get(item, 10000), qty, p, under_pressure)
+        if qty <= 0:
+            continue
         unit = marginal_value(item, view.minv.get(item, 10000), min(qty, 8))
         if unit < p["min_sell_price"]:
             continue
-        # Floor-crashing goods are a race against the opponent: dump on sight.
         rush = 2.0 if item in p["race_products"] else 1.0
         sellable.append((unit * qty * rush, item, qty))
     sellable.sort(reverse=True)
@@ -75,12 +80,16 @@ def plan_market(view, p, plan):
         orders.append(["BUY_LAND"])
 
     # --- animals ----------------------------------------------------------
-    have = view.count_animals("GOOSE") + view.shed.get("GOOSE", 0) + view.carried("GOOSE")
-    want = plan.want_animals - have
-    budget = view.money - plan.reserve
-    n = min(want, int(budget // ANIMALS["GOOSE"]["cost"]) if budget > 0 else 0, 4)
-    if n > 0:
-        orders.append(["BUY_ANIMAL", "GOOSE", n])
+    # Highest value per action first: sheep ($254/day), cow ($208), goose ($94).
+    for kind in ("SHEEP", "COW", "GOOSE"):
+        have = (view.count_animals(kind) + view.shed.get(kind, 0)
+                + view.carried(kind))
+        want = plan.want_by_animal.get(kind, 0) - have
+        budget = view.money - plan.reserve
+        n = min(want, int(budget // ANIMALS[kind]["cost"]) if budget > 0 else 0, 4)
+        if n > 0:
+            orders.append(["BUY_ANIMAL", kind, n])
+            break  # one species per turn; re-evaluate against the new balance
 
     # --- seeds ------------------------------------------------------------
     for crop, need in sorted(_seed_needs(view, p).items()):
@@ -96,6 +105,31 @@ def plan_market(view, p, plan):
             orders.append(["BUY_SEED", crop, n])
 
     return orders[:MAX_ORDERS]
+
+
+def _meterable(item, inv, have, p, under_pressure):
+    """How many units to sell now without tanking our own price.
+
+    The town drains every product continuously (438 milk, 335 wool, 537
+    strawberry per season), so supplying at roughly that rate holds price at or
+    above base — milk was observed at $365 against a $160 base. Dumping the same
+    goods in one order walks them straight down their own curve instead.
+
+    Staples on log curves barely move, so this returns everything for them; it
+    only bites on the premium goods where it matters.
+    """
+    if under_pressure:
+        return have  # shed overflow is discarded at end of day: a cheap sale beats losing it
+    floor = MARKET_PARAMS[item]["base"] * p["sell_min_price_frac"]
+    sold, sim = 0, inv
+    while sold < have:
+        pr = price(item, sim)
+        if pr < floor:
+            break
+        sold += 1
+        if pr > 1:
+            sim += 1
+    return sold
 
 
 def _seed_needs(view, p):
