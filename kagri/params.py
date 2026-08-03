@@ -30,13 +30,12 @@ DEFAULTS = {
     # Flock size trades directly against melon acreage for hands. Raising melon
     # alone turns over (28 tiles at 22 geese scores 38%), but the same 28 tiles
     # with the flock cut to 18 scores 67% — the constraint is labour, not land.
-    # Tuned on the GAUNTLET (diverse archetypes), not on mirror self-play.
-    # Mirror rewards contesting melon — a fixed zero-sum pot — over eggs, which
-    # are unbounded, so mirror-optimal drifts into a melon rush. melon32/geese14
-    # wins mirror at 93% and then scores 27% against an actual melon rusher.
-    # This config trades ~10 points of mirror win rate for a worst matchup of
-    # 73% instead of 27%, and banks more money doing it.
-    "target_geese": 20,
+    # COMMIT, do not split. Labour is the binding constraint, so a half-wheat /
+    # half-flock build does neither well and is strictly worse than either pure
+    # strategy. Gauntlet worst-matchup: w38/g10 75%, no-wheat/g20 64%, but the
+    # blends collapse — w34/g14 21%, w30/g20 11%. Keep the flock small enough to
+    # be pure feed-and-fertiliser support for the wheat operation.
+    "target_geese": 10,
     "feed_per_animal_day": 1.0,
     "wheat_buffer_per_animal": 3.0,  # shed wheat per animal before expanding
     "wheat_lead_tiles": 4,           # wheat tiles must lead animal count by this
@@ -48,12 +47,16 @@ DEFAULTS = {
     # --- Crops --------------------------------------------------------------
     "wheat_units_per_tile_day": 0.9,
     "wheat_tiles_per_animal": 1.15,
-    "wheat_tile_share": 0.5,         # hard cap: fraction of land given to wheat
+    "wheat_tile_share": 0.6,         # hard cap: fraction of land given to wheat
     "min_wheat_tiles": 8,
+    # Absolute wheat target, independent of flock size. Wheat sells for ~$35 per
+    # action (same as an egg) with none of the capital, build or starvation risk,
+    # and town demand of ~639 units/season keeps its price climbing all game.
+    "wheat_tiles_target": 38,
     # Melon is a FIXED, SHARED pot (~$26.5k, floors near 200 units), so taking
     # it faster both earns and denies. Self-play is monotonic in melon acreage:
     # 16 tiles 65%, 20 tiles 73%, 24 tiles 90% against the 10-tile baseline.
-    "melon_tiles": 24,
+    "melon_tiles": 16,
     "melon_first_day": 0,            # melon pays nothing for 10 days
     "melon_last_plant_day": 16,
     "carrot_fill": True,

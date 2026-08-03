@@ -32,19 +32,24 @@ _ENV = {}
 # different axis of our build.
 OPPONENTS = {
     "starter":   None,                                        # built-in baseline
-    "v1":        {"melon_tiles": 10, "target_geese": 22},     # our own earlier build
-    "eggrush":   {"melon_tiles": 4, "target_geese": 26},      # ignores melon entirely
-    "melonrush": {"melon_tiles": 32, "target_geese": 12},     # contests melon hard
+    "eggrush":   {"melon_tiles": 4, "target_geese": 26, "wheat_tiles_target": 0},
+    "melonrush": {"melon_tiles": 32, "target_geese": 12, "wheat_tiles_target": 0},
+    # Modelled on the real ladder opponent that beat us 29,790-20,698: ~35 wheat
+    # tiles, ~16 melon, a small flock. Wheat is the second unbounded sink and
+    # town demand keeps its price rising, so this archetype is strong and real.
+    "wheatrush": {"wheat_tiles_target": 38, "melon_tiles": 16, "target_geese": 8},
 }
 
 # `current` is melon32/geese14 (round-4 winner). It sits next to a cliff --
 # melon28/geese14 collapses outright -- so the point of this run is robustness
 # across archetypes, not another point on the melon curve.
+# Probing how far the wheat pivot goes. `current` is wheat30/melon24/geese20.
 CANDIDATES = {
-    "current":     {},                                        # m32 / g14
-    "m28-geese18": {"melon_tiles": 28, "target_geese": 18},   # previous default
-    "m24-geese20": {"melon_tiles": 24, "target_geese": 20},   # conservative
-    "m36-geese10": {"melon_tiles": 36, "target_geese": 10},   # further along the curve
+    "current":    {},                                                        # w30 m24 g20
+    "no-wheat":   {"wheat_tiles_target": 0},                                 # the old build
+    "w38-g10":    {"wheat_tiles_target": 38, "target_geese": 10, "melon_tiles": 16},
+    "w34-g14":    {"wheat_tiles_target": 34, "target_geese": 14, "melon_tiles": 20},
+    "w40-g6":     {"wheat_tiles_target": 40, "target_geese": 6, "melon_tiles": 16},
 }
 
 
