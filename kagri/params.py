@@ -41,7 +41,10 @@ DEFAULTS = {
     "wheat_tiles_per_animal": 1.15,
     "wheat_tile_share": 0.5,         # hard cap: fraction of land given to wheat
     "min_wheat_tiles": 8,
-    "melon_tiles": 10,               # melon floors at ~200 units — cap it
+    # Melon is a FIXED, SHARED pot (~$26.5k, floors near 200 units), so taking
+    # it faster both earns and denies. Self-play is monotonic in melon acreage:
+    # 16 tiles 65%, 20 tiles 73%, 24 tiles 90% against the 10-tile baseline.
+    "melon_tiles": 24,
     "melon_first_day": 0,            # melon pays nothing for 10 days
     "melon_last_plant_day": 16,
     "carrot_fill": True,
