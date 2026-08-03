@@ -12,14 +12,16 @@ from .constants import ANIMALS, LAND_PRICES, LAND_ORDER, cumulative_hire_cost, f
 SEASON_DAYS = 30
 
 
-def target_hands(view, p, reserve):
+def target_hands(view, p):
     """Hire while the marginal hand's fib cost is worth a day of its actions.
 
-    Hands are the cheapest thing on the board — twelve of them cost ~$376 for
-    240 actions — so this is capped by max_hands, never by price. Sized before
-    anything else is bought, because being short of labour is fatal.
+    Two separate guards, and both are needed. The flat floor stops us hiring
+    with an empty bank; the bank-fraction cap stops the opposite failure, where
+    a $609 crew looks affordable against $640 and eats the money that was meant
+    to buy seed and feed. Without it the fib curve happily bankrupts the farm.
     """
-    budget = view.money - reserve
+    budget = min(view.money - p["hire_money_floor"],
+                 view.money * p["hire_bank_fraction"])
     best = 0
     for k in range(1, int(p["max_hands"]) + 1):
         if fib(k - 1) > p["hand_value_per_action"] * 24:
@@ -51,7 +53,7 @@ def economics(view, p):
     # Hiring is funded FIRST and gated only by a small floor. It must not be
     # gated on `reserve`, because `reserve` exists in order to pay for hiring —
     # making it a precondition deadlocks the farm at zero hands.
-    pl.target_hands = target_hands(view, p, p["hire_money_floor"])
+    pl.target_hands = target_hands(view, p)
 
     # Cash discretionary spending must never dip below: tomorrow's crew plus a
     # feed buffer. Going below this is what triggers the death spiral.
