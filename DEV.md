@@ -129,3 +129,46 @@ out. That is a planner defect, not a parameter to tune. FERTILIZE is
 implemented and correct but inert until an ongoing crop exists to use it on.
 
 This is the single biggest known gap and the next thing to fix.
+
+## Why we cannot run the top build (investigated 2026-08-03)
+
+Replayed Mikey Marszewski's $154,856 game turn by turn. Their build order:
+
+    day  2:  11 wheat,  7 melon, 1 sheep, 3 cow      (bank $131)
+    day  6:   6 wheat, 10 melon,  2 straw, 4 cow
+    day 10:   7 wheat, 11 melon, 16 straw, 6 cow 6 sheep
+    day 16:   3 wheat, 10 melon, 39 straw, 8 cow 6 sheep
+
+Both sides hire 12 hands, so labour is NOT the difference (an earlier read of
+"they hire zero" was a sampling artifact — `hands` is empty at hour 0, before
+hiring resolves; always sample mid-day).
+
+Two real differences:
+1. They run 3-11 wheat tiles and BUY the feed shortfall. We run 38. Topping up
+   100-200 units costs a few hundred dollars; the "never buy feed" rule priced
+   900 units at $40k and over-generalised. Each tile freed is worth ~$960 as
+   fertilised strawberry.
+2. They sit at $131-689 for ten days, buying seed continuously as cash trickles
+   in. Our reserve (~$936 with 14 animals) forbids that entire window.
+
+Ported their allocation directly, 6 seeds vs starter:
+
+    current (ours)                       $60,219
+    mikey allocation                      $8,368   (only 3 straw planted;
+                                                    24 tiles of carrot filler)
+    + carrot_fill off                    $30,688   (30 straw planted — fill WAS
+                                                    squatting on the tiles)
+    + seed_reserve_frac 0.3              $    24   (death spiral)
+    + seed_reserve_frac 0.0              $     4   (death spiral)
+
+Conclusions, all negative and all worth keeping:
+- `carrot_fill` genuinely blocks strawberry by occupying tiles it never returns.
+- Even with 30 strawberry planted we earn HALF the current build, so our
+  strawberry pipeline itself is weak (likely: planted too late for all four
+  productions, and unfertilised because the small herd makes little fertiliser).
+- The reserve is NOT a conservatism dial. Relaxing it does not buy an aggressive
+  opening, it reproduces the original bankruptcy spiral exactly. Any fix has to
+  make the opening cheaper, not the guard looser.
+
+Nothing from this investigation was shipped; defaults are unchanged and verified
+at $61,929.
