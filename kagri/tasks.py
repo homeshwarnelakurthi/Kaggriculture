@@ -179,15 +179,21 @@ def _plantable(view, crop, p):
     days_left = 30 - view.day
     if crop == "MELON":
         return view.day <= p["melon_last_plant_day"] and days_left >= cd["first_yield_day"]
+    if crop == "STRAWBERRY":
+        # Needs 10 days to first yield, then fires on days 10/12/14/16.
+        return view.day <= p["straw_last_plant_day"] and days_left >= cd["first_yield_day"]
     return days_left > cd["first_yield_day"]
 
 
 def _next_structure(view, plan):
-    """Build coops only just ahead of the birds we can actually feed.
+    """Build only just ahead of the animals we can actually feed.
 
-    An empty coop is a tile not growing wheat, and wheat is what limits the
-    flock — so overbuilding coops actively shrinks the engine.
+    An empty structure is a tile not growing wheat, and wheat is what limits the
+    herd — so overbuilding actively shrinks the engine. Pastures come first:
+    they hold sheep and cows, worth 2-3x a goose for identical work.
     """
+    if view.count_structures("PASTURE") < plan.want_pastures:
+        return "BUILD_PASTURE"
     if view.count_structures("COOP") < plan.want_coops:
         return "BUILD_COOP"
     return None

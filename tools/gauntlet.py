@@ -37,19 +37,30 @@ OPPONENTS = {
     # Modelled on the real ladder opponent that beat us 29,790-20,698: ~35 wheat
     # tiles, ~16 melon, a small flock. Wheat is the second unbounded sink and
     # town demand keeps its price rising, so this archetype is strong and real.
-    "wheatrush": {"wheat_tiles_target": 38, "melon_tiles": 16, "target_geese": 8},
+    "wheatrush": {"wheat_tiles_target": 38, "melon_tiles": 16, "target_geese": 8,
+                  "target_sheep": 0, "target_cows": 0},
+    # Both modelled on real ladder opponents that beat us. GUILLERMO REY ran
+    # 12 cows + 6 sheep for $50,011; jeon hyeon woo ran 43 strawberry for
+    # $49,983. Town demand (438 milk / 335 wool / 537 strawberry per season)
+    # keeps these premium goods at or above base price all game.
+    "stockrush": {"target_sheep": 8, "target_cows": 14, "target_geese": 0,
+                  "melon_tiles": 6, "wheat_tiles_target": 40},
 }
 
 # `current` is melon32/geese14 (round-4 winner). It sits next to a cliff --
 # melon28/geese14 collapses outright -- so the point of this run is robustness
 # across archetypes, not another point on the melon curve.
 # Probing how far the wheat pivot goes. `current` is wheat30/melon24/geese20.
+# `current` is the livestock pivot: sheep6 / cow10 / goose4, wheat38, melon16.
+# Strawberry needs capital the livestock has already spent, so test it only
+# alongside a smaller herd that leaves room to actually buy the seed.
 CANDIDATES = {
-    "current":    {},                                                        # w30 m24 g20
-    "no-wheat":   {"wheat_tiles_target": 0},                                 # the old build
-    "w38-g10":    {"wheat_tiles_target": 38, "target_geese": 10, "melon_tiles": 16},
-    "w34-g14":    {"wheat_tiles_target": 34, "target_geese": 14, "melon_tiles": 20},
-    "w40-g6":     {"wheat_tiles_target": 40, "target_geese": 6, "melon_tiles": 16},
+    "current":     {},                                             # straw 0
+    "straw8":      {"strawberry_tiles": 8},
+    "straw8-lean": {"strawberry_tiles": 8, "target_cows": 6, "target_sheep": 4},
+    "straw14-lean":{"strawberry_tiles": 14, "target_cows": 4, "target_sheep": 4,
+                    "melon_tiles": 8},
+    "melon24":     {"melon_tiles": 24},                            # spend the land on melon instead
 }
 
 
