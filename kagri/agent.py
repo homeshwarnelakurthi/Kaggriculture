@@ -101,16 +101,17 @@ def plan_market(view, p, plan):
         if need <= 0:
             continue
         cost = CROPS[crop]["seed"]
-        # Seed is the cheapest compounding asset on the board and cannot starve
-        # anything the way an unfed animal can, so it is allowed further into
-        # the reserve than livestock or land. The full reserve gate kept us
-        # above ~$936 before buying any $100 strawberry seed, which is exactly
-        # the window the top players spend at $131-689 buying seed continuously.
+        # Seed may dip into the reserve, but only at a bounded RATE. The failure
+        # mode is not the level, it is the lump: allowing the full bank bought
+        # 24 strawberry seeds ($2,400 of $3,000) on day 0 and killed the farm.
+        # The top players spend the same money trickled over ten days while
+        # sitting at $131-689, so cap purchases per turn instead.
         budget = view.money - plan.reserve * p["seed_reserve_frac"]
         # Cap the seed stockpile: unplanted seed is dead money, and low-value
         # crops legitimately lose the labour auction to the animal engine.
         room = max(0, p["max_seed_stock"] - view.seeds.get(crop, 0))
-        n = min(need, room, int(budget // cost) if budget > 0 else 0)
+        rate = p["seed_buy_rate"] if cost >= p["premium_seed_cost"] else 99
+        n = min(need, room, rate, int(budget // cost) if budget > 0 else 0)
         if n > 0:
             orders.append(["BUY_SEED", crop, n])
 

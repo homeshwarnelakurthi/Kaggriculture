@@ -45,6 +45,10 @@ OPPONENTS = {
     # keeps these premium goods at or above base price all game.
     "stockrush": {"target_sheep": 8, "target_cows": 14, "target_geese": 0,
                   "melon_tiles": 6, "wheat_tiles_target": 40},
+    # Modelled on the top of the real ladder (39 strawberry + 8 cow + 6 sheep).
+    "strawrush": {"strawberry_tiles": 38, "wheat_tiles_target": 8, "min_wheat_tiles": 6,
+                  "melon_tiles": 8, "target_cows": 8, "target_sheep": 6,
+                  "target_geese": 0, "carrot_fill": False},
 }
 
 # `current` is melon32/geese14 (round-4 winner). It sits next to a cliff --
@@ -54,13 +58,14 @@ OPPONENTS = {
 # `current` is the livestock pivot: sheep6 / cow10 / goose4, wheat38, melon16.
 # Strawberry needs capital the livestock has already spent, so test it only
 # alongside a smaller herd that leaves room to actually buy the seed.
+# `current` is the strawberry build: 34 straw / 12 wheat / 10 melon / 8 cow
+# 6 sheep, carrot_fill off, rate-limited seed buying.
 CANDIDATES = {
-    "current":     {},                                             # straw 0
-    "straw8":      {"strawberry_tiles": 8},
-    "straw8-lean": {"strawberry_tiles": 8, "target_cows": 6, "target_sheep": 4},
-    "straw14-lean":{"strawberry_tiles": 14, "target_cows": 4, "target_sheep": 4,
-                    "melon_tiles": 8},
-    "melon24":     {"melon_tiles": 24},                            # spend the land on melon instead
+    "current":     {},
+    "s40-w8":      {"strawberry_tiles": 40, "wheat_tiles_target": 8, "min_wheat_tiles": 6},
+    "s28-w16":     {"strawberry_tiles": 28, "wheat_tiles_target": 16},
+    "prev-build":  {"strawberry_tiles": 0, "carrot_fill": True, "wheat_tiles_target": 38,
+                    "melon_tiles": 16, "target_geese": 4, "target_cows": 10},
 }
 
 
