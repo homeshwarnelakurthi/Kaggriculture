@@ -1,13 +1,14 @@
-# Kaggle API credentials — NEVER commit. Winner submissions are open-sourced.
-kaggle.json
-.kaggle/
-*access_token*
 
+# Kaggle API credentials — NEVER commit. Winner submissions are open-sourced.
+*.egg-info/
+*.pyc
+*access_token*
+.kaggle/
 .venv/
 __pycache__/
-*.pyc
-runs/
-replays/
+kaggle.json
+log/
 logs/
+replays/
+runs/
 submission*.tar.gz
-*.egg-info/
