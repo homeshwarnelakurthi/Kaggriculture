@@ -13,6 +13,7 @@ DEFAULTS = {
     # Eight hands cost $54 total; twelve cost $376. Almost never worth skipping,
     # so the floor is deliberately tiny — the fib curve is the real cap.
     "hire_money_floor": 30.0,
+    "hire_bank_fraction": 0.30,     # never spend more than this share of the bank on a crew
     "tiles_per_unit": 7.0,          # tiles one unit can meaningfully tend/day
     "animal_labour_cost": 2.5,      # an animal tile costs ~2.5 crop tiles of work
 
