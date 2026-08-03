@@ -7,7 +7,7 @@ weeds, and the livestock starves. Every purchase here is gated on demonstrated
 capacity to feed and work what we already own.
 """
 
-from .constants import ANIMALS, LAND_PRICES, LAND_ORDER, cumulative_hire_cost, fib
+from .constants import ANIMALS, CROPS, LAND_PRICES, LAND_ORDER, cumulative_hire_cost, fib
 
 SEASON_DAYS = 30
 
@@ -147,7 +147,12 @@ def economics(view, p):
     # without the wheat overhead that caps how much livestock we can run.
     # Needs 10 days to first yield, then produces on days 10/12/14/16.
     if view.day <= p["straw_last_plant_day"] and pl.days_left >= 11:
-        pl.want_straw_tiles = p["strawberry_tiles"]
+        # Only reserve tiles we can actually seed. At $100/tile the livestock
+        # spends the capital first, and land reserved for a crop we cannot
+        # afford just weeds over — that cost ~$28k when it was unguarded.
+        affordable = int(max(0.0, view.money - pl.reserve) / CROPS["STRAWBERRY"]["seed"])
+        committed = view.count_plants("STRAWBERRY") + view.seeds.get("STRAWBERRY", 0)
+        pl.want_straw_tiles = min(int(p["strawberry_tiles"]), committed + affordable)
     else:
         pl.want_straw_tiles = 0
 

@@ -79,3 +79,53 @@ These are all things that cost a rewrite when violated:
   worth checking whether that is correct or just mispriced.
 - `actTimeout` is 1 second/turn with a 60s episode budget. Current agent is far
   under, but any search-based addition has to respect it.
+
+## Gotcha that has bitten twice
+
+`kaggle_environments` inspects an agent's signature and passes
+`(observation, configuration)` to anything accepting 2+ args. So this is wrong:
+
+```python
+def mine(obs, ov=ov):      # BROKEN: framework passes configuration into `ov`
+    return act(obs, ov)
+```
+
+The overrides are silently replaced by the env config, every variant runs
+identical params, and the sweep looks like it has a bug. Always close over the
+overrides with a strictly one-argument agent:
+
+```python
+def make_agent(ov):
+    def mine(obs):
+        return act(obs, ov)
+    return mine
+```
+
+## Where the real ladder stands (2026-08-03)
+
+Three submissions, all below the 600 start: v1 594.6, v2 564.7, v3 544.7.
+Rating fell while absolute money ROSE (v2 mean $35,899 -> v3 $47,978, +34%),
+because matchmaking promoted us into a stronger pool: opponent mean went
+$41,634 -> $60,011. Both facts are true; the rating alone is misleading.
+
+The top of the ladder runs **strawberry + livestock + fertiliser together**:
+
+    Mikey Marszewski  $154,856   39 strawberry + 9 melon + 8 cow + 6 sheep
+    simmons1025        $91,197   35 strawberry + 5 sheep + 5 cow
+    naphthalene        $82,128   18 strawberry + 4 sheep + 5 cow
+
+Fertiliser doubles an ongoing crop's yield (strawberry 4 -> 8 units/tile,
+$480 -> $960) and animals produce it free, so those three pieces compound.
+
+**We cannot currently express that build.** Measured, 6 seeds vs starter:
+
+    strawberry 0 tiles   $61,929      <- current default
+    strawberry 8 tiles   $23,989
+    strawberry 10 tiles  $44,555
+
+Strawberry does not merely underperform, it destabilises the allocator: the
+day-20 board collapses to carrot filler with the livestock and melon squeezed
+out. That is a planner defect, not a parameter to tune. FERTILIZE is
+implemented and correct but inert until an ongoing crop exists to use it on.
+
+This is the single biggest known gap and the next thing to fix.

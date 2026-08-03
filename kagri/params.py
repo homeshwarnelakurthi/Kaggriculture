@@ -45,6 +45,10 @@ DEFAULTS = {
     "coop_lead": 2,                  # empty coops allowed ahead of the birds
     "animal_carry": 3,               # animals one unit ferries per shed trip
     "wheat_carry": 8,                # wheat one unit ferries per feeding round
+    "fert_carry": 6,                 # fertiliser one unit ferries per round
+    "fert_reserve": 4,               # keep this much fertiliser back from sale
+    # Only fertilise where the gain beats what the fertiliser would sell for.
+    "fertilize_min_gain": 90.0,
     "drop_threshold": 5,             # carried produce that triggers a shed run
 
     # --- Crops --------------------------------------------------------------

@@ -43,6 +43,11 @@ def plan_market(view, p, plan):
         if n <= 0 or item in ANIMALS:
             continue
         qty = n - feed_reserve if item == "WHEAT" else n
+        if item == "FERTILIZER":
+            # Do not sell the input that doubles strawberry yield ($480 -> $960
+            # per tile). Animals produce it free, so keep enough on hand to
+            # cover every plant currently worth fertilising.
+            qty = n - min(n, getattr(view, "n_fertilize_targets", 0) + p["fert_reserve"])
         if qty <= 0:
             continue
         qty = _meterable(item, view.minv.get(item, 10000), qty, p, under_pressure)
