@@ -74,6 +74,7 @@ DEFAULTS = {
     "melon_last_plant_day": 16,
     "carrot_fill": True,
     "max_seed_stock": 10,
+    "seed_reserve_frac": 1.0,        # share of the reserve seed buying must respect
     "weed_clear_value": 35.0,
 
     # --- Land ---------------------------------------------------------------
