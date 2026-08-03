@@ -41,6 +41,7 @@ def generate(view, roles, p, plan):
     fert_value = _product_unit_value(view, "FERTILIZER")
     n_unfed = 0
     urgent_feed = False
+    n_fertilize_targets = 0
 
     for y in range(view.board):
         for x in range(view.board):
@@ -113,6 +114,17 @@ def generate(view, roles, p, plan):
                         in_window = (not cd["ongoing"]) and ws <= age <= cd["max_yield_day"]
                         add(unit_val * 1.2 if in_window else unit_val * 0.3, pos, "WATER")
 
+                # FERTILIZE. Doubles an ongoing crop's per-production yield
+                # (strawberry 4 units/tile -> 8, i.e. $480 -> $960) and doubles
+                # the daily water bonus on one-time crops. Animals hand us the
+                # fertiliser free, so selling it instead of using it on
+                # strawberry gives up the biggest multiplier on the board.
+                if t.get("fertilized_until_day", -1) < view.day:
+                    gain = _fertilize_gain(view, crop, cd, age)
+                    if gain > p["fertilize_min_gain"]:
+                        n_fertilize_targets += 1
+                        add(gain, pos, "FERTILIZE", needs=("FERTILIZER", 1))
+
                 ready = t.get("yield_units", 0) > 0 and age >= cd["first_yield_day"]
                 if ready:
                     maxed = t["yield_units"] >= cd["max_yield"]
@@ -138,6 +150,7 @@ def generate(view, roles, p, plan):
                         add(max(5.0, profit / span), pos, "PLANT", [role])
 
     view.n_unfed = n_unfed
+    view.n_fertilize_targets = n_fertilize_targets
     _add_shed_tasks(view, p, add, n_unfed, urgent_feed)
     return tasks
 
@@ -161,6 +174,14 @@ def _add_shed_tasks(view, p, add, n_unfed, urgent_feed):
         for st in view.shed_tiles[:trips]:
             add(value, st, "PICKUP", ["WHEAT", int(take)])
 
+    # Ferry fertiliser out to the crops that double under it.
+    want_fert = getattr(view, "n_fertilize_targets", 0) - view.carried("FERTILIZER")
+    stock_fert = view.shed.get("FERTILIZER", 0)
+    if want_fert > 0 and stock_fert > 0:
+        take = min(stock_fert, want_fert, p["fert_carry"])
+        for st in view.shed_tiles[:1]:
+            add(80.0, st, "PICKUP", ["FERTILIZER", int(take)])
+
     for animal, spec in ANIMALS.items():
         idle = min(view.shed.get(animal, 0) - view.carried(animal),
                    view.empty_structures(spec["structure"]))
@@ -171,6 +192,32 @@ def _add_shed_tasks(view, p, add, n_unfed, urgent_feed):
         trips = min(len(view.shed_tiles), -(-idle // p["animal_carry"]))
         for st in view.shed_tiles[:trips]:
             add(spec["cost"] * 1.2, st, "PICKUP", [animal, int(take)])
+
+
+def _fertilize_gain(view, crop, cd, age):
+    """Extra revenue a single fertiliser unit buys on this plant.
+
+    Fertiliser is active for day, day+1, day+2. For ongoing crops that doubles
+    every scheduled production inside the window; for one-time crops it upgrades
+    the daily water bonus from +1 to +2 while the plant is in its yield window.
+    """
+    unit = _crop_unit_value(view, crop)
+    if cd["ongoing"]:
+        first = cd["first_yield_day"]
+        interval = max(1, cd["interval"])
+        # Productions landing in the next 3 days that we have not already used up.
+        hits = 0
+        for d in range(view.day, view.day + 3):
+            since = d - (view.day - age) - first
+            if since >= 0 and since % interval == 0 and (since // interval) + 1 <= cd["max_yield"]:
+                hits += 1
+        return unit * hits
+    window_start = (cd["max_yield_day"] + 1) // 2
+    days = sum(1 for d in range(age, age + 3)
+               if window_start <= d <= cd["max_yield_day"])
+    # Capped by max_yield, so a melon already reaching 6 unaided gains nothing.
+    headroom = cd["max_yield"] - (1 + max(0, cd["max_yield_day"] - window_start + 1))
+    return unit * min(days, max(0, headroom))
 
 
 def _plantable(view, crop, p):
