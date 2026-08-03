@@ -27,7 +27,10 @@ DEFAULTS = {
     "min_days_for_animal": 8,       # 4 days to first egg, then payback
 
     # --- Animal engine (the core of the strategy) ---------------------------
-    "target_geese": 22,
+    # Flock size trades directly against melon acreage for hands. Raising melon
+    # alone turns over (28 tiles at 22 geese scores 38%), but the same 28 tiles
+    # with the flock cut to 18 scores 67% — the constraint is labour, not land.
+    "target_geese": 18,
     "feed_per_animal_day": 1.0,
     "wheat_buffer_per_animal": 3.0,  # shed wheat per animal before expanding
     "wheat_lead_tiles": 4,           # wheat tiles must lead animal count by this
@@ -44,7 +47,7 @@ DEFAULTS = {
     # Melon is a FIXED, SHARED pot (~$26.5k, floors near 200 units), so taking
     # it faster both earns and denies. Self-play is monotonic in melon acreage:
     # 16 tiles 65%, 20 tiles 73%, 24 tiles 90% against the 10-tile baseline.
-    "melon_tiles": 24,
+    "melon_tiles": 28,
     "melon_first_day": 0,            # melon pays nothing for 10 days
     "melon_last_plant_day": 16,
     "carrot_fill": True,

@@ -70,13 +70,16 @@ def _episode(job):
 # Round 3. Baseline is now melon24 (round 2 winner, 90% vs the old default).
 # Melon was monotonic to 24 tiles; find where it turns over, and re-test
 # trading coops for melon now that acreage is much larger.
+# Round 4. Baseline is now melon28 / geese18. Melon acreage only pays if the
+# flock shrinks to free the hands, so walk that frontier further, and test the
+# two leaks the trace shows: late melon plantings and 14 uncleared weed tiles.
 CANDIDATES = {
     "base":          {},
-    "melon28":       {"melon_tiles": 28},
-    "melon32":       {"melon_tiles": 32},
-    "m28-geese18":   {"melon_tiles": 28, "target_geese": 18},
-    "m24-geese18":   {"target_geese": 18},
-    "m24-geese26":   {"target_geese": 26},
+    "m32-geese14":   {"melon_tiles": 32, "target_geese": 14},
+    "m36-geese10":   {"melon_tiles": 36, "target_geese": 10},
+    "m28-geese14":   {"target_geese": 14},
+    "latemelon":     {"melon_last_plant_day": 19},
+    "weeds":         {"weed_clear_value": 90.0},
 }
 
 
