@@ -209,12 +209,27 @@ def plan_layout(view, p, plan):
 
     # How many tiles each role still wants. Wheat is sized first because feed
     # capacity is the hard gate on the whole animal engine.
-    want = {
-        "WHEAT": max(0, plan.want_wheat_tiles - have_wheat),
-        "ANIMAL": max(0, plan.want_coops + plan.want_pastures - have_animals),
-        "STRAWBERRY": max(0, plan.want_straw_tiles - have_straw),
-        "MELON": max(0, plan.want_melon_tiles - have_melon),
-    }
+    if p["freeze_roles"]:
+        # FROZEN: targets come from static params only, so the map is a pure
+        # function of which quadrants are unlocked. Previously they were derived
+        # from plan.want_* which move with cash and herd size — a tile could be
+        # melon on day 8 and wheat on day 9, and the abandoned melon was never
+        # watered again and rotted. That drift is the likely source of our
+        # persistent 9-20 weed tiles.
+        want = {
+            "WHEAT": max(0, int(p["wheat_tiles_target"]) - have_wheat),
+            "ANIMAL": max(0, int(p["target_cows"] + p["target_sheep"]
+                                 + p["target_geese"]) - have_animals),
+            "STRAWBERRY": max(0, int(p["strawberry_tiles"]) - have_straw),
+            "MELON": max(0, int(p["melon_tiles"]) - have_melon),
+        }
+    else:
+        want = {
+            "WHEAT": max(0, plan.want_wheat_tiles - have_wheat),
+            "ANIMAL": max(0, plan.want_coops + plan.want_pastures - have_animals),
+            "STRAWBERRY": max(0, plan.want_straw_tiles - have_straw),
+            "MELON": max(0, plan.want_melon_tiles - have_melon),
+        }
     budget = len(free)
     for role in ("WHEAT", "ANIMAL", "STRAWBERRY", "MELON"):
         want[role] = min(want[role], budget)
@@ -238,8 +253,11 @@ def plan_layout(view, p, plan):
     # Anything past the labour ceiling stays deliberately fallow. An untended
     # tile costs nothing; a planted one we cannot water costs seed money and
     # then a DIG to clear the weed it becomes.
-    fill = "CARROT" if p["carrot_fill"] else "WHEAT"
-    while i < len(free) and used + 1.0 <= plan.workable:
+    # A frozen map needs a SELF-CLEARING filler or the tiles reserved for pens
+    # sit idle from turn 0. Wheat's 4-day cycle vacates the tile on harvest, so
+    # the pen is never blocked when we are ready to build on it.
+    fill = p["role_filler"] if p["freeze_roles"] else ("CARROT" if p["carrot_fill"] else "WHEAT")
+    while fill and i < len(free) and used + 1.0 <= plan.workable:
         roles[free[i]] = fill
         used += 1.0
         i += 1
