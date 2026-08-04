@@ -61,11 +61,10 @@ OPPONENTS = {
 # `current` is the strawberry build: 34 straw / 12 wheat / 10 melon / 8 cow
 # 6 sheep, carrot_fill off, rate-limited seed buying.
 CANDIDATES = {
-    "current":     {},
-    "s40-w8":      {"strawberry_tiles": 40, "wheat_tiles_target": 8, "min_wheat_tiles": 6},
-    "s28-w16":     {"strawberry_tiles": 28, "wheat_tiles_target": 16},
-    "prev-build":  {"strawberry_tiles": 0, "carrot_fill": True, "wheat_tiles_target": 38,
-                    "melon_tiles": 16, "target_geese": 4, "target_cows": 10},
+    "current":   {},                                        # 12 cow / 4 sheep
+    "cow16":     {"target_cows": 16, "target_sheep": 4},
+    "cow14-s6":  {"target_cows": 14, "target_sheep": 6},
+    "cow12-s0":  {"target_cows": 12, "target_sheep": 0},
 }
 
 

@@ -38,13 +38,32 @@ DEFAULTS = {
     # because EGG is an unbounded sink — but town demand (438 milk, 335 wool per
     # season) keeps milk and wool near or above base too, and they are worth
     # 3-4x per unit. Buy sheep first, then cows, then geese.
-    "target_sheep": 6,
-    "target_cows": 8,
+    # Cows over sheep. Wool floors fast (335 town units/season on a `sq` curve)
+    # while milk absorbs 438 at a $160 base — the biggest pot in the game. Real
+    # ladder losses were to opponents running 7+ cows against our 1. Sheep are
+    # dropped ENTIRELY: they were filled first and stole capital and pasture from
+    # cows, and wool floors fast where milk does not. Gauntlet worst-matchup:
+    # 12cow/0sheep 96%, 12cow/4sheep 88%, 14cow/6sheep 79%.
+    # Note 16 cows measures IDENTICAL to 12 — the feed/labour clamp caps the herd
+    # at 12, so raising the target above that is a no-op.
+    "target_sheep": 0,
+    "target_cows": 12,
     "target_geese": 0,
     "feed_per_animal_day": 1.0,
     "wheat_buffer_per_animal": 3.0,  # shed wheat per animal before expanding
     "wheat_lead_tiles": 4,           # wheat tiles must lead animal count by this
     "coop_lead": 2,                  # empty coops allowed ahead of the birds
+    # Buy one animal per turn, not four. Measured +$1,474 mean and +$4,470 on the
+    # WORST case (6 seeds). Note this is a per-TURN cap and there are 24 turns a
+    # day, so it is a gentle brake on lump spending rather than a real daily
+    # limit — it does not fix the cow shortfall (see DEV.md on milk).
+    "animal_buy_rate": 1,
+    # MUST stay False. Sizing feed capacity off allocated tiles (rather than the
+    # oscillating planted count) correctly stabilises the animal target and then
+    # collapses the run to ~$14.7k, with or without a rate limit. The oscillation
+    # is load-bearing: it paces livestock spend. Kept as a flag to stop this
+    # being re-attempted without re-measuring.
+    "stable_wheat_capacity": False,
     "animal_carry": 3,               # animals one unit ferries per shed trip
     "wheat_carry": 8,                # wheat one unit ferries per feeding round
     "fert_carry": 6,                 # fertiliser one unit ferries per round

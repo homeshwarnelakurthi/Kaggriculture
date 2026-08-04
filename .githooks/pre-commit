@@ -1,0 +1,11 @@
+#!/bin/sh
+# Hard guard: the Kaggle credential must never reach a commit. Daily automated
+# pushes mean a single .gitignore mistake would publish it irrecoverably.
+if git diff --cached --name-only | grep -qiE '(^|/)kaggle\.json$|access_token|\.kaggle/'; then
+  echo "BLOCKED: attempted to commit a Kaggle credential." >&2
+  exit 1
+fi
+if git diff --cached -U0 | grep -qE '^\+.*"key"\s*:\s*"[0-9a-f]{32}"'; then
+  echo "BLOCKED: a 32-char API key appears in the staged diff." >&2
+  exit 1
+fi

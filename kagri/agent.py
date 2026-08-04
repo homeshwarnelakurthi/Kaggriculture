@@ -91,7 +91,11 @@ def plan_market(view, p, plan):
                 + view.carried(kind))
         want = plan.want_by_animal.get(kind, 0) - have
         budget = view.money - plan.reserve
-        n = min(want, int(budget // ANIMALS[kind]["cost"]) if budget > 0 else 0, 4)
+        # Rate-limited, like premium seed. Buying four cows at once ($1,600) in
+        # one turn starves the strawberry pipeline; the same money spread over
+        # several days does not. Level gates keep failing here — pace instead.
+        n = min(want, int(budget // ANIMALS[kind]["cost"]) if budget > 0 else 0,
+                int(p["animal_buy_rate"]))
         if n > 0:
             orders.append(["BUY_ANIMAL", kind, n])
             break  # one species per turn; re-evaluate against the new balance
