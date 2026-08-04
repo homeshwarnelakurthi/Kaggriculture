@@ -46,8 +46,13 @@ DEFAULTS = {
     # 12cow/0sheep 96%, 12cow/4sheep 88%, 14cow/6sheep 79%.
     # Note 16 cows measures IDENTICAL to 12 — the feed/labour clamp caps the herd
     # at 12, so raising the target above that is a no-op.
-    "target_sheep": 0,
-    "target_cows": 12,
+    # Found by tools/search.py over 28 random mixes, not by hand-picking: the
+    # winner is 10 cow / 2 sheep / 10 melon / 28 strawberry / 12 wheat at
+    # 100% ALL and 100% worst matchup ($72,181 mean) against v6's 99% / 94%.
+    # Sheep are non-monotonic: 2 helps, 5 hurts badly (75% worst). Do not read
+    # "some sheep good" as "more sheep better".
+    "target_sheep": 2,
+    "target_cows": 10,
     "target_geese": 0,
     "feed_per_animal_day": 1.0,
     "wheat_buffer_per_animal": 3.0,  # shed wheat per animal before expanding
@@ -80,7 +85,7 @@ DEFAULTS = {
     # Absolute wheat target, independent of flock size. Wheat sells for ~$35 per
     # action (same as an egg) with none of the capital, build or starvation risk,
     # and town demand of ~639 units/season keeps its price climbing all game.
-    "wheat_tiles_target": 16,
+    "wheat_tiles_target": 12,
     # Melon is a FIXED, SHARED pot (~$26.5k, floors near 200 units). Held small
     # now: with strawberry in the build, raising melon to 16 collapsed the run
     # ($38k mean, $9k worst) by crowding out the crop that actually compounds.

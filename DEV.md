@@ -291,3 +291,62 @@ Ladder status at time of writing: v6 (12cow/0sheep) 692.6 on 20 episodes, our
 best ever; v5 596.6 on 27. Note v6 read 585.5 on 13 episodes a few hours
 earlier, BELOW v5's then-657.5, and an apparent pattern of "every winner runs
 sheep" in v6's losses did not survive more data. Do not act on <15 episodes.
+
+## v7: mix found by search, not by hand (2026-08-04)
+
+Hand-picked rounds had been sampling a five-dimensional space (cows, sheep,
+melon, strawberry, wheat) five points at a time. tools/search.py screens random
+constrained mixes cheaply, then runs the full gauntlet on the survivors.
+
+Stage 2, 576 episodes, 6 archetypes, both seats:
+
+    c10s2m10b28w12   100% ALL / 100% worst / $72,181   <- adopted (v7)
+    c6s8m14b28w12    100% / 100% / $63,367
+    current-v6        99% /  94% / $70,660             <- control
+    c4s0m18b34w8      99% /  94% / $65,431
+
+v7 = 10 cow / 2 sheep / 10 melon / 28 strawberry / 12 wheat.
+vs starter: $88,762 (v6 was $80,634).
+
+SHEEP ARE NON-MONOTONIC. 0 sheep -> 94% worst, 2 sheep -> 100%, 5 sheep -> 75%.
+Do not read "some sheep good" as "more sheep better"; this axis has an interior
+optimum and both neighbours are worse.
+
+Also settled this round: the melon-heavy rebalance FAILS. Gauntlet worst-matchup
+for m20-c10-s5 42%, m24-c10-s6 38%, m30-c10-s4 0% (against a stockrush). Melon
+looks best per action but is the one product the field already floods.
+
+## What the market data actually says (59 real replays, 2026-08-04)
+
+Final market state averaged over 59 real ladder games:
+
+    product      inv vs I0  final $  base  vs base  units sold
+    MELON             +89      149    250     60%        229
+    FERTILIZER       +161       68    100     68%        161
+    CARROT           -399       42     35    120%         34
+    WOOL             -279      247    200    124%         56
+    EGG              -256       65     50    131%         84
+    TOMATO           -337      100     60    167%          3
+    WHEAT            -503       47     25    188%        136
+    MILK             -327      312    160    195%        111
+    STRAWBERRY       -412      289    120    241%        125
+
+Only MELON and FERTILIZER end oversupplied. Melon is the most-produced product
+in the game and closes at 60% of base -- that is where the whole field collides,
+and it is why every melon-heavy variant fails the gauntlet.
+
+Everything else closes ABOVE base because the town drains faster than two farms
+supply. Strawberry at 241% and milk at 195% are exactly what this build sells,
+which independently validates the direction.
+
+Answers the "sell cheap goods in bulk" question with data: carrot moved only 34
+units all season and still only reached 120% of base. Volume in cheap goods does
+not convert, because actions are the constraint, not land.
+
+TOMATO is unfarmed -- 3 units sold across 59 games at 167% of base. But it caps
+at 4 lifetime productions for a $50 seed (~$400/tile against strawberry's
+~$1,156), so it is uncontested rather than undervalued. Worth one test arm.
+
+CAVEAT: these are our own games, so our production is in the numbers. We run 10
+melon and 28 strawberry; strawberry still closes at 241%, so demand dwarfs even
+our supply. The melon figure is partly self-inflicted.
