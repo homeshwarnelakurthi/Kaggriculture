@@ -215,3 +215,53 @@ combined with the stable capacity measure. Not attempted yet.
 
 Nothing shipped from this investigation; v5 defaults verified restored at
 $72,776 mean / $65,624 worst.
+
+## Backlog from the public LB 950+ notebook (2026-08-04, NOT yet implemented)
+
+Source: `romanrozen/strong-statr-baseline-agent-lb-950`, "Barnyard Economist v5".
+Publicly shared on Kaggle under rule 2.6b. Insights taken and to be re-derived in
+our own design; no code copied.
+
+It independently confirms our town-demand model, melon ripening at day 10, the
+$376 twelve-hand cost, and CARE banking daily. It also states that concluding
+"play the log products, eggs and wheat" is "exactly backwards, and it cost about
+40 000 points" -- the same error this project made and corrected.
+
+**Their coins-per-action table, which indicts our current allocation:**
+
+    melon in-window watering  ~250     we run 10 tiles
+    cow fed + cared            ~95
+    sheep                      ~86
+    COLLECT_FERTILIZER         ~85
+    strawberry                 ~37     we run 28 tiles
+    wheat                      ~17     we run 16 tiles
+
+We built v5/v6 around the 5th and 6th ranked uses of a tile.
+
+**Four fixes to try, in priority order:**
+
+1. FREEZE THE ROLE MAP. Theirs is a pure function of which quadrants are
+   unlocked. Ours recomputes every turn from want_* values that depend on money
+   and herd size, so a tile can be melon on day 8 and wheat on day 9 -- the melon
+   is then never watered again and rots. This is almost certainly the cause of
+   our persistent 43-50 weed tiles, a symptom reported for days without a
+   diagnosis. NOTE: they found freezing ALONE made it worse (77k -> 71k) because
+   pen tiles sat idle; a self-clearing filler crop (wheat, 4-day cycle) took it
+   to 86k. We currently have carrot_fill OFF, so expect to need a filler.
+2. NO LAND BEFORE DAY 4 -- put the opening $3,000 into cows. A cow placed day 2
+   produces from day 10; land bought day 3 produces nothing until planted. Their
+   measured swing: 11k deficit vs the strongest public agent became 2k. Our
+   bootstrap_days 3 + min_days_for_animal 8 currently forbids exactly this.
+3. PER-DAY PLANTING QUOTA. Ongoing crops decay one day after cumulative
+   production hits max_yield, so 45 strawberries planted together all die
+   together. Read the quota off the board (planted_day == today), stateless.
+4. LIQUIDATION GLIDE PATH. Unsold stock scores zero at day 30; a reservation
+   price alone held melons through a crash and dumped at the $1 floor, ~20k lost.
+   Force a floor quantity once days_left <= 12.
+
+**Where WE are ahead.** Their closing caveat: "They run cow-heavy herds -- 10 or
+11 cows against my 1 cow : 2 sheep mix -- I tried a cow-heavy sequence and it
+scored worse in my harness, which I do not yet understand." That is the problem
+v6 solved: cow-heavy only works if animal buying is RATE-limited and sheep are
+dropped entirely (sheep fill first and steal capital and pasture). v6 runs
+12 cows / 0 sheep at 99% ALL / 96% worst matchup.
