@@ -69,15 +69,24 @@ def economics(view, p):
     pl.workable = max(6, int(expected_units * p["tiles_per_unit"]))
 
     # --- how much wheat can we actually put on the table? -----------------
+    # Size feed capacity off ALLOCATED wheat tiles, not the count currently in
+    # the ground: wheat is a 4-day crop so the planted count swings 0..25 as the
+    # field rotates, and feeding that snapshot to the animal target collapsed it
+    # on every dip. Because sheep fill first, cows absorbed the whole shortfall
+    # and milk — the game's biggest product — went entirely uncollected.
     wheat_plants = view.count_plants("WHEAT")
     wheat_stock = view.shed.get("WHEAT", 0) + view.carried("WHEAT")
-    pl.wheat_flow = wheat_plants * p["wheat_units_per_tile_day"]
+    wheat_capacity = wheat_plants
+    if p["stable_wheat_capacity"]:
+        wheat_capacity = max(wheat_plants, min(int(p["wheat_tiles_target"]),
+                                               len(view.unlocked_tiles())))
+    pl.wheat_flow = wheat_capacity * p["wheat_units_per_tile_day"]
 
     # --- animals ----------------------------------------------------------
     # Only expand the flock when wheat is comfortably ahead of demand and the
     # bird still has time to pay back its $300 (4 days to first egg).
     can_feed = (wheat_stock >= animals_now * p["wheat_buffer_per_animal"]
-                and wheat_plants >= animals_now + p["wheat_lead_tiles"])
+                and wheat_capacity >= animals_now + p["wheat_lead_tiles"])
     if pl.days_left < p["min_days_for_animal"] or view.day < p["bootstrap_days"]:
         pl.want_animals = animals_now
     elif can_feed:
