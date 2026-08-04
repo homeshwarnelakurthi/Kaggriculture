@@ -60,11 +60,21 @@ OPPONENTS = {
 # alongside a smaller herd that leaves room to actually buy the seed.
 # `current` is the strawberry build: 34 straw / 12 wheat / 10 melon / 8 cow
 # 6 sheep, carrot_fill off, rate-limited seed buying.
+# Testing melon+cow+wheat+sheep against the strawberry-heavy v6. The public
+# coins-per-action table ranks melon watering ~250, cow ~95, sheep ~86 against
+# strawberry ~37 and wheat ~17 — and v6 runs 28 strawberry / 16 wheat / 10 melon.
+# Melon and strawberry compete for the same tiles, so melon only rises as
+# strawberry falls.
 CANDIDATES = {
-    "current":   {},                                        # 12 cow / 4 sheep
-    "cow16":     {"target_cows": 16, "target_sheep": 4},
-    "cow14-s6":  {"target_cows": 14, "target_sheep": 6},
-    "cow12-s0":  {"target_cows": 12, "target_sheep": 0},
+    "current-v6":   {},   # melon10 cow12 sheep0 straw28 wheat16
+    "m24-c10-s6":   {"melon_tiles": 24, "target_cows": 10, "target_sheep": 6,
+                     "wheat_tiles_target": 12, "strawberry_tiles": 8},
+    "m30-c10-s4":   {"melon_tiles": 30, "target_cows": 10, "target_sheep": 4,
+                     "wheat_tiles_target": 10, "min_wheat_tiles": 6,
+                     "strawberry_tiles": 6},
+    "m20-c10-s5":   {"melon_tiles": 20, "target_cows": 10, "target_sheep": 5,
+                     "wheat_tiles_target": 14, "strawberry_tiles": 14},
+    "v6+sheep5":    {"target_sheep": 5},
 }
 
 
