@@ -265,3 +265,29 @@ scored worse in my harness, which I do not yet understand." That is the problem
 v6 solved: cow-heavy only works if animal buying is RATE-limited and sheep are
 dropped entirely (sheep fill first and steal capital and pasture). v6 runs
 12 cows / 0 sheep at 99% ALL / 96% worst matchup.
+
+## Role freeze FAILED (2026-08-04) — drift is not the weed cause
+
+The LB-950 notebook attributes its weeds to a role map that drifts with cash and
+herd size, and fixes it by making the map a pure function of unlocked quadrants
+plus a self-clearing wheat filler (their 77k -> 71k -> 86k progression).
+
+Implemented behind `freeze_roles`. Measured, 6 seeds vs starter:
+
+    v6 current              $79,475 mean / $71,035 min / 19.5 weeds at d24
+    freeze + wheat filler   $50,272 / $43,173 / 24.5 weeds
+    freeze, no filler       $48,729 / $39,966 / 19.5 weeds
+
+Both variants lose ~$30k AND the weed count does not improve — it gets worse
+with the filler. So our persistent 19-20 weeds are NOT caused by role drift, and
+the diagnosis borrowed from that notebook does not transfer to this codebase.
+Flag left in place, defaulting False, so this is not re-attempted blind.
+
+Still unexplained: where the weeds actually come from. Worth instrumenting
+directly (log every tile that becomes a WEED and what it was the day before)
+rather than importing another agent's diagnosis.
+
+Ladder status at time of writing: v6 (12cow/0sheep) 692.6 on 20 episodes, our
+best ever; v5 596.6 on 27. Note v6 read 585.5 on 13 episodes a few hours
+earlier, BELOW v5's then-657.5, and an apparent pattern of "every winner runs
+sheep" in v6's losses did not survive more data. Do not act on <15 episodes.

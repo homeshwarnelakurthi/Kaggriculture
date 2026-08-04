@@ -103,6 +103,11 @@ DEFAULTS = {
     # and never yields them back — the mechanism behind strawberry previously
     # "destabilising" the allocator (3 planted of 35, 24 tiles of carrot).
     "carrot_fill": False,
+    # Freeze the tile role map: make it a pure function of the unlocked quadrants
+    # rather than of cash and herd size, so a tile cannot change crop mid-life and
+    # strand a growing plant. Needs a self-clearing filler (see role_filler).
+    "freeze_roles": False,
+    "role_filler": "WHEAT",
     "max_seed_stock": 10,
     "seed_reserve_frac": 0.5,        # share of the reserve seed buying must respect
     "seed_buy_rate": 3,              # max premium seeds bought per turn (rate, not level)
