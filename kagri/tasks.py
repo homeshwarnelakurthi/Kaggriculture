@@ -52,12 +52,23 @@ def generate(view, roles, p, plan):
                 continue
 
             if isinstance(t, dict) and t.get("kind") == "WEED":
-                # A weed squats on a tile we planned to use. Worth roughly what
-                # that tile earns before the season ends, not a flat token value.
+                # A weed squats on a tile we planned to use, so clearing it is
+                # worth what REPLANTING there earns — not a flat token value.
+                # Measured: 57% of all weeds are spent strawberry tiles. Priced
+                # flat at $35 the clear lost every labour auction to milk and
+                # egg harvests, so the corpse sat there for the rest of the game
+                # on a tile worth ~$1,156 replanted.
                 want = roles.get(pos)
                 days_left = 30 - view.day
-                add(p["weed_clear_value"] if want and days_left > 4 else 6.0,
-                    pos, "DIG")
+                val = 6.0
+                if want and days_left > 4:
+                    if want in CROPS and _plantable(view, want, p):
+                        cd = CROPS[want]
+                        val = (_crop_unit_value(view, want) * cd["max_yield"]
+                               * p["weed_clear_frac"])
+                    else:
+                        val = p["weed_clear_value"]
+                add(val, pos, "DIG")
                 continue
 
             # ---------------- animals ----------------

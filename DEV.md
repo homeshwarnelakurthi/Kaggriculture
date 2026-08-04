@@ -350,3 +350,42 @@ at 4 lifetime productions for a $50 seed (~$400/tile against strawberry's
 CAVEAT: these are our own games, so our production is in the numbers. We run 10
 melon and 28 strawberry; strawberry still closes at 241%, so demand dwarfs even
 our supply. The melon figure is partly self-inflicted.
+
+## v8: weeds were a VALUATION bug, found by instrumenting (2026-08-04)
+
+Three imported hypotheses had failed first: role drift (-$30k), stable wheat
+capacity (-$57k), and "winners run sheep" (noise). Direct measurement settled it
+in one run. Logging every tile that became a WEED and what it was the day before,
+across 3 games (141 weeds, 47/game):
+
+     57  40.4%  plant died (decay/lifespan)
+     49  34.8%  random spawn on EMPTY tile
+     33  23.4%  plant died UNWATERED
+
+    top prior states:
+     53  STRAWBERRY(unwatered=0, yield=0)   <- exhausted, fully harvested
+     27  STRAWBERRY(unwatered=1, yield=0)
+     49  EMPTY
+
+**57% of all weeds are spent strawberry tiles.** Strawberry fires exactly 4
+productions and then decays to a weed by design. We harvested it dry and left the
+corpse all game, because clearing was priced at a flat $35 and lost every labour
+auction to milk and egg harvests -- on a tile worth ~$1,156 replanted.
+
+Not a planner defect. A valuation bug. Clearing is now priced as a fraction of
+what REPLANTING that tile earns.
+
+    weed_clear_frac   mean $    min $   weeds@d24
+    0.15             82,612   75,405        18.8   <- adopted
+    1.00             80,740   72,740         1.8
+    0.60             80,040   73,078         2.0
+    flat $35         77,404   70,350        27.5
+    0.30             77,156   61,649         1.3
+
++$5,208 mean and +$5,055 worst case. Gauntlet: 100% ALL / 100% worst across all
+six archetypes, against v7's 98% / 92%.
+
+COUNTERINTUITIVE AND WORTH KEEPING: clearing ALL weeds is WORSE. frac 0.30-1.00
+cuts the board to ~2 weeds and earns LESS than 0.15 leaving ~19 standing. A tidy
+board is a farm that spent its actions tidying. The weed count was a byproduct
+being mistaken for a scoreboard.
