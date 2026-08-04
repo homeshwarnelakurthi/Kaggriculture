@@ -117,7 +117,15 @@ DEFAULTS = {
     "seed_reserve_frac": 0.5,        # share of the reserve seed buying must respect
     "seed_buy_rate": 3,              # max premium seeds bought per turn (rate, not level)
     "premium_seed_cost": 80,         # seeds at/above this are rate-limited
-    "weed_clear_value": 35.0,
+    # Clearing a weed is priced as a FRACTION of what replanting that tile earns,
+    # because 57% of weeds are spent strawberry and the tile is worth ~$1,156
+    # replanted. A flat value loses every labour auction to milk/egg harvests.
+    # 0.15 measured best on BOTH mean and worst case (+$5.2k / +$5.1k over a flat
+    # value). Non-monotonic: 0.30 dips hard. And note clearing ALL weeds is NOT
+    # optimal — frac 0.30-1.00 cuts weeds to ~2 tiles and earns LESS than 0.15
+    # leaving ~19 standing. Those actions are worth more on milk and strawberry.
+    "weed_clear_frac": 0.15,
+    "weed_clear_value": 35.0,     # fallback for non-crop roles
 
     # --- Land ---------------------------------------------------------------
     "land_reserve": 600.0,

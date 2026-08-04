@@ -66,15 +66,10 @@ OPPONENTS = {
 # Melon and strawberry compete for the same tiles, so melon only rises as
 # strawberry falls.
 CANDIDATES = {
-    "current-v6":   {},   # melon10 cow12 sheep0 straw28 wheat16
-    "m24-c10-s6":   {"melon_tiles": 24, "target_cows": 10, "target_sheep": 6,
-                     "wheat_tiles_target": 12, "strawberry_tiles": 8},
-    "m30-c10-s4":   {"melon_tiles": 30, "target_cows": 10, "target_sheep": 4,
-                     "wheat_tiles_target": 10, "min_wheat_tiles": 6,
-                     "strawberry_tiles": 6},
-    "m20-c10-s5":   {"melon_tiles": 20, "target_cows": 10, "target_sheep": 5,
-                     "wheat_tiles_target": 14, "strawberry_tiles": 14},
-    "v6+sheep5":    {"target_sheep": 5},
+    "v8 (frac .15)": {},
+    "v7 (flat 35)":  {"weed_clear_frac": 0.0},
+    "frac .10":      {"weed_clear_frac": 0.10},
+    "frac .20":      {"weed_clear_frac": 0.20},
 }
 
 
