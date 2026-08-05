@@ -86,11 +86,11 @@ DEFAULTS = {
     "wheat_units_per_tile_day": 0.9,
     "wheat_tiles_per_animal": 1.15,
     "wheat_tile_share": 0.6,         # hard cap: fraction of land given to wheat
-    "min_wheat_tiles": 8,
+    "min_wheat_tiles": 6,
     # Absolute wheat target, independent of flock size. Wheat sells for ~$35 per
     # action (same as an egg) with none of the capital, build or starvation risk,
     # and town demand of ~639 units/season keeps its price climbing all game.
-    "wheat_tiles_target": 16,
+    "wheat_tiles_target": 10,
     # Melon is a FIXED, SHARED pot (~$26.5k, floors near 200 units). Held small
     # now: with strawberry in the build, raising melon to 16 collapsed the run
     # ($38k mean, $9k worst) by crowding out the crop that actually compounds.
@@ -105,7 +105,7 @@ DEFAULTS = {
     # overall but only 33% against a strawberry rusher, while 28 scores 82%
     # overall and 67% there. On a win/loss ladder the soft archetype is what
     # bleeds rating, and strawrush is the top-of-ladder build we now resemble.
-    "strawberry_tiles": 28,
+    "strawberry_tiles": 34,
     "straw_last_plant_day": 17,
     "melon_first_day": 0,            # melon pays nothing for 10 days
     "melon_last_plant_day": 16,
@@ -129,7 +129,7 @@ DEFAULTS = {
     # value). Non-monotonic: 0.30 dips hard. And note clearing ALL weeds is NOT
     # optimal — frac 0.30-1.00 cuts weeds to ~2 tiles and earns LESS than 0.15
     # leaving ~19 standing. Those actions are worth more on milk and strawberry.
-    "weed_clear_frac": 0.15,
+    "weed_clear_frac": 0.0,
     "weed_clear_value": 35.0,     # fallback for non-crop roles
 
     # --- Land ---------------------------------------------------------------

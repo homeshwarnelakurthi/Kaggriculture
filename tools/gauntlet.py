@@ -28,27 +28,43 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 _ENV = {}
 
-# Distinct strategic archetypes, not parameter jitter — each stresses a
-# different axis of our build.
+# Opponents reconstructed from the ACTUAL day-20 boards of players who beat us,
+# taken from 30 real ladder losses. Previously every archetype here was our own
+# agent with different parameters, so the pool could only ever test our build
+# against our own ideas -- and it saturated at 100%, losing all discriminating
+# power. These are the real field's allocations instead.
 OPPONENTS = {
-    "starter":   None,                                        # built-in baseline
-    "eggrush":   {"melon_tiles": 4, "target_geese": 26, "wheat_tiles_target": 0},
-    "melonrush": {"melon_tiles": 32, "target_geese": 12, "wheat_tiles_target": 0},
-    # Modelled on the real ladder opponent that beat us 29,790-20,698: ~35 wheat
-    # tiles, ~16 melon, a small flock. Wheat is the second unbounded sink and
-    # town demand keeps its price rising, so this archetype is strong and real.
-    "wheatrush": {"wheat_tiles_target": 38, "melon_tiles": 16, "target_geese": 8,
-                  "target_sheep": 0, "target_cows": 0},
-    # Both modelled on real ladder opponents that beat us. GUILLERMO REY ran
-    # 12 cows + 6 sheep for $50,011; jeon hyeon woo ran 43 strawberry for
-    # $49,983. Town demand (438 milk / 335 wool / 537 strawberry per season)
-    # keeps these premium goods at or above base price all game.
-    "stockrush": {"target_sheep": 8, "target_cows": 14, "target_geese": 0,
-                  "melon_tiles": 6, "wheat_tiles_target": 40},
-    # Modelled on the top of the real ladder (39 strawberry + 8 cow + 6 sheep).
-    "strawrush": {"strawberry_tiles": 38, "wheat_tiles_target": 8, "min_wheat_tiles": 6,
-                  "melon_tiles": 8, "target_cows": 8, "target_sheep": 6,
-                  "target_geese": 0, "carrot_fill": False},
+    "starter": None,
+    # Mikey Marszewski $154,856 -- top score observed
+    "real_mikey":  {"target_cows": 8, "target_sheep": 6, "target_geese": 0,
+                    "melon_tiles": 9, "strawberry_tiles": 39,
+                    "wheat_tiles_target": 3, "min_wheat_tiles": 3,
+                    "wheat_lead_tiles": 0, "carrot_fill": False},
+    # Kazuta MIZUTA $130,458
+    "real_kazuta": {"target_cows": 10, "target_sheep": 2, "target_geese": 0,
+                    "melon_tiles": 9, "strawberry_tiles": 37,
+                    "wheat_tiles_target": 2, "min_wheat_tiles": 2,
+                    "wheat_lead_tiles": 0, "carrot_fill": False},
+    # Somasundar V $93,150 -- cow-heavy, no melon
+    "real_somas":  {"target_cows": 14, "target_sheep": 4, "target_geese": 0,
+                    "melon_tiles": 0, "strawberry_tiles": 13,
+                    "wheat_tiles_target": 6, "min_wheat_tiles": 6,
+                    "wheat_lead_tiles": 0, "carrot_fill": False},
+    # Josh Hipps $87,882 -- mixed herd incl. geese, melon+wheat, no strawberry
+    "real_josh":   {"target_cows": 9, "target_sheep": 4, "target_geese": 4,
+                    "melon_tiles": 10, "strawberry_tiles": 0,
+                    "wheat_tiles_target": 12, "wheat_lead_tiles": 0,
+                    "carrot_fill": False},
+    # Yuelin Bai $84,086 -- huge herd, no crops but wheat
+    "real_yuelin": {"target_cows": 15, "target_sheep": 11, "target_geese": 9,
+                    "melon_tiles": 0, "strawberry_tiles": 0,
+                    "wheat_tiles_target": 14, "wheat_lead_tiles": 0,
+                    "carrot_fill": False},
+    # Sam kramer $55,395 -- wheat-heavy generalist
+    "real_sam":    {"target_cows": 6, "target_sheep": 10, "target_geese": 0,
+                    "melon_tiles": 3, "strawberry_tiles": 20,
+                    "wheat_tiles_target": 37, "wheat_lead_tiles": 0,
+                    "carrot_fill": False},
 }
 
 # `current` is melon32/geese14 (round-4 winner). It sits next to a cliff --
@@ -66,10 +82,18 @@ OPPONENTS = {
 # Melon and strawberry compete for the same tiles, so melon only rises as
 # strawberry falls.
 CANDIDATES = {
-    "v8 (frac .15)": {},
-    "v7 (flat 35)":  {"weed_clear_frac": 0.0},
-    "frac .10":      {"weed_clear_frac": 0.10},
-    "frac .20":      {"weed_clear_frac": 0.20},
+    "v9-current":  {},                                    # 12cow 0shp 10mel 28str 16wht
+    # Mirror the top two real winners: low wheat, high strawberry, some sheep.
+    # wheat_lead_tiles must drop or the herd never expands behind 3 wheat tiles.
+    "mimic-top":   {"target_cows": 9, "target_sheep": 4, "melon_tiles": 9,
+                    "strawberry_tiles": 36, "wheat_tiles_target": 4,
+                    "min_wheat_tiles": 4, "wheat_lead_tiles": 0},
+    "mimic-soft":  {"target_cows": 10, "target_sheep": 3, "melon_tiles": 10,
+                    "strawberry_tiles": 32, "wheat_tiles_target": 8,
+                    "min_wheat_tiles": 6, "wheat_lead_tiles": 1},
+    "v9+sheep4":   {"target_sheep": 4},
+    "v9-lowwheat": {"wheat_tiles_target": 8, "min_wheat_tiles": 6,
+                    "wheat_lead_tiles": 1},
 }
 
 

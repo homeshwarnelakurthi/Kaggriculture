@@ -389,3 +389,37 @@ COUNTERINTUITIVE AND WORTH KEEPING: clearing ALL weeds is WORSE. frac 0.30-1.00
 cuts the board to ~2 weeds and earns LESS than 0.15 leaving ~19 standing. A tidy
 board is a farm that spent its actions tidying. The weed count was a byproduct
 being mistaken for a scoreboard.
+
+## v10 and the finding that matters more than v10 (2026-08-05)
+
+Settled ladder ratings, finally clean:
+
+    v6  678.1 (21 eps)   <- best
+    v9  645.3 (21 eps)   <- v6 mix + weed fix; SAME episode count, directly comparable
+    v8  583.8 (32 eps)   <- was 604.9 at 12 eps, FELL with more data
+    v7  577.8 (30 eps)   <- was 656.2 at 14 eps, FELL with more data
+
+Correction to an earlier claim in this file: v7/v8 reading low was NOT an
+episode-count artifact. Both declined as episodes accumulated. Every change
+since v6 has failed to beat it on the ladder.
+
+**Why: the parameter space is largely inert.** Measured day-20 boards, 6 seeds:
+
+    v6 exact (wht16 str28)   $74,119 / $64,291 min   10 wheat, 9 melon, 25 straw, 7 cow
+    v10      (wht10 str34)   $74,952 / $67,188 min    0 wheat, 8 melon, 27 straw, 7 cow
+    v10 + wheat_lead 1       $73,640 / $64,455 min    0 wheat, 8 melon, 27 straw, 7 cow
+
+We ask for 12 cows and get 7. We ask for 34 strawberry and get 27. Moving the
+wheat target 16 -> 10 changed the board by TWO tiles. The labour ceiling
+(plan.workable) and the feed gate dominate; the tile targets are mostly
+requests the clamp overrides.
+
+That is the real explanation for five consecutive tuning attempts producing no
+ladder movement -- not gauntlet overfitting, not episode counts. Further mix
+search is measuring the clamp, not the strategy.
+
+The next work worth doing is on the CLAMP itself: why 7 cows against a target of
+12, and why ~27 tiles of ~91 workable. Not more parameter arms.
+
+v10 = v6 exact + 6 wheat tiles reallocated to strawberry, weed fix reverted
+(v9 suggests it costs ~33 points, inside noise but consistent with the trend).
