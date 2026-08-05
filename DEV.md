@@ -473,3 +473,38 @@ allocation.
 WARNING: v10 (submitted 2026-08-05) reduced wheat 16 -> 10. v9-lowwheat is the
 same direction and scores 79% worst against v9-current's 92%. v10 was shipped
 before this run finished and is likely a small regression.
+
+## v11: searching the CONSTRAINTS, not the mix (2026-08-05)
+
+The decisive experiment. Asking for 20 cows instead of 12 produces a
+BIT-IDENTICAL game -- same board, same money, to the cent. The tile targets are
+requests the clamp overrides; the labour ceiling and the feed gate decide the
+board. That is the whole explanation for v7-v10 producing no ladder movement:
+five rounds of mix tuning were searching a space that does not exist.
+
+    baseline                        $72,772   27 straw, 8 melon, 7 cow, 18 weed
+    MIX: cows 12 -> 20              $72,772   IDENTICAL BOARD
+    MIX: straw 34 -> 50             $66,194   board changes, cows collapse to 2
+    CONSTRAINT: tiles/unit 7 -> 11  $68,678
+    CONSTRAINT: animal cost -> 1.2  $67,883
+    CONSTRAINT: feed gate 4 -> 1    $75,578   +$2,806, more straw AND more cows
+
+Repointed tools/search.py at the eight constraint knobs and ran 40 configs
+through the two-stage pipeline against REAL-derived opponents.
+
+Winner: wheat_lead_tiles 2, wheat_buffer_per_animal 2.0, seed_buy_rate 2,
+animal_buy_rate 2, ops_reserve_base 550, hire_bank_fraction 0.20
+(tiles_per_unit and animal_labour_cost unchanged at 7.0 / 2.5).
+
+    Stage 2, real opponents:   100% ALL / 100% worst  vs control 98% / 88%
+    vs starter, 8 seeds:       $80,204 mean / $73,412 min  vs $74,464 / $65,011
+    day-20 board:              30 straw, 10 melon, 9 cow, 13 weed
+                       (was)   27 straw,  8 melon, 7 cow, 18 weed
+
+First change in the project to improve EVERY axis at once -- more strawberry,
+more melon, more cows and fewer weeds -- because it lifts the clamp rather than
+re-asking for tiles the clamp was refusing.
+
+Correction to the previous entry: v10 was called "likely a small regression" on
+gauntlet evidence. The ladder disagreed -- v10 recovered from 582.9 to 635.0,
+within 4 points of v9's 639.4. The gauntlet's 79%-vs-92% read did not transfer.

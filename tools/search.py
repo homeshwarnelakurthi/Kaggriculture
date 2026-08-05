@@ -86,30 +86,37 @@ def _episode(job):
 
 
 def sample_mixes(n, rng):
-    """Random allocations, constrained to what the farm can actually run.
+    """Sample the CONSTRAINT parameters, not the tile mix.
 
-    100 tiles total and a labour ceiling near 91 tile-equivalents, with animals
-    costing ~2.5 crop tiles of work each. Sampling past that just measures the
-    clamp instead of the strategy.
+    The mix is inert: asking for 20 cows instead of 12 produces a bit-identical
+    game, because the labour ceiling and the feed gate decide the board, not the
+    targets. A 28-mix search over tile counts produced v7, which became our worst
+    ladder result. These knobs are the ones that actually bind -- relaxing the
+    feed gate alone was worth +$2,806 and raised strawberry AND cows together.
     """
     out = {}
-    while len(out) < n:
-        cows = rng.choice([0, 4, 6, 8, 10, 12, 14])
-        sheep = rng.choice([0, 0, 2, 4, 6, 8])
-        melon = rng.choice([0, 6, 10, 14, 18, 24, 30])
-        straw = rng.choice([0, 6, 12, 18, 24, 28, 34])
-        wheat = rng.choice([6, 8, 12, 16, 20, 26])
-        # Animals need feed; a herd with no wheat behind it starves.
-        if (cows + sheep) > 0 and wheat < 6:
-            continue
-        load = (cows + sheep) * 2.5 + melon + straw + wheat
-        if not (55 <= load <= 95):
-            continue
-        name = f"c{cows}s{sheep}m{melon}b{straw}w{wheat}"
-        out[name] = {"target_cows": cows, "target_sheep": sheep,
-                     "melon_tiles": melon, "strawberry_tiles": straw,
-                     "wheat_tiles_target": wheat,
-                     "min_wheat_tiles": min(8, wheat)}
+    tries = 0
+    while len(out) < n and tries < n * 40:
+        tries += 1
+        c = {
+            # feed gate: how far wheat must lead the herd before it may grow
+            "wheat_lead_tiles": rng.choice([0, 1, 2, 3, 4]),
+            "wheat_buffer_per_animal": rng.choice([0.5, 1.0, 2.0, 3.0]),
+            # labour ceiling and what an animal tile costs against it
+            "tiles_per_unit": rng.choice([6.0, 7.0, 8.0, 9.0, 11.0]),
+            "animal_labour_cost": rng.choice([1.2, 1.8, 2.5, 3.2]),
+            # pacing: both of these fixed real collapses, so vary them carefully
+            "seed_buy_rate": rng.choice([2, 3, 5]),
+            "animal_buy_rate": rng.choice([1, 2]),
+            # cash discipline
+            "ops_reserve_base": rng.choice([200.0, 350.0, 550.0]),
+            "hire_bank_fraction": rng.choice([0.20, 0.30, 0.45]),
+        }
+        name = (f"lead{c['wheat_lead_tiles']}buf{c['wheat_buffer_per_animal']:g}"
+                f"tpu{c['tiles_per_unit']:g}alc{c['animal_labour_cost']:g}"
+                f"sr{c['seed_buy_rate']}ar{c['animal_buy_rate']}"
+                f"res{int(c['ops_reserve_base'])}hbf{c['hire_bank_fraction']:g}")
+        out[name] = c
     return out
 
 
