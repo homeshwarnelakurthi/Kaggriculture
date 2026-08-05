@@ -79,6 +79,15 @@ DEFAULTS = {
     "fert_carry": 6,                 # fertiliser one unit ferries per round
     "fert_reserve": 4,               # keep this much fertiliser back from sale
     # Only fertilise where the gain beats what the fertiliser would sell for.
+    # Wheat is the ONE crop that needs fertiliser: it cannot reach its 6-unit cap on
+    # watering alone, while melon reaches 6 unaided by day 10 (fertilising melon is
+    # pure waste). Wheat's computed gain is ~$90, so a threshold of exactly 90 made
+    # `gain > 90` fail by a hair and we fertilised nothing at all.
+    # MEASURED AND REVERTED. The public meta guide says wheat cannot reach its 6-unit
+    # cap on watering alone and therefore needs fertiliser. True of the mechanic,
+    # but not worth it here: lowering this to 40 so wheat qualifies scored
+    # $74,334 mean against the baseline's $74,952. The fertiliser is worth more
+    # sold than spent on +2 wheat units. Left at 90, which excludes wheat by a hair.
     "fertilize_min_gain": 90.0,
     "drop_threshold": 5,             # carried produce that triggers a shed run
 
@@ -151,6 +160,18 @@ DEFAULTS = {
     # ...unless the shed is close to its 100 cap, where overflow is discarded at
     # end of day and a cheap sale beats losing the goods outright.
     "shed_pressure_cap": 80,
+    # MEASURED AND DISABLED (second failed attempt at metering).
+    # Theory: price impact is permanent but the town drains continuously, so
+    # splitting a sale across turns should let the price recover between batches.
+    # It does not pay. batch 8 scored $74,300 / $66,444 min, batch 5 $74,750 /
+    # $64,817, against an unbatched $74,952 / $67,188. Combined with wheat
+    # fertilising it was worse still ($71,374 / $60,107).
+    # The earlier withhold-below-a-floor variant also failed. Two different
+    # metering mechanisms, both negative -- stop proposing a third without a new
+    # reason. Delay costs more than price impact saves, most likely because the
+    # shed caps at 100 and unsold stock scores zero at day 30.
+    "sell_batch": 99999,
+    "metered_products": (),
     # MELON is the exception: town takes only ~140/season and no shop demands it,
     # so its pot really is a fixed race against the opponent. Dump on sight.
     "race_products": ("MELON",),

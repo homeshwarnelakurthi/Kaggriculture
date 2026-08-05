@@ -51,6 +51,12 @@ def plan_market(view, p, plan):
         if qty <= 0:
             continue
         qty = _meterable(item, view.minv.get(item, 10000), qty, p, under_pressure)
+        # Batch cap. Price impact is permanent, but the town drains continuously,
+        # so splitting a big sale across turns lets the price recover between
+        # batches and raises the average. Distinct from withholding, which was
+        # measured worthless: same volume, just paced.
+        if not under_pressure and item in p["metered_products"]:
+            qty = min(qty, int(p["sell_batch"]))
         if qty <= 0:
             continue
         unit = marginal_value(item, view.minv.get(item, 10000), min(qty, 8))
