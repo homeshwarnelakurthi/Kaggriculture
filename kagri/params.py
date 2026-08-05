@@ -51,8 +51,13 @@ DEFAULTS = {
     # 100% ALL and 100% worst matchup ($72,181 mean) against v6's 99% / 94%.
     # Sheep are non-monotonic: 2 helps, 5 hurts badly (75% worst). Do not read
     # "some sheep good" as "more sheep better".
-    "target_sheep": 2,
-    "target_cows": 10,
+    # v9 reverts the MIX to v6's (12 cow / 0 sheep / 16 wheat), the only build with
+    # a settled above-600 ladder rating (678.1 on 21 episodes, vs v7 656 on 14 and
+    # v8 605 on 12). The v7 search-tuned mix won a gauntlet that had saturated at
+    # 100% and therefore stopped discriminating. Keeps v8's weed valuation fix,
+    # which came from direct instrumentation rather than that gauntlet.
+    "target_sheep": 0,
+    "target_cows": 12,
     "target_geese": 0,
     "feed_per_animal_day": 1.0,
     "wheat_buffer_per_animal": 3.0,  # shed wheat per animal before expanding
@@ -85,7 +90,7 @@ DEFAULTS = {
     # Absolute wheat target, independent of flock size. Wheat sells for ~$35 per
     # action (same as an egg) with none of the capital, build or starvation risk,
     # and town demand of ~639 units/season keeps its price climbing all game.
-    "wheat_tiles_target": 12,
+    "wheat_tiles_target": 16,
     # Melon is a FIXED, SHARED pot (~$26.5k, floors near 200 units). Held small
     # now: with strawberry in the build, raising melon to 16 collapsed the run
     # ($38k mean, $9k worst) by crowding out the crop that actually compounds.
