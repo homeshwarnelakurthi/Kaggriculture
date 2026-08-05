@@ -13,13 +13,23 @@ DEFAULTS = {
     # Eight hands cost $54 total; twelve cost $376. Almost never worth skipping,
     # so the floor is deliberately tiny — the fib curve is the real cap.
     "hire_money_floor": 30.0,
-    "hire_bank_fraction": 0.30,     # never spend more than this share of the bank on a crew
+    "hire_bank_fraction": 0.20,     # never spend more than this share of the bank on a crew
     "tiles_per_unit": 7.0,          # tiles one unit can meaningfully tend/day
     "animal_labour_cost": 2.5,      # an animal tile costs ~2.5 crop tiles of work
 
+    # v11: the CONSTRAINT parameters below were found by tools/search.py over 40
+    # random configs. They are the knobs that actually bind. Tile targets are
+    # inert -- asking for 20 cows instead of 12 produces a bit-identical game,
+    # because the labour ceiling and feed gate decide the board, not the targets.
+    # That is why five rounds of mix tuning (v7-v10) produced no ladder movement.
+    # Real-opponent gauntlet 100% worst matchup vs the control's 88%; vs starter
+    # +$5,740 mean and +$8,401 worst case, with MORE strawberry, MORE melon,
+    # MORE cows and FEWER weeds simultaneously -- the first change to improve
+    # every axis at once, because it lifts the clamp instead of re-asking for
+    # tiles the clamp was refusing.
     # --- Cash discipline ----------------------------------------------------
     # Never spend below this. A full day of hands is added on top automatically.
-    "ops_reserve_base": 350.0,
+    "ops_reserve_base": 550.0,
     "ops_reserve_per_animal": 15.0,
 
     # --- Bootstrap ----------------------------------------------------------
@@ -60,14 +70,14 @@ DEFAULTS = {
     "target_cows": 12,
     "target_geese": 0,
     "feed_per_animal_day": 1.0,
-    "wheat_buffer_per_animal": 3.0,  # shed wheat per animal before expanding
-    "wheat_lead_tiles": 4,           # wheat tiles must lead animal count by this
+    "wheat_buffer_per_animal": 2.0,  # shed wheat per animal before expanding
+    "wheat_lead_tiles": 2,           # wheat tiles must lead animal count by this
     "coop_lead": 2,                  # empty coops allowed ahead of the birds
     # Buy one animal per turn, not four. Measured +$1,474 mean and +$4,470 on the
     # WORST case (6 seeds). Note this is a per-TURN cap and there are 24 turns a
     # day, so it is a gentle brake on lump spending rather than a real daily
     # limit — it does not fix the cow shortfall (see DEV.md on milk).
-    "animal_buy_rate": 1,
+    "animal_buy_rate": 2,
     # MUST stay False. Sizing feed capacity off allocated tiles (rather than the
     # oscillating planted count) correctly stabilises the animal target and then
     # collapses the run to ~$14.7k, with or without a rate limit. The oscillation
@@ -129,7 +139,7 @@ DEFAULTS = {
     "role_filler": "WHEAT",
     "max_seed_stock": 10,
     "seed_reserve_frac": 0.5,        # share of the reserve seed buying must respect
-    "seed_buy_rate": 3,              # max premium seeds bought per turn (rate, not level)
+    "seed_buy_rate": 2,              # max premium seeds bought per turn (rate, not level)
     "premium_seed_cost": 80,         # seeds at/above this are rate-limited
     # Clearing a weed is priced as a FRACTION of what replanting that tile earns,
     # because 57% of weeds are spent strawberry and the tile is worth ~$1,156
