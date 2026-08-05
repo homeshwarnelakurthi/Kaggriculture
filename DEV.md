@@ -423,3 +423,53 @@ The next work worth doing is on the CLAMP itself: why 7 cows against a target of
 
 v10 = v6 exact + 6 wheat tiles reallocated to strawberry, weed fix reverted
 (v9 suggests it costs ~33 points, inside noise but consistent with the trend).
+
+## Two more mechanism fixes measured and REVERTED (2026-08-05)
+
+From the public meta guide (cjlcjlcjl live-meta + Kaito v20). Both sounded right,
+neither paid. 6 seeds vs starter:
+
+    v10 baseline        $74,952 / $67,188 min   <- best, kept
+    + wheat fertilise   $74,334 / $67,188
+    + batch sell only   $74,300 / $66,444
+    both                $71,374 / $60,107
+    both, batch 5       $74,750 / $64,817
+
+1. WHEAT FERTILISING. The guide is right that wheat cannot reach its 6-unit cap
+   on watering alone. But the fertiliser is worth more sold than spent on +2
+   wheat units. fertilize_min_gain stays 90, which excludes wheat by a hair.
+2. BATCH-METERED SELLING. Second distinct metering mechanism to fail. The first
+   withheld below a price floor; this one capped units per order so town demand
+   could refill between batches. Both negative. Delay costs more than price
+   impact saves -- shed caps at 100 and unsold stock scores zero at day 30.
+   Do not propose a third metering scheme without a genuinely new reason.
+
+## REAL-OPPONENT GAUNTLET: copying the top players makes us WORSE
+
+Rebuilt the gauntlet's opponents from the actual day-20 boards of players who
+beat us across 30 real losses, replacing archetypes that were all our own agent
+with different parameters (that pool had saturated at 100% and stopped
+discriminating). 720 episodes, both seats:
+
+    config          starter  mikey  kazuta  somas  josh  yuelin   sam   ALL  worst   mean $
+    v9-current         100%    96%     92%   100%  100%    100%  100%   98%    92%  73,368
+    v9-lowwheat        100%    88%     79%   100%  100%    100%  100%   95%    79%  74,464
+    v9+sheep4          100%    79%     58%   100%  100%    100%  100%   91%    58%  69,680
+    mimic-soft         100%    79%     38%   100%  100%    100%  100%   88%    38%  70,363
+    mimic-top          100%    54%     58%   100%  100%    100%  100%   88%    54%  68,218
+
+The pool now discriminates (38-92% worst, vs a uniform 100% before).
+
+**mimic-top -- our agent running Mikey/Kazuta's exact allocation (9 cow, 4 sheep,
+9 melon, 36 straw, 4 wheat) -- is the WORST candidate tested.** Copying the
+board of the strongest player on the ladder makes us measurably worse.
+
+That kills the "just match the top allocation" thesis that drove v7-v10. Their
+mix works with their execution; ours cannot run it. Combined with the earlier
+finding that tile targets are largely inert under the labour clamp, the
+remaining gap is EXECUTION -- actions per day and what they are spent on -- not
+allocation.
+
+WARNING: v10 (submitted 2026-08-05) reduced wheat 16 -> 10. v9-lowwheat is the
+same direction and scores 79% worst against v9-current's 92%. v10 was shipped
+before this run finished and is likely a small regression.
