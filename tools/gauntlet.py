@@ -82,18 +82,11 @@ OPPONENTS = {
 # Melon and strawberry compete for the same tiles, so melon only rises as
 # strawberry falls.
 CANDIDATES = {
-    "v9-current":  {},                                    # 12cow 0shp 10mel 28str 16wht
-    # Mirror the top two real winners: low wheat, high strawberry, some sheep.
-    # wheat_lead_tiles must drop or the herd never expands behind 3 wheat tiles.
-    "mimic-top":   {"target_cows": 9, "target_sheep": 4, "melon_tiles": 9,
-                    "strawberry_tiles": 36, "wheat_tiles_target": 4,
-                    "min_wheat_tiles": 4, "wheat_lead_tiles": 0},
-    "mimic-soft":  {"target_cows": 10, "target_sheep": 3, "melon_tiles": 10,
-                    "strawberry_tiles": 32, "wheat_tiles_target": 8,
-                    "min_wheat_tiles": 6, "wheat_lead_tiles": 1},
-    "v9+sheep4":   {"target_sheep": 4},
-    "v9-lowwheat": {"wheat_tiles_target": 8, "min_wheat_tiles": 6,
-                    "wheat_lead_tiles": 1},
+    "v11-control": {},
+    "ceiling-win":  {"tiles_per_unit": 6.5, "animal_labour_cost": 4.0,
+                     "max_hands": 12, "hand_value_per_action": 20.0},
+    "ceiling-alt":  {"tiles_per_unit": 6.5, "animal_labour_cost": 2.0,
+                     "max_hands": 12, "hand_value_per_action": 20.0},
 }
 
 

@@ -508,3 +508,38 @@ re-asking for tiles the clamp was refusing.
 Correction to the previous entry: v10 was called "likely a small regression" on
 gauntlet evidence. The ladder disagreed -- v10 recovered from 582.9 to 635.0,
 within 4 points of v9's 639.4. The gauntlet's 79%-vs-92% read did not transfer.
+
+## v12: the labour ceiling (2026-08-06)
+
+v11 relaxed the feed gate and pacing but left tiles_per_unit and
+animal_labour_cost untouched -- and those two ARE the ceiling. Searched them
+finely while holding v11's winning gate/pacing settings fixed, so the ceiling
+was the only thing moving.
+
+Winner: tiles_per_unit 7.0 -> 6.5, animal_labour_cost 2.5 -> 4.0,
+hand_value_per_action 6.0 -> 20.0.
+
+Note the DIRECTION: an animal tile costs MORE labour than assumed, not less.
+Being honest about that frees the crew to finish crop work rather than spreading
+thin across tiles it never returns to. I would have guessed the opposite, which
+is exactly why this was searched rather than picked.
+
+Real-opponent gauntlet, 420 episodes, head-to-head on identical seeds:
+
+    config         starter  mikey  kazuta  somas  josh  yuelin   sam   ALL  worst   mean $
+    ceiling-win       100%    90%     95%   100%  100%    100%  100%   98%    90%  78,813
+    v11-control       100%    60%     85%   100%   65%    100%  100%   87%    60%  72,575
+    ceiling-alt       100%    70%     70%   100%   65%    100%  100%   86%    65%  71,797
+
++30 points of worst matchup and +$6,238 mean.
+
+CAUTION on reading earlier numbers: v11 scored 100%/100% in its own stage-2 run
+at 8 seeds, and 87%/60% here at 10 seeds. More seeds pulled it down sharply. So
+ceiling-win's 90% is probably optimistic too -- what is trustworthy is the
+head-to-head gap on identical seeds, not the absolute figure.
+
+Also: the search's stage 2 CRASHED with DeadlineExceeded (26,081s vs a 1,200s
+per-episode limit). That was resource contention -- 12 workers plus leftover
+processes from earlier runs -- not a code hang. Episodes run in ~10s. Verified
+before submitting, because a hang on Kaggle is a submission ERROR, not a low
+score. Use -j 8 when other work is running.
