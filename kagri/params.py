@@ -111,6 +111,18 @@ DEFAULTS = {
     # $74,334 mean against the baseline's $74,952. The fertiliser is worth more
     # sold than spent on +2 wheat units. Left at 90, which excludes wheat by a hair.
     "fertilize_min_gain": 90.0,
+    # Coins a step of walking is worth. Jobs are scored value - travel * BFS
+    # distance, so a unit is not sent across the farm for a job worth less than
+    # the trip. 0 reproduces the old nearest-unit behaviour exactly.
+    # BFS distances measured NET NEGATIVE and are OFF. Within one gauntlet run:
+    # manhattan+travel20 85% worst, bfs+travel20 80%, bfs alone 20%. BFS is more
+    # CORRECT (the farm is L-shaped once NE+SW are owned, so Manhattan
+    # under-counts routes round a locked quadrant) and still loses -- most likely
+    # because its first-step choice makes units path identically and bunch up.
+    # Kept behind the flag rather than deleted, since it may pay once logistics
+    # errands get shared-slot limits.
+    "assign_bfs": False,
+    "travel_cost": 20.0,
     "drop_threshold": 5,             # carried produce that triggers a shed run
 
     # --- Crops --------------------------------------------------------------
