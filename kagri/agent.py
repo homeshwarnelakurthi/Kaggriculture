@@ -96,7 +96,13 @@ def plan_market(view, p, plan):
         have = (view.count_animals(kind) + view.shed.get(kind, 0)
                 + view.carried(kind))
         want = plan.want_by_animal.get(kind, 0) - have
-        budget = view.money - plan.reserve
+        # Animals may dip into the reserve, like premium seed. The reserve is
+        # ~$926 and a cow is $400, so a full gate forbids any livestock until
+        # ~day 12 -- while the winners sit at $131-651 for ten days buying cows
+        # continuously and are 3.4 animals ahead by day 8. The earlier attempt at
+        # this caused death spirals, but that was seeds with an UNBOUNDED rate;
+        # animal_buy_rate now paces purchases, which is what made seeds safe.
+        budget = view.money - plan.reserve * p["animal_reserve_frac"]
         # Rate-limited, like premium seed. Buying four cows at once ($1,600) in
         # one turn starves the strawberry pipeline; the same money spread over
         # several days does not. Level gates keep failing here — pace instead.

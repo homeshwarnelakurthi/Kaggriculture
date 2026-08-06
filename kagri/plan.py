@@ -125,7 +125,14 @@ def economics(view, p):
     # Also quietly fixes the (h,h) hand-spawn trap, which costs us a hand a day.
     n_extra = len(view.unlocked) - 1
     pl.allow_land = False
-    if n_extra < len(LAND_ORDER) and view.day <= p["buy_land_last_day"]:
+    # Do not buy land in the opening. The first quadrant costs $1,000 of a $3,000
+    # bank and the gate otherwise fires on day 0 -- which is exactly why we hold
+    # ZERO animals at day 8 while the winners hold 3.4. Land produces nothing
+    # until something is grown on it; a cow bought on day 2 produces from day 10
+    # and pays for the rest of the game. Measured from 38 real losses: winners
+    # sit on 1.3 quadrants at day 4 and 2.8 all game, we reach 4.0 by day 12.
+    if (p["land_first_day"] <= view.day <= p["buy_land_last_day"]
+            and n_extra < len(LAND_ORDER)):
         cost = LAND_PRICES[n_extra]
         # Do not buy land we have no labour to farm — extra tiles we cannot
         # tend just grow weeds and cost actions to clear.

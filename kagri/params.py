@@ -86,6 +86,10 @@ DEFAULTS = {
     # day, so it is a gentle brake on lump spending rather than a real daily
     # limit — it does not fix the cow shortfall (see DEV.md on milk).
     "animal_buy_rate": 2,
+    # Kept at 1.0. Letting livestock dip into the reserve does NOT produce early
+    # animals -- 0.0 (no gate at all) still gives 0 animals at day 8, because the
+    # bank is genuinely empty by then, not merely gated. And 0.0 costs $9k.
+    "animal_reserve_frac": 1.0,
     # MUST stay False. Sizing feed capacity off allocated tiles (rather than the
     # oscillating planted count) correctly stabilises the animal target and then
     # collapses the run to ~$14.7k, with or without a rate limit. The oscillation
@@ -161,6 +165,13 @@ DEFAULTS = {
 
     # --- Land ---------------------------------------------------------------
     "land_reserve": 600.0,
+    # MEASURED AND KEPT AT 0 (i.e. no delay). The public advice and the winner
+    # boards both say hold land until day 4+ so the opening funds livestock.
+    # For US it is catastrophic: land>=4/6/8 all score $49,960 against $85,970.
+    # We run 12 hands with a ~84-tile labour ceiling, so one quadrant (25 tiles)
+    # leaves the crew with nothing to do. Winners run fewer tiles with far better
+    # per-action efficiency; their land timing starves our build.
+    "land_first_day": 0,
     "buy_land_last_day": 20,
     "land_saturation": 0.9,          # only buy land once labour outgrows what we own
 

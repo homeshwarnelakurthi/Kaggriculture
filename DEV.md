@@ -585,3 +585,51 @@ Nothing came from reasoning about the docs, and several imported diagnoses cost
    unplanted land -- possibly the same root cause as (2).
 4. Opponent modelling. Their farm tiles are public, so melon/strawberry maturity
    is computable and those goods are a race. Never attempted.
+
+## Loss analysis across 72 real games (2026-08-06) — 34W 38L
+
+Money curve, averaged over the 38 games we LOST:
+
+    day    their $    our $      gap    their quads   our quads
+      4        382      137     +246           1.3         2.0
+      8        651      215     +436           1.6         2.0
+     12      6,952    3,280   +3,672           2.6         4.0
+     16     13,104    3,880   +9,224           2.7         4.0
+     20     25,569   11,376  +14,193           2.8         4.0
+     26     53,952   32,987  +20,965           2.8         4.0
+
+The gap explodes between day 12 and 16: they nearly double, we gain 18%.
+
+Board, day 8 (winners vs us):
+
+            COW  SHEEP  STRAW  MELON  WHEAT
+    them    2.3    1.1    3.6   10.3    8.1
+    us      0.0    0.0    5.9   12.9   22.9
+
+Confirmed on the CURRENT v12 build too: 0 animals until day 12, 29 wheat at
+day 8, 4 quadrants by day 12 against their 2.6.
+
+### Both obvious fixes FAILED
+
+1. Let livestock dip into the reserve (nimal_reserve_frac). Animals at day 8
+   stayed 0.0 even at frac 0.0 -- NO reserve gate at all. The bank is genuinely
+   empty by day 8, not merely gated. frac 0.0 also cost $9k.
+2. Delay land so the opening funds livestock (land_first_day), which is both
+   the public advice and what the winner boards show. CATASTROPHIC: land>=4, >=6
+   and >=8 all score $49,960 against $85,970. A 42% collapse.
+
+**Why the winner profile does not transfer.** We run 12 hands against a ~84-tile
+labour ceiling. One quadrant is 25 tiles, so delaying land leaves the crew with
+nothing to do. The winners run FEWER tiles with much better per-action
+efficiency -- their opening suits their architecture, not ours.
+
+This is now the THIRD time copying the top players has made us worse:
+  - mimic-top (their exact tile mix)      -> worst candidate in the gauntlet
+  - their low-wheat allocation (v10)      -> 79% worst matchup vs 92%
+  - their land timing                     -> -42%
+
+The pattern is consistent enough to state as a rule: **their allocations and
+their schedule are outputs of an execution model we do not share. Diff their
+boards for WHAT IS POSSIBLE, never for parameters to copy.**
+
+The real difference remains per-action efficiency, not allocation or timing.
