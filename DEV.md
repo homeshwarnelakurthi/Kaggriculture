@@ -543,3 +543,45 @@ per-episode limit). That was resource contention -- 12 workers plus leftover
 processes from earlier runs -- not a code hang. Episodes run in ~10s. Verified
 before submitting, because a hang on Kaggle is a submission ERROR, not a low
 score. Use -j 8 when other work is running.
+
+## SESSION HANDOFF — state as of 2026-08-06
+
+If you are a fresh session, read this section and the ## Tuning lessons above
+before touching anything.
+
+**Where we are.** Rank ~720/1337 (54th pct). Top-10 needs ~2780.
+
+    v12  just submitted   90% worst matchup vs real opponents (v11 got 60%)
+    v11  659.4 (23 eps)   active
+    v10  640.8 (22 eps)
+    v6   678.1 (21 eps)   INACTIVE -- still the all-time high
+
+**Setup.** venv at C:\kenv (short path deliberately: orbax blows past Windows
+MAX_PATH elsewhere). Run everything with C:\kenv\Scripts\python.exe. Install
+with --no-deps. GitHub auth works via Windows Credential Manager but pushes are
+intermittently slow -- retry once, and push from bash rather than PowerShell
+(PowerShell 5.1 wraps native stderr in error records and reports false failures).
+
+**Tools.**
+    tools/run.py       one episode + summary
+    tools/trace.py     day-by-day economic trace -- finds economic bugs
+    tools/gauntlet.py  6 REAL-derived opponent archetypes, both seats
+    tools/search.py    two-stage constraint search
+Use -j 8 not the default when other work is running; 12 workers plus leftovers
+caused a DeadlineExceeded crash.
+
+**The workflow that works.** Every genuine improvement came from either
+(a) reading a losing replay and diffing their board against ours, or
+(b) instrumenting a specific mechanism directly.
+Nothing came from reasoning about the docs, and several imported diagnoses cost
+-57k each. When stuck, MEASURE the thing rather than theorising about it.
+
+**Open threads, in the order I would take them:**
+1. Joint search over gate + ceiling parameters. v11 fixed the gate then v12
+   searched the ceiling with the gate held fixed; their interaction is unsearched.
+2. We plant ~30 tiles of ~91 nominally workable. A third of capacity is still
+   unused and the reason is not yet known.
+3. 35% of weeds are random spawns on EMPTY tiles, which implies significant
+   unplanted land -- possibly the same root cause as (2).
+4. Opponent modelling. Their farm tiles are public, so melon/strawberry maturity
+   is computable and those goods are a race. Never attempted.
