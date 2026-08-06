@@ -8,14 +8,22 @@ DEFAULTS = {
     # --- Labour -------------------------------------------------------------
     # 10 hands cost $143 for a whole day and buy 240 actions. Labour is the
     # cheapest thing in the game; being short of it is what kills runs.
-    "hand_value_per_action": 6.0,
+    "hand_value_per_action": 20.0,
     "max_hands": 12,
     # Eight hands cost $54 total; twelve cost $376. Almost never worth skipping,
     # so the floor is deliberately tiny — the fib curve is the real cap.
     "hire_money_floor": 30.0,
     "hire_bank_fraction": 0.20,     # never spend more than this share of the bank on a crew
-    "tiles_per_unit": 7.0,          # tiles one unit can meaningfully tend/day
-    "animal_labour_cost": 2.5,      # an animal tile costs ~2.5 crop tiles of work
+    # v12 (search over the LABOUR CEILING, holding v11's gate/pacing fixed):
+    # tiles_per_unit 7.0 -> 6.5 and animal_labour_cost 2.5 -> 4.0. Note the
+    # direction: an animal tile costs MORE labour than assumed, not less. Being
+    # honest about that frees the crew to actually finish the crop work instead
+    # of spreading thin over tiles it never gets back to.
+    # Real-opponent gauntlet, head-to-head on identical seeds:
+    #   ceiling-win  98% ALL / 90% worst / $78,813
+    #   v11 control  87% / 60% / $72,575
+    "tiles_per_unit": 6.5,
+    "animal_labour_cost": 4.0,      # measured, not assumed — see above
 
     # v11: the CONSTRAINT parameters below were found by tools/search.py over 40
     # random configs. They are the knobs that actually bind. Tile targets are

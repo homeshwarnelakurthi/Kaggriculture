@@ -86,36 +86,36 @@ def _episode(job):
 
 
 def sample_mixes(n, rng):
-    """Sample the CONSTRAINT parameters, not the tile mix.
+    """Concentrate on the LABOUR CEILING itself.
 
-    The mix is inert: asking for 20 cows instead of 12 produces a bit-identical
-    game, because the labour ceiling and the feed gate decide the board, not the
-    targets. A 28-mix search over tile counts produced v7, which became our worst
-    ladder result. These knobs are the ones that actually bind -- relaxing the
-    feed gate alone was worth +$2,806 and raised strawberry AND cows together.
+    The first constraint search (v11) improved things by relaxing the feed gate
+    and the pacing/reserve knobs, but came back with tiles_per_unit and
+    animal_labour_cost UNCHANGED -- and those two are the ceiling. We still plant
+    ~30 tiles of ~91 nominally workable, so the ceiling is either mis-estimated
+    or something downstream of it is binding first. Sample it finely, around and
+    beyond the v11 values, holding the v11 winner's other settings fixed.
     """
     out = {}
     tries = 0
     while len(out) < n and tries < n * 40:
         tries += 1
         c = {
-            # feed gate: how far wheat must lead the herd before it may grow
-            "wheat_lead_tiles": rng.choice([0, 1, 2, 3, 4]),
-            "wheat_buffer_per_animal": rng.choice([0.5, 1.0, 2.0, 3.0]),
-            # labour ceiling and what an animal tile costs against it
-            "tiles_per_unit": rng.choice([6.0, 7.0, 8.0, 9.0, 11.0]),
-            "animal_labour_cost": rng.choice([1.2, 1.8, 2.5, 3.2]),
-            # pacing: both of these fixed real collapses, so vary them carefully
-            "seed_buy_rate": rng.choice([2, 3, 5]),
-            "animal_buy_rate": rng.choice([1, 2]),
-            # cash discipline
-            "ops_reserve_base": rng.choice([200.0, 350.0, 550.0]),
-            "hire_bank_fraction": rng.choice([0.20, 0.30, 0.45]),
+            # THE CEILING -- fine steps either side of 7.0
+            "tiles_per_unit": rng.choice([5.0, 6.0, 6.5, 7.0, 7.5, 8.0, 9.0, 10.0, 12.0, 14.0]),
+            "animal_labour_cost": rng.choice([1.0, 1.5, 2.0, 2.5, 3.0, 4.0]),
+            # how many hands we can field at all -- feeds straight into the ceiling
+            "max_hands": rng.choice([10, 12, 14, 16]),
+            "hand_value_per_action": rng.choice([4.0, 6.0, 10.0, 20.0]),
+            # v11 winner's settings, held fixed so the ceiling is what varies
+            "wheat_lead_tiles": 2,
+            "wheat_buffer_per_animal": 2.0,
+            "seed_buy_rate": 2,
+            "animal_buy_rate": 2,
+            "ops_reserve_base": 550.0,
+            "hire_bank_fraction": 0.20,
         }
-        name = (f"lead{c['wheat_lead_tiles']}buf{c['wheat_buffer_per_animal']:g}"
-                f"tpu{c['tiles_per_unit']:g}alc{c['animal_labour_cost']:g}"
-                f"sr{c['seed_buy_rate']}ar{c['animal_buy_rate']}"
-                f"res{int(c['ops_reserve_base'])}hbf{c['hire_bank_fraction']:g}")
+        name = (f"tpu{c['tiles_per_unit']:g}alc{c['animal_labour_cost']:g}"
+                f"mh{c['max_hands']}hva{c['hand_value_per_action']:g}")
         out[name] = c
     return out
 
