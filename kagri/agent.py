@@ -1,7 +1,7 @@
 """Top-level policy: market orders + unit assignment."""
 
 from .constants import ANIMALS, CROPS, MARKET_PARAMS
-from .farm import View, plan_layout, step_toward
+from .farm import View, bfs_field, plan_layout, step_toward
 from .market import marginal_value, price
 from .params import merge
 from .plan import economics
@@ -176,12 +176,24 @@ def _seed_needs(view, p):
 # --------------------------------------------------------------------------
 
 def assign(view, tasks, p):
+    """Match units to jobs on `value - travel * distance`, using BFS distances.
+
+    Previously this walked tasks in value order and gave each to the NEAREST
+    capable unit, with distance never entering the job's worth. A unit would
+    cross the board for a $12 weed clear while a $95 cow harvest three tiles away
+    went unserved. Distance is also measured by BFS now: once NE and SW are
+    owned the farm is an L-shape, so Manhattan under-counts exactly the trips
+    that waste the most actions.
+    """
     n = view.n_units
     actions = [["PASS"] for _ in range(n)]
     free = set(range(n))
     claimed = set()
     planted = {}
 
+    use_bfs = p["assign_bfs"]
+    fields = ({u: bfs_field(view, view.positions[u]) for u in range(n)}
+              if use_bfs else None)
     tasks.sort(key=lambda t: (-t["value"], t["pos"]))
 
     # Two passes. Tasks needing a carried item (FEED needs wheat, PLACE needs
@@ -203,16 +215,28 @@ def assign(view, tasks, p):
             if planted.get(crop, 0) >= view.seeds.get(crop, 0):
                 continue
         needs = task["needs"]
-        best, bestd = None, None
+        best, bestscore = None, None
         for u in sorted(free):
             if needs and view.inv(u).get(needs[0], 0) < needs[1]:
                 continue
-            d = _dist(view.positions[u], task["pos"])
-            if bestd is None or d < bestd:
-                best, bestd = u, d
+            if use_bfs:
+                d = fields[u][0].get(task["pos"])
+                if d is None:
+                    continue  # unreachable: locked quadrant, or trapped hand
+            else:
+                d = _dist(view.positions[u], task["pos"])
+            score = task["value"] - d * p["travel_cost"]
+            if score <= 0 and d > 0:
+                continue  # the walk costs more than the job is worth
+            # Tie-break on distance, else a zero travel_cost makes every unit
+            # score identically and the lowest INDEX always wins rather than the
+            # nearest -- which collapsed results to $29k when first measured.
+            key = (score, -d)
+            if bestscore is None or key > bestscore:
+                best, bestscore = u, key
         if best is None:
             continue
-        act = _act_for(view, best, task)
+        act = _act_for(view, best, task, fields[best] if use_bfs else None)
         if act is None:
             continue
         actions[best] = act
@@ -225,10 +249,14 @@ def assign(view, tasks, p):
     return actions
 
 
-def _act_for(view, u, task):
+def _act_for(view, u, task, field=None):
     pos = view.positions[u]
     if pos == task["pos"]:
         return [task["op"]] + task["args"]
+    if field is not None:
+        mv = field[1].get(task["pos"])
+        if mv:
+            return [mv]
     mv = step_toward(view, pos, task["pos"])
     return [mv] if mv else None
 

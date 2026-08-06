@@ -672,3 +672,42 @@ notebook uses alue - distance * TRAVEL with BFS distances so locked
 quadrants route correctly. Ours can send a unit across the board for a job
 worth less than the walk. That is the next piece of work, and it is an
 architecture change rather than a parameter.
+
+## v13: travel cost in the assignment value (2026-08-06)
+
+The largest validated gain in the project, and it is a mechanism fix rather than
+a parameter. `assign()` walked tasks in value order and gave each to the
+NEAREST capable unit -- distance decided WHICH unit took a job, never WHETHER the
+job was worth taking. A unit would cross the farm for a $12 weed clear while a
+$95 cow harvest three tiles away went unserved. Jobs are now scored
+`value - travel_cost * distance`.
+
+Definitive within-run gauntlet (real opponents, 10 seeds, both seats):
+
+    config           starter mikey kazuta somas josh yuelin sam   ALL  worst  mean $
+    manh+travel20      100%   90%    85%   100% 100%   100% 100%  96%    85%  82,210
+    bfs+travel20       100%   85%    80%   100%  80%   100% 100%  92%    80%  79,983
+    ORIGINAL v12       100%   60%    65%   100%  45%   100% 100%  81%    45%  76,865
+    bfs+travel0        100%   40%    35%   100%  20%   100%  95%  70%    20%  72,337
+
+Worst matchup 45% -> 85%. vs starter, 10 seeds: $89,848 / $85,771 min against
+$87,108 / $76,752.
+
+**BFS distances measured NET NEGATIVE and are disabled.** BFS is more CORRECT --
+the farm is L-shaped once NE+SW are owned, so Manhattan under-counts routes
+around a locked quadrant -- and it still loses 5 points of worst matchup, most
+likely because a shared first-step rule makes units path identically and bunch
+up. Kept behind `assign_bfs` for a future attempt once logistics errands have
+shared-slot limits.
+
+The travel_cost peak is SHARP: 15 and 25 both score 65% worst against 20's 85%.
+
+### Two errors made reaching this, both caught by measurement
+
+1. Claimed `travel_cost 0` reproduced old behaviour. It did not -- with equal
+   scores the comparison kept the FIRST unit rather than the nearest, collapsing
+   results to $29k. Fixed with a distance tie-break.
+2. Reported "+$13,105, biggest gain in the project" measured against that broken
+   baseline. Against the committed v12 the true figure is +$2,740 mean and
+   +$9,019 worst-case. Always benchmark against git HEAD, never against a
+   modified working tree.

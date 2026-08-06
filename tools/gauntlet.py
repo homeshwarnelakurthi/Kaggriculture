@@ -82,9 +82,10 @@ OPPONENTS = {
 # Melon and strawberry compete for the same tiles, so melon only rises as
 # strawberry falls.
 CANDIDATES = {
-    "v13 quota8":  {},
-    "v12 control": {"plant_quota": {}},
-    "quota6":      {"plant_quota": {"STRAWBERRY": 6}},
+    "bfs+travel20":  {},
+    "ORIGINAL v12":  {"assign_bfs": False, "travel_cost": 0.0},
+    "manh+travel20": {"assign_bfs": False, "travel_cost": 20.0},
+    "bfs+travel0":   {"travel_cost": 0.0},
 }
 
 

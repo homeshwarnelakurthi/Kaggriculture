@@ -165,6 +165,41 @@ def step_toward(view, pos, target):
     return "PASS"
 
 
+
+def bfs_field(view, start):
+    """Distances AND first-step directions from `start` to every reachable tile.
+
+    Manhattan distance is wrong here: unlocked quadrants form an L-shape once
+    NE and SW are owned, so a tile 4 apart on the grid can be 12 steps of walking
+    around a locked quadrant. Scoring jobs on Manhattan therefore under-prices
+    exactly the trips that waste the most actions.
+
+    Returns (dist, first) where first[pos] is the move op to take from `start`
+    to make progress toward pos.
+    """
+    dist = {tuple(start): 0}
+    first = {}
+    frontier = [tuple(start)]
+    while frontier:
+        nxt = []
+        for cur in frontier:
+            for op, (dx, dy) in MOVES.items():
+                np = (cur[0] + dx, cur[1] + dy)
+                if np in dist:
+                    continue
+                if not (0 <= np[0] < view.board and 0 <= np[1] < view.board):
+                    continue
+                if not view.is_open(*np):
+                    continue
+                dist[np] = dist[cur] + 1
+                # inherit the first move that led here; if we ARE the origin,
+                # this move is itself the first step
+                first[np] = first.get(cur, op)
+                nxt.append(np)
+        frontier = nxt
+    return dist, first
+
+
 # Actions each role costs per day — drives how close to the shed it should sit.
 # Strawberry: plant + daily water over ~17 days + 4 harvests ≈ 1.3 actions/day.
 ROLE_ACTION_LOAD = {"ANIMAL": 4.0, "WHEAT": 1.75, "CARROT": 2.0,
