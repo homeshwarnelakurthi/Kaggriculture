@@ -149,6 +149,14 @@ DEFAULTS = {
     # strand a growing plant. Needs a self-clearing filler (see role_filler).
     "freeze_roles": False,
     "role_filler": "WHEAT",
+    # MEASURED AND DISABLED. Per-day planting quota (stateless, read off
+    # planted_day). Scored +$2,268 mean / +$5,187 floor against `starter` -- and
+    # 80% worst matchup against REAL opponents, against the control's 90%.
+    # Classic v7-v10 trap: a gain against the weak baseline that does not survive
+    # real builds. Note also it did NOT reduce weeds (14.8 either way), so the
+    # mechanism I proposed for it was wrong regardless.
+    # Mechanism kept, quota empty = unlimited.
+    "plant_quota": {},
     "max_seed_stock": 10,
     "seed_reserve_frac": 0.5,        # share of the reserve seed buying must respect
     "seed_buy_rate": 2,              # max premium seeds bought per turn (rate, not level)

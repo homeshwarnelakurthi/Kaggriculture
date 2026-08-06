@@ -154,7 +154,18 @@ def generate(view, roles, p, plan):
                     if want:
                         add(90.0, pos, want)
                 elif role in CROPS:
-                    if view.seeds.get(role, 0) > 0 and _plantable(view, role, p):
+                    # Per-day planting quota, read straight off the board so
+                    # there is no agent state to desync. Ongoing crops decay one
+                    # day after their production count caps, so a bulk wave of
+                    # strawberry planted together ALL turns to weed together --
+                    # 57% of our weeds are spent strawberry, and we carry 18.3
+                    # weeds at day 20 against the winners' 3.9. Staggering keeps
+                    # production continuous and the board clean.
+                    quota = p["plant_quota"].get(role)
+                    over_quota = (quota is not None
+                                  and _planted_today(view, role) >= quota)
+                    if (not over_quota and view.seeds.get(role, 0) > 0
+                            and _plantable(view, role, p)):
                         cd = CROPS[role]
                         profit = _crop_unit_value(view, role) * cd["max_yield"] - cd["seed"]
                         span = max(1, cd["max_yield_day"] or cd["first_yield_day"])
@@ -230,6 +241,17 @@ def _fertilize_gain(view, crop, cd, age):
     headroom = cd["max_yield"] - (1 + max(0, cd["max_yield_day"] - window_start + 1))
     return unit * min(days, max(0, headroom))
 
+
+
+def _planted_today(view, crop):
+    """How many of `crop` went in today. Stateless -- read from planted_day."""
+    n = 0
+    for row in view.tiles:
+        for t in row:
+            if (isinstance(t, dict) and t.get("kind") == "PLANT"
+                    and t.get("crop") == crop and t.get("planted_day") == view.day):
+                n += 1
+    return n
 
 def _plantable(view, crop, p):
     """Will this crop still reach a harvest before the season ends?"""

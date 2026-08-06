@@ -633,3 +633,42 @@ their schedule are outputs of an execution model we do not share. Diff their
 boards for WHAT IS POSSIBLE, never for parameters to copy.**
 
 The real difference remains per-action efficiency, not allocation or timing.
+
+## Planting quota: rejected on the real-opponent gauntlet (2026-08-06)
+
+Stateless per-day planting quota, read off planted_day. Motivated by our own
+weed instrumentation (57% of weeds are spent strawberry) and the public
+notebook's warning that a bulk wave expires together.
+
+    vs starter        quota8 $88,238 / $81,939 min   control $85,970 / $76,752
+    real opponents    quota8 96% ALL / 80% worst      control 97% / 90%
+
+Better against the weak baseline, WORSE against real builds. Exactly the v7-v10
+trap. Rejected. It also did not reduce weeds at all (14.8 either way), so the
+mechanism proposed for it was wrong even where it appeared to help.
+
+Mechanism left in the code with an empty quota dict, so it can be re-tested
+cheaply if a reason ever appears.
+
+## Where tuning stands, and what is left
+
+Parameter search is close to exhausted. Recent measured outcomes:
+  v11 constraint search   ADOPTED   (feed gate, pacing, reserve)
+  v12 ceiling search      ADOPTED   (tiles_per_unit 6.5, animal cost 4.0)
+  v13 planting quota      REJECTED  (80% worst vs 90%)
+  wheat fertilising       REJECTED
+  batch selling           REJECTED (second metering failure)
+  land delay              REJECTED (-42%)
+  animal reserve frac     REJECTED (no effect on the actual bottleneck)
+
+The remaining gap is per-action EFFICIENCY, not allocation, timing or pacing.
+118 recent games split 59W-59L with an identical shape every time: behind
+through the midgame, overtaking at day 26 in wins and not in losses. The
+winners get more out of FEWER tiles.
+
+That points at kagri/agent.py assign() -- greedy nearest-unit matching on
+Manhattan distance with no travel cost in the value function. The LB-950
+notebook uses alue - distance * TRAVEL with BFS distances so locked
+quadrants route correctly. Ours can send a unit across the board for a job
+worth less than the walk. That is the next piece of work, and it is an
+architecture change rather than a parameter.

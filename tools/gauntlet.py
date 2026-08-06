@@ -82,11 +82,9 @@ OPPONENTS = {
 # Melon and strawberry compete for the same tiles, so melon only rises as
 # strawberry falls.
 CANDIDATES = {
-    "v11-control": {},
-    "ceiling-win":  {"tiles_per_unit": 6.5, "animal_labour_cost": 4.0,
-                     "max_hands": 12, "hand_value_per_action": 20.0},
-    "ceiling-alt":  {"tiles_per_unit": 6.5, "animal_labour_cost": 2.0,
-                     "max_hands": 12, "hand_value_per_action": 20.0},
+    "v13 quota8":  {},
+    "v12 control": {"plant_quota": {}},
+    "quota6":      {"plant_quota": {"STRAWBERRY": 6}},
 }
 
 
