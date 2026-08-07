@@ -194,6 +194,13 @@ def assign(view, tasks, p):
     use_bfs = p["assign_bfs"]
     fields = ({u: bfs_field(view, view.positions[u]) for u in range(n)}
               if use_bfs else None)
+    # TERRITORIES. 66% of every action we take is walking and only 23% is work.
+    # With all units competing globally for every job they criss-cross the farm.
+    # Anchor each unit to a home tile and charge a penalty for leaving its patch,
+    # so a unit prefers the jobs beside it. Urgent work (RESCUE-priced: a
+    # starving animal, a plant that dies tonight) is exempt -- those must always
+    # be servable from anywhere.
+    homes = _territories(view, p) if p["territory_pull"] > 0 else None
     tasks.sort(key=lambda t: (-t["value"], t["pos"]))
 
     # Two passes. Tasks needing a carried item (FEED needs wheat, PLACE needs
@@ -226,6 +233,11 @@ def assign(view, tasks, p):
             else:
                 d = _dist(view.positions[u], task["pos"])
             score = task["value"] - d * p["travel_cost"]
+            if homes is not None and task["value"] < RESCUE_FLOOR:
+                # distance from this unit's HOME, not its current position:
+                # penalises drifting off-patch rather than the current step
+                hx, hy = homes[u]
+                score -= (abs(hx - task["pos"][0]) + abs(hy - task["pos"][1])) * p["territory_pull"]
             if score <= 0 and d > 0:
                 continue  # the walk costs more than the job is worth
             # Tie-break on distance, else a zero travel_cost makes every unit
@@ -248,6 +260,29 @@ def assign(view, tasks, p):
     _assign_logistics(view, actions, free, p)
     return actions
 
+
+
+RESCUE_FLOOR = 9_000.0   # tasks at or above this are emergencies; ignore territory
+
+
+def _territories(view, p):
+    """Give every unit a home tile, spreading them over the worked area.
+
+    Sort candidate tiles by distance from the shed (the same ordering the layout
+    uses, so homes land where the work is) and deal them round-robin. Cheap,
+    stateless, and recomputed each turn -- units drift toward their patch rather
+    than being fenced into it.
+    """
+    live = []
+    for (x, y) in view.unlocked_tiles():
+        t = view.tile(x, y)
+        if isinstance(t, dict) and t.get("kind") in ("PLANT", "COOP", "PASTURE"):
+            live.append((x, y))
+    if not live:
+        return {u: view.positions[u] for u in range(view.n_units)}
+    live.sort(key=lambda c: (view.shed_dist(*c), c[1], c[0]))
+    step = max(1, len(live) // max(1, view.n_units))
+    return {u: live[min(u * step, len(live) - 1)] for u in range(view.n_units)}
 
 def _act_for(view, u, task, field=None):
     pos = view.positions[u]

@@ -711,3 +711,37 @@ The travel_cost peak is SHARP: 15 and 25 both score 65% worst against 20's 85%.
    baseline. Against the committed v12 the true figure is +$2,740 mean and
    +$9,019 worst-case. Always benchmark against git HEAD, never against a
    modified working tree.
+
+## Territories: rejected, and they reframe the movement finding (2026-08-06)
+
+Action budget on v13, measured over 3 games:
+
+    work 23.2%   move 66.6%   pass 10.2%
+
+Two-thirds of every action is walking. Hypothesised that units criss-cross the
+farm because all 13 compete globally for every job, and that anchoring each to a
+home tile would convert walking into work. Implemented as `territory_pull`, a
+penalty per tile of distance from the unit's home, with RESCUE-priced emergencies
+exempt so a starving animal is always servable.
+
+    config              work    move    pass     mean $      min $
+    v13 (none)         23.3%   67.0%    9.7%   89,286     85,771
+    pull 2             23.3%   65.8%   10.9%   90,848     80,895
+    pull 5             22.8%   60.3%   16.9%   87,090     81,730
+    pull 10            21.0%   60.0%   19.0%   76,676     69,510
+    pull 20            19.5%   55.5%   25.0%   67,677     57,366
+
+It works exactly as designed and is still wrong. Movement falls 67% -> 55.5%,
+and every freed action becomes PASS: idle 9.7% -> 25.0%, work FALLS to 19.5%.
+
+**Movement is a SYMPTOM, not a cause.** Units walk because nothing nearer is
+worth doing. Confine them and they idle. The 66% figure is not waste to be
+recovered -- it is the crew being larger than the board's supply of jobs.
+
+Which lands on the same gap the clamp analysis found from the other direction:
+only ~30 of ~91 workable tiles carry anything. The target is getting MORE TILES
+PRODUCTIVE, not routing units better. Note that hiring fewer hands is not the
+answer either -- twelve hands cost $376 against a $90k game, so idle hands are
+nearly free; the loss is the unplanted land, not the wages.
+
+Mechanism kept behind the flag at 0.0.
