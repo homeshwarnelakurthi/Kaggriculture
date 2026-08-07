@@ -123,6 +123,15 @@ DEFAULTS = {
     # errands get shared-slot limits.
     "assign_bfs": False,
     "travel_cost": 20.0,
+    # MEASURED AND DISABLED. Penalty per tile from a unit's home, meant to stop
+    # the crew criss-crossing the farm (66% of actions are movement, 23% work).
+    # It DOES cut movement -- 67% -> 55.5% at pull 20 -- but the freed actions
+    # become PASS, not work: idle 9.7% -> 25.0% while work FALLS 23.3% -> 19.5%,
+    # and money drops $89,286 -> $67,677.
+    # The finding that matters: movement is a SYMPTOM, not a cause. Units walk
+    # because nothing nearer is worth doing. Confining them just makes them idle.
+    # The real gap is that only ~30 of ~91 workable tiles carry anything.
+    "territory_pull": 0.0,
     "drop_threshold": 5,             # carried produce that triggers a shed run
 
     # --- Crops --------------------------------------------------------------
