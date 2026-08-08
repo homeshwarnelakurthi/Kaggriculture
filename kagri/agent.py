@@ -71,7 +71,7 @@ def plan_market(view, p, plan):
     # --- emergency feed ---------------------------------------------------
     # Losing a $300 goose to one missed feed dwarfs any wheat price.
     held = view.shed.get("WHEAT", 0) + view.carried("WHEAT")
-    short = animals * 2 - held
+    short = int(round(animals * p["feed_buy_days"])) - held
     if animals and short > 0 and view.money > plan.reserve * 0.5:
         orders.append(["BUY_PRODUCT", "WHEAT", int(short)])
 
@@ -91,6 +91,10 @@ def plan_market(view, p, plan):
         orders.append(["BUY_LAND"])
 
     # --- animals ----------------------------------------------------------
+    # `view.money` is a start-of-turn snapshot but orders commit in sequence, so
+    # track the balance ourselves from here on. Without this the opening queues
+    # a herd and a seed order against the same dollars and the engine drops one.
+    money = view.money
     # Highest value per action first: sheep ($254/day), cow ($208), goose ($94).
     for kind in ("SHEEP", "COW", "GOOSE"):
         have = (view.count_animals(kind) + view.shed.get(kind, 0)
@@ -102,15 +106,19 @@ def plan_market(view, p, plan):
         # continuously and are 3.4 animals ahead by day 8. The earlier attempt at
         # this caused death spirals, but that was seeds with an UNBOUNDED rate;
         # animal_buy_rate now paces purchases, which is what made seeds safe.
-        budget = view.money - plan.reserve * p["animal_reserve_frac"]
+        budget = money - plan.reserve * p["animal_reserve_frac"]
         # Rate-limited, like premium seed. Buying four cows at once ($1,600) in
         # one turn starves the strawberry pipeline; the same money spread over
         # several days does not. Level gates keep failing here — pace instead.
+        # The opening is the exception: there the whole point is the lump.
+        rate = int(p["open_buy_rate"]) if plan.opening else int(p["animal_buy_rate"])
         n = min(want, int(budget // ANIMALS[kind]["cost"]) if budget > 0 else 0,
-                int(p["animal_buy_rate"]))
+                rate)
         if n > 0:
             orders.append(["BUY_ANIMAL", kind, n])
-            break  # one species per turn; re-evaluate against the new balance
+            money -= n * ANIMALS[kind]["cost"]
+            if not plan.opening:
+                break  # one species per turn; re-evaluate against the new balance
 
     # --- seeds ------------------------------------------------------------
     for crop, need in sorted(_seed_needs(view, p).items()):
@@ -122,7 +130,7 @@ def plan_market(view, p, plan):
         # 24 strawberry seeds ($2,400 of $3,000) on day 0 and killed the farm.
         # The top players spend the same money trickled over ten days while
         # sitting at $131-689, so cap purchases per turn instead.
-        budget = view.money - plan.reserve * p["seed_reserve_frac"]
+        budget = money - plan.reserve * p["seed_reserve_frac"]
         # Cap the seed stockpile: unplanted seed is dead money, and low-value
         # crops legitimately lose the labour auction to the animal engine.
         room = max(0, p["max_seed_stock"] - view.seeds.get(crop, 0))
@@ -130,6 +138,7 @@ def plan_market(view, p, plan):
         n = min(need, room, rate, int(budget // cost) if budget > 0 else 0)
         if n > 0:
             orders.append(["BUY_SEED", crop, n])
+            money -= n * cost
 
     return orders[:MAX_ORDERS]
 
