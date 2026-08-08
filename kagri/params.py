@@ -44,6 +44,49 @@ DEFAULTS = {
     "bootstrap_days": 3,            # crops only; no livestock before this
     "min_days_for_animal": 8,       # 4 days to first egg, then payback
 
+    # --- The opening --------------------------------------------------------
+    # Read off the action tape of a 1009-rated ladder game: it buys 3 cows and
+    # 1 sheep on TURN ZERO -- before land, before seed -- and BUYS wheat as feed
+    # rather than growing any.
+    #
+    # We cannot express that at all. `can_feed` sizes capacity off wheat in the
+    # GROUND, which is necessarily zero on day 0, so the gate is false by
+    # construction and the herd can never start; `bootstrap_days` forbids it for
+    # three more days; and by then the day-0 land purchase has taken $1,000 of
+    # the $3,000 bank. That is why we hold 0 animals at day 8 against the
+    # winners' 3.4 -- and why relaxing `animal_reserve_frac` never helped. The
+    # reserve was never the blocker. The ORDERING was.
+    # SHIPPED as v14. Real-opponent gauntlet, 1,344 episodes / 24 seeds / both
+    # seats, ranked on WORST MATCHUP as always:
+    #   open 3c1s   92% ALL / 75% worst / $78,312
+    #   v13 HEAD    88% ALL / 42% worst / $82,107
+    # +33 points on the matchup that bleeds rating (real_josh), for -$3.8k of
+    # mean money. Four standard deviations at 48 episodes/cell, and it is the
+    # FIRST change to put animals on the board early: 4 at day 2, against every
+    # previous attempt's 0 at day 8. Winners average 2.3 cow / 1.1 sheep there.
+    #
+    # Two things that must move TOGETHER with it, both measured:
+    #  - open_land_hold MUST stay True. Buying land and the herd on day 0 leaves
+    #    ~$24, the feed order's money gate never fires, and the cows STARVE
+    #    ($32k, a death spiral). Same cause sank the 2-cow variant.
+    #  - feed_buy_days MUST stay 2.0. Stocking cheap early wheat is right on the
+    #    price curve and catastrophic in the build: 4.0 scored 44% worst, 8.0
+    #    scored 0% worst / 27% ALL / $42k. It drains the cash the herd needs.
+    "open_cows": 3,
+    "open_sheep": 1,
+    "open_until_day": 2,            # opening rules apply while day <= this
+    "open_buy_rate": 4,             # animals/turn while opening (vs animal_buy_rate)
+    "open_land_hold": True,         # no land while the opening herd is being bought
+    # Days of feed held per animal. Feed is BOUGHT, not grown: wheat is $25 base
+    # against a cow's $208/day, and every wheat tile freed is a strawberry tile.
+    # 2.0 reproduces the previously hardcoded `animals * 2` rule exactly.
+    "feed_buy_days": 2.0,
+    # Let BOUGHT feed count toward the capacity gate that sizes the herd. Off by
+    # default and to be measured, not assumed: the oscillating planted count is
+    # load-bearing as a PACING mechanism (see `stable_wheat_capacity`, which
+    # stabilised the same number correctly and cost $57k).
+    "feed_by_purchase": False,
+
     # --- Animal engine (the core of the strategy) ---------------------------
     # Flock size trades directly against melon acreage for hands. Raising melon
     # alone turns over (28 tiles at 22 geese scores 38%), but the same 28 tiles

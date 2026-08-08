@@ -544,7 +544,7 @@ processes from earlier runs -- not a code hang. Episodes run in ~10s. Verified
 before submitting, because a hang on Kaggle is a submission ERROR, not a low
 score. Use -j 8 when other work is running.
 
-## SESSION HANDOFF — state as of 2026-08-06
+## SESSION HANDOFF ï¿½ state as of 2026-08-06
 
 If you are a fresh session, read this section and the ## Tuning lessons above
 before touching anything.
@@ -586,7 +586,120 @@ Nothing came from reasoning about the docs, and several imported diagnoses cost
 4. Opponent modelling. Their farm tiles are public, so melon/strawberry maturity
    is computable and those goods are a race. Never attempted.
 
-## Loss analysis across 72 real games (2026-08-06) — 34W 38L
+## v14: the opening herd, taken off a replay tape (2026-08-07) ï¿½ SHIPPED
+
+The two "obvious fixes" below both failed because BOTH were aimed at the wrong
+thing. Decoding the action tape of a 1009-rated submission showed the actual
+opening: `BUY_ANIMAL COW 3, BUY_ANIMAL SHEEP 1, BUY_SEED MELON 7, BUY_SEED
+WHEAT 10, BUY_PRODUCT WHEAT 17, HIRE, HIRE` on turn ZERO, then `SELL FERTILIZER
+4` daily from day 2, and `BUY_PRODUCT WHEAT 1` almost every turn thereafter.
+
+**The reserve was never the blocker. The ORDERING was.** Three gates made the
+opening herd unreachable BY CONSTRUCTION, not merely gated:
+  - `can_feed` sizes capacity off wheat IN THE GROUND, necessarily 0 on day 0
+  - `bootstrap_days: 3` forbids livestock for three more days
+  - by then the day-0 land buy has taken $1,000 of the $3,000 bank
+
+New params, all default-off so HEAD stayed bit-identical until measured:
+`open_cows`, `open_sheep`, `open_until_day`, `open_buy_rate`, `open_land_hold`,
+`feed_buy_days`, `feed_by_purchase`.
+
+Kill switch FIRST, before any money comparison: 4 animals on the board at day 2,
+against every previous attempt's 0 at day 8. Winners average 2.3 cow / 1.1 sheep
+at day 8. Mechanism confirmed, THEN measured.
+
+Real-opponent gauntlet, 1,344 episodes, 24 seeds, both seats:
+
+    open 3c1s    100 81 90 100 75 100 100   92% ALL / 75% worst / $78,312
+    v13 HEAD     100 92 83 100 42 100 100   88% ALL / 42% worst / $82,107
+    open feed4   100 67 75  96 44 100  96   82% ALL / 44% worst / $73,666
+    open feed8   100  0  0  15  4  55  12   27% ALL /  0% worst / $42,491
+
++33 on worst matchup for -$3.8k mean money. ~4sd at 48 episodes/cell. Note it
+LOSES against `starter` on money ($91.6k -> $86.6k) and still wins the ladder
+criterion -- the reverse of the v7-v10 trap.
+
+Two things that MUST move with it, both measured, both non-obvious:
+1. `open_land_hold` MUST stay True. Land + herd on day 0 leaves ~$24; the feed
+   order is gated on `money > reserve * 0.5` so it never fires and the cows
+   STARVE ($32k). Same cause sank the 2-cow variant (2 animals day 2 -> 0 day 4).
+2. `feed_buy_days` MUST stay 2.0. See the arbitrage section below -- stocking
+   cheap early wheat is correct on the price curve and catastrophic in the
+   build.
+
+## Market arbitrage: closed by design, with two live exceptions (2026-08-07)
+
+Asked whether we can buy low and resell higher. The engine forecloses it twice,
+and reading it produced three facts worth more than the answer.
+
+1. **No spread.** `kaggriculture.py:573` quotes a buy at `market_price(inv - 1)`
+   and a sell at `market_price(inv)`, with the comment "so a buy/sell round-trip
+   against an unchanged market nets zero". Verified: buying 20 and selling 20
+   straight back is EXACTLY $0 for both buyable products.
+2. **Only WHEAT and FERTILIZER are buyable at all** (same line). Milk, melon,
+   wool, egg, strawberry are sell-only. There is no market to make.
+3. `TOWN_CENTER_DEMAND_SCHEDULE = [(20, 4), (10, 2), (0, 1)]` -- the town's drain
+   QUADRUPLES after day 20, so prices climb steeply late: wheat $25 -> $57,
+   milk $160 -> $387, strawberry $120 -> $366. Melon barely moves ($250 -> $293)
+   because no shop buys it; it really is a fixed pot.
+4. **FERTILIZER is excluded from `TOWN_CENTER_PRODUCTS`** -- nothing ever drains
+   it, so a crash is PERMANENT. Its entire lifetime pot is $25,045 shared
+   between both players and it floors dead after 400 units.
+
+`tools/arbitrage.py` prices all of this in closed form.
+
+The one carry trade that exists on paper -- buy wheat day 8, sell day 28, +34%
+ROI -- fails in practice twice over: the shed caps at 100 units TOTAL and
+discards overflow, and the gauntlet above measured `feed_buy_days` 4.0 and 8.0
+at 44% and 0% worst matchup. Correct in isolation, wrong in the build.
+
+**Still untested and the most promising thing here:** fertiliser is worth far
+more USED than sold. One unit on a strawberry tile returns `unit_value x hits`
+~= $200-630 (it doubles every production in a 3-day window); selling it returns
+~$100 and falling. We only ever fertilise with what our own animals produce,
+and 34 strawberry tiles want ~11 units/day against a 10-12 animal herd. Buying
+fertiliser to USE -- especially at $20-60 when an opponent has crashed it -- is
+the one place trading the market beats farming it. Kill switch first: count
+actual FERTILIZE actions per game, since DEV.md records this pipeline was once
+"implemented and correct but inert".
+
+## LADDER REALITY CHECK (2026-08-07) ï¿½ read this before planning anything
+
+Full leaderboard CSV, 2,976 teams:
+
+    #1              3156.5
+    top-10 cutoff   3032.0
+    top 10%         2513.9
+    top 25%         1536.6
+    median            695.0
+    top 75%           462.0
+
+    main.py (replay-tape clone)  1358.1 -> rank ~816   (top 27%)
+    v13b  (our own agent)         689.2 -> rank ~1503  (THE MEDIAN)
+
+Thirteen versions and five days of tuning moved us 594.6 -> 689.2, about +19
+rating/day. The top-10 cutoff is +2,343 away. **Parameter tuning does not close
+this**, and the last several versions have been fighting over 20-70 points
+inside a 2,300-point gap.
+
+Two further reads from the same data:
+- A PERFECT replay of a strong recorded game only reaches top 27%, and the tape
+  drifted 1358 -> 1304 within a day. A fixed tape cannot respond to an opponent,
+  so the ladder is rewarding adaptivity.
+- The gauntlet archetypes were reconstructed from day-20 boards of players who
+  beat US, i.e. mid-ladder. Scoring 92% against them says nothing about the
+  3000+ agents. We have 203 cached replays and every one is from our own ~650
+  rated matches. **We have never looked at a game between two strong agents.**
+
+**Recommended next step, ahead of all remaining tuning:** pull replays of
+top-of-ladder games and measure them on our own axes -- final money, tiles
+carrying anything (ours ~30 of ~91), action split (ours 66% move / 23% work /
+10% idle), herd, crop mix, land timing. That single measurement decides whether
+the gap is UTILISATION (fix the assignment/labour model) or ALGORITHM (build a
+rollout planner -- we have 1s/turn and `kagri/market.py` mirrors engine pricing
+exactly). Right now we would be guessing.
+
+## Loss analysis across 72 real games (2026-08-06) ï¿½ 34W 38L
 
 Money curve, averaged over the 38 games we LOST:
 

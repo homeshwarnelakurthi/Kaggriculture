@@ -81,11 +81,24 @@ OPPONENTS = {
 # strawberry ~37 and wheat ~17 — and v6 runs 28 strawberry / 16 wheat / 10 melon.
 # Melon and strawberry compete for the same tiles, so melon only rises as
 # strawberry falls.
+# THE OPENING. Read off a 1009-rated tape: 3 cows + 1 sheep on turn zero,
+# feed bought not grown. The mechanism now works (4 animals on the board at
+# day 2, against every previous attempt's 0 at day 8) but it costs money
+# against `starter`: $91.6k -> $86.6k. Worth testing anyway, because `starter`
+# is the weakest archetype and the ladder is decided on the worst matchup --
+# and because the opening build is AHEAD of HEAD on money, milk, fertiliser and
+# strawberry at day 22 and only loses over the final eight days.
+# CONFIRMATION RUN. At 10 seeds `open 3c1s` took worst matchup 60% vs HEAD's
+# 40% -- but that is 12/20 against 8/20, ~1.3sd, not a result. Re-running with
+# more seeds on the two live builds, plus two feed-TIMING variants: wheat is
+# $25 on day 0 and $57 by day 30 (the town's drain steps up 4x after day 20),
+# so feed bought early is feed bought at half price. `open 3c1s fd` bundled
+# feed_buy_days with feed_by_purchase and lost; separate them.
 CANDIDATES = {
-    "bfs+travel20":  {},
-    "ORIGINAL v12":  {"assign_bfs": False, "travel_cost": 0.0},
-    "manh+travel20": {"assign_bfs": False, "travel_cost": 20.0},
-    "bfs+travel0":   {"travel_cost": 0.0},
+    "v13 HEAD":     {},
+    "open 3c1s":    {"open_cows": 3, "open_sheep": 1},
+    "open feed4":   {"open_cows": 3, "open_sheep": 1, "feed_buy_days": 4.0},
+    "open feed8":   {"open_cows": 3, "open_sheep": 1, "feed_buy_days": 8.0},
 }
 
 

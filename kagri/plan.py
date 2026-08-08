@@ -36,7 +36,8 @@ class Plan:
     __slots__ = ("days_left", "reserve", "want_animals", "want_coops",
                  "allow_land", "want_wheat_tiles", "want_melon_tiles",
                  "wheat_flow", "endgame", "target_hands", "workable",
-                 "want_pastures", "want_by_animal", "want_straw_tiles")
+                 "want_pastures", "want_by_animal", "want_straw_tiles",
+                 "opening")
 
     def __repr__(self):
         return (f"Plan(animals={self.want_animals} coops={self.want_coops} "
@@ -50,6 +51,9 @@ def economics(view, p):
     pl.days_left = SEASON_DAYS - view.day
     animals_now = view.count_animals()
     pl.endgame = pl.days_left <= p["endgame_days"]
+    # The opening: buy the herd first and buy its feed. See params.py.
+    pl.opening = (view.day <= p["open_until_day"]
+                  and int(p["open_cows"] + p["open_sheep"]) > 0)
 
     # Hiring is funded FIRST and gated only by a small floor. It must not be
     # gated on `reserve`, because `reserve` exists in order to pay for hiring —
@@ -80,6 +84,11 @@ def economics(view, p):
     if p["stable_wheat_capacity"]:
         wheat_capacity = max(wheat_plants, min(int(p["wheat_tiles_target"]),
                                                len(view.unlocked_tiles())))
+    if p["feed_by_purchase"]:
+        # Bought feed is feed. `wheat_capacity` is compared against a head count,
+        # so convert stock the same way: how many animals the shed can carry.
+        wheat_capacity = max(wheat_capacity,
+                             int(wheat_stock / max(0.1, p["wheat_buffer_per_animal"])))
     pl.wheat_flow = wheat_capacity * p["wheat_units_per_tile_day"]
 
     # --- animals ----------------------------------------------------------
@@ -87,7 +96,12 @@ def economics(view, p):
     # bird still has time to pay back its $300 (4 days to first egg).
     can_feed = (wheat_stock >= animals_now * p["wheat_buffer_per_animal"]
                 and wheat_capacity >= animals_now + p["wheat_lead_tiles"])
-    if pl.days_left < p["min_days_for_animal"] or view.day < p["bootstrap_days"]:
+    if pl.opening:
+        # Both gates are bypassed deliberately. `bootstrap_days` and a
+        # grown-feed test make the opening herd unreachable by construction;
+        # the bank is the only real limit, and plan_market enforces that.
+        pl.want_animals = max(animals_now, int(p["open_cows"] + p["open_sheep"]))
+    elif pl.days_left < p["min_days_for_animal"] or view.day < p["bootstrap_days"]:
         pl.want_animals = animals_now
     elif can_feed:
         by_feed = int(pl.wheat_flow / max(0.1, p["feed_per_animal_day"]))
@@ -101,11 +115,18 @@ def economics(view, p):
     # feed/care/harvest actions, so this ordering is close to free money.
     budget = pl.want_animals
     pl.want_by_animal = {}
-    for kind, key in (("SHEEP", "target_sheep"), ("COW", "target_cows"),
-                      ("GOOSE", "target_geese")):
-        take = min(int(p[key]), max(0, budget))
-        pl.want_by_animal[kind] = take
-        budget -= take
+    if pl.opening:
+        # The opening mix is stated outright rather than derived from the
+        # season targets, which would send the whole budget to cows.
+        pl.want_by_animal = {"GOOSE": 0}
+        for kind, key in (("SHEEP", "open_sheep"), ("COW", "open_cows")):
+            pl.want_by_animal[kind] = max(int(p[key]), view.count_animals(kind))
+    else:
+        for kind, key in (("SHEEP", "target_sheep"), ("COW", "target_cows"),
+                          ("GOOSE", "target_geese")):
+            take = min(int(p[key]), max(0, budget))
+            pl.want_by_animal[kind] = take
+            budget -= take
 
     def _structures_for(structure, lead):
         """Build just ahead of the animals, never far — an empty structure is a
@@ -131,7 +152,12 @@ def economics(view, p):
     # until something is grown on it; a cow bought on day 2 produces from day 10
     # and pays for the rest of the game. Measured from 38 real losses: winners
     # sit on 1.3 quadrants at day 4 and 2.8 all game, we reach 4.0 by day 12.
+    # Land is held back while the opening herd is being bought: $1,000 on day 0
+    # is precisely the money the cows need, and land produces nothing until
+    # something is grown on it. Note `land_first_day` alone measured -42%; the
+    # difference here is that the freed cash has somewhere better to go.
     if (p["land_first_day"] <= view.day <= p["buy_land_last_day"]
+            and not (pl.opening and p["open_land_hold"])
             and n_extra < len(LAND_ORDER)):
         cost = LAND_PRICES[n_extra]
         # Do not buy land we have no labour to farm — extra tiles we cannot
