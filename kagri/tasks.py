@@ -81,7 +81,18 @@ def generate(view, roles, p, plan):
                     # consecutive_unfed 1 means it escapes tonight if unfed.
                     urgent = t.get("consecutive_unfed", 0) >= 1
                     urgent_feed = urgent_feed or urgent
-                    add(RESCUE + a["cost"] if urgent else prod_val * 2.0,
+                    # ROUTINE feeding is worth FAR less than it looks. Read the
+                    # engine: base production is added on schedule whether or not
+                    # the animal was fed, and `fertilizer_available` is set every
+                    # day regardless. Feeding only (a) resets the escape counter,
+                    # which tolerates ONE missed day, and (b) enables the CARE
+                    # bonus, which requires fed_today both to bank and to collect.
+                    # So a non-urgent feed buys the care bonus and insurance, not
+                    # a day of production -- and pricing it at 2x product value
+                    # made us pay 1 wheat + 1 action per animal EVERY day. That is
+                    # the feed gate that has capped the herd all project.
+                    add(RESCUE + a["cost"] if urgent
+                        else prod_val * p["feed_routine_mult"],
                         pos, "FEED", needs=("WHEAT", 1))
 
                 if t.get("yield_units", 0) > 0:

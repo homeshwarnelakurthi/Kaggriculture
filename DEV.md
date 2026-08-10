@@ -627,6 +627,65 @@ Two things that MUST move with it, both measured, both non-obvious:
    cheap early wheat is correct on the price curve and catastrophic in the
    build.
 
+## v15 (NOT YET SHIPPED): routine feeding was starving our own animals
+
+Reading the engine for exploitable mechanics turned up the biggest single
+defect found in this project so far, and the mechanism was NOT the one predicted.
+
+The engine, `_daily_refresh_animals`:
+
+    if days_since_first >= 0 and days_since_first % a["interval"] == 0:
+        base = 1                                   # NOT gated on fed_today
+        bonus = pending_care_bonus if fed_today else 0
+        ...
+    tile["fertilizer_available"] = True            # every day, fed or not
+
+**Animals produce on schedule whether or not they are fed**, and yield
+fertiliser daily regardless. Feeding does exactly two things: resets the escape
+counter (which tolerates ONE missed day -- escape needs `consecutive_unfed >= 2`)
+and enables the CARE bonus, which needs `fed_today` both to bank and to collect.
+The same one-miss tolerance applies to plants (`consecutive_unwatered >= 2`).
+
+We priced a routine feed at `prod_val * 2.0`, about $600 for a cow, every day.
+
+**The predicted saving did not happen and something better did.** Feed ACTIONS
+barely moved, 165 -> 160. What the overpricing actually did was drain the WHEAT
+on animals that did not need it, so when an animal was one day from escaping the
+RESCUE-priced feed could not be filled -- `needs=("WHEAT", 1)` means only a unit
+already carrying wheat can take it, and there was none.
+
+**v14 loses SIX animals per game to starvation.** Nobody had ever counted
+escapes; a herd being eaten looks identical to a herd that stopped growing.
+
+vs starter, 4 seeds: escapes 6.0 -> 1.5, +$3,840 mean, +$14,710 on the worst run.
+Real-opponent gauntlet, 1,120 episodes, 20 seeds, both seats:
+
+    feed x0.15   74% ALL / 48% worst / $76,336   <- adopted as default
+    feed x0.5    68% / 32% / $74,427
+    v14 HEAD     64% / 20% / $73,708
+    feed x0.05   56% / 12% / $74,574   -- too low, animals genuinely starve
+
+Held back from submission deliberately: v14 went up the same day with ZERO
+episodes, and a third submission would displace the 1304-rated replay tape.
+Ship this only once v14 has >= 15 episodes.
+
+## METHODOLOGY TRAP: the gauntlet's absolute numbers drift with DEFAULTS
+
+In the run above `v14 HEAD` scored 64% ALL / 20% worst. In the run the day
+before, the identical config scored 92% ALL / 75% worst. Nothing about our
+candidate changed.
+
+The opponent archetypes in `tools/gauntlet.py` are our own agent under
+`merge(overrides)` -- DEFAULTS plus a tile-mix override. None of them set
+`open_cows`, so the moment the opening herd became a DEFAULT, every archetype
+started running it too. The whole field got stronger and our percentages fell.
+
+Consequences, both important:
+- Comparisons WITHIN one gauntlet run are valid; absolute percentages ACROSS
+  runs are not, once a default has moved between them.
+- Never quote a gauntlet number from an older run as a baseline. Re-run the
+  control in the same batch, which is what the CANDIDATES dict is for.
+
 ## Market arbitrage: closed by design, with two live exceptions (2026-08-07)
 
 Asked whether we can buy low and resell higher. The engine forecloses it twice,

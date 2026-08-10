@@ -94,11 +94,17 @@ OPPONENTS = {
 # $25 on day 0 and $57 by day 30 (the town's drain steps up 4x after day 20),
 # so feed bought early is feed bought at half price. `open 3c1s fd` bundled
 # feed_buy_days with feed_by_purchase and lost; separate them.
+# FEED PRICING. Counting animal escapes for the first time showed v14 loses
+# SIX animals per game to starvation. Routine feeding was priced at 2x product
+# value (~$600/cow/day), which does not cause more feeding -- feed actions barely
+# move -- but drains the wheat, so the RESCUE feed for an animal one day from
+# escaping cannot be filled for want of a unit carrying wheat.
+# vs starter, 4 seeds: 0.15 gives escapes 6.0 -> 1.5, +$3,840 mean, +$14,710 min.
 CANDIDATES = {
-    "v13 HEAD":     {},
-    "open 3c1s":    {"open_cows": 3, "open_sheep": 1},
-    "open feed4":   {"open_cows": 3, "open_sheep": 1, "feed_buy_days": 4.0},
-    "open feed8":   {"open_cows": 3, "open_sheep": 1, "feed_buy_days": 8.0},
+    "v14 HEAD":     {},
+    "feed x0.5":    {"feed_routine_mult": 0.5},
+    "feed x0.15":   {"feed_routine_mult": 0.15},
+    "feed x0.05":   {"feed_routine_mult": 0.05},
 }
 
 
