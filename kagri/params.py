@@ -121,6 +121,25 @@ DEFAULTS = {
     "target_cows": 12,
     "target_geese": 0,
     "feed_per_animal_day": 1.0,
+    # Value of a NON-URGENT feed, as a multiple of the animal's product value.
+    # 2.0 is the historical hardcoded figure and is far too high: the engine
+    # adds base production on schedule regardless of fed_today, and sets
+    # fertilizer_available every day regardless, so a routine feed buys only the
+    # CARE bonus plus one day of escape insurance. Lowering it should let the
+    # crew feed on alternate days -- the escape rule tolerates exactly one
+    # missed day, and the RESCUE pricing above catches the second.
+    # MEASURED, and the mechanism was NOT what was predicted. Feed ACTIONS barely
+    # move (165 -> 160). What the old $600 price did was drain the WHEAT on
+    # animals that did not need it, so the RESCUE feed for an animal one day from
+    # escaping could not be filled -- no unit was carrying any. v14 was silently
+    # losing SIX animals per game to starvation; nobody had ever counted escapes.
+    # vs starter, 4 seeds:  escapes 6.0 -> 1.5, +$3,840 mean, +$14,710 worst.
+    # Real-opponent gauntlet, 1,120 episodes, 20 seeds, both seats:
+    #   0.15  74% ALL / 48% worst / $76,336   <- adopted
+    #   0.50  68% / 32% / $74,427
+    #   2.00  64% / 20% / $73,708             (the old hardcoded value)
+    #   0.05  56% / 12% / $74,574             -- too low; animals do starve
+    "feed_routine_mult": 0.15,
     "wheat_buffer_per_animal": 2.0,  # shed wheat per animal before expanding
     "wheat_lead_tiles": 2,           # wheat tiles must lead animal count by this
     "coop_lead": 2,                  # empty coops allowed ahead of the birds
