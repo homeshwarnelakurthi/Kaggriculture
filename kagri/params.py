@@ -268,7 +268,21 @@ DEFAULTS = {
 
     # --- Selling ------------------------------------------------------------
     "wheat_feed_reserve_days": 3.0,
+    # MEASURED INERT, left at 2. The engine floors price at $1 and a $1 sale does
+    # not raise market inventory, so in principle dumping a floored product is
+    # free money that also frees shed space. In practice NO shed item is ever
+    # quoted below $2: over 2,157 sampled turns the count of sub-$2 quotes was
+    # ZERO, because we sell continuously into markets the town keeps draining and
+    # nothing of ours ever floors. This gate refuses nothing.
     "min_sell_price": 2,
+    # Engine's shedCapacity. DROP deletes whatever does not fit (`del inv[item]`
+    # runs unconditionally), so dropping 6 into room for 2 loses 4 outright.
+    # ALSO MEASURED INERT: the guard fired 0 times in 2,157 turns. The shed peaks
+    # at 95 and exceeds 80 on only 10 turns, DROP is issued just 28 times, and
+    # the two never coincide. Kept because it costs nothing and the failure it
+    # prevents is silent and destructive -- but it is insurance, not a gain.
+    "shed_capacity": 100,
+    "drop_needs_room": True,
     "endgame_days": 2,               # stop investing, liquidate
     # METERED SELLING: MEASURED AS NOT WORTH IT, left at 0 (disabled).
     # The theory was sound — dumping premium goods walks them down their own

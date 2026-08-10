@@ -320,6 +320,17 @@ def _assign_logistics(view, actions, free, p):
         # in during the day rather than hoarding it on unit inventories.
         carried = sum(v for k, v in inv.items() if k not in ANIMALS)
         if carried >= p["drop_threshold"]:
+            # DROP DESTROYS the remainder when the shed is full. The engine does
+            #     take = min(n, room); if take: shed[item] += take
+            #     del inv[item]          <- unconditional
+            # so dropping 6 milk into a shed with room for 2 loses 4 outright.
+            # Unit inventories have NO capacity limit, so holding one more turn
+            # while the market orders drain the shed costs nothing.
+            room = p["shed_capacity"] - sum(view.shed.values())
+            endgame = getattr(view, "plan", None) is not None and view.plan.endgame
+            if p["drop_needs_room"] and room < carried and not endgame:
+                actions[u] = ["PASS"] if at_shed else [step_toward(view, pos, target) or "PASS"]
+                continue
             actions[u] = ["DROP"] if at_shed else [step_toward(view, pos, target) or "PASS"]
             continue
 

@@ -100,11 +100,18 @@ OPPONENTS = {
 # move -- but drains the wheat, so the RESCUE feed for an animal one day from
 # escaping cannot be filled for want of a unit carrying wheat.
 # vs starter, 4 seeds: 0.15 gives escapes 6.0 -> 1.5, +$3,840 mean, +$14,710 min.
+# Two more engine readings, both currently costing us outright:
+#  - DROP deletes the remainder when the shed is full (`del inv[item]` runs
+#    unconditionally), and unit inventories have NO cap, so holding is free.
+#  - A $1 sale does not raise market inventory, and unsold stock scores ZERO at
+#    day 30, so `min_sell_price: 2` refuses free money and wastes shed space.
+# `control` carries the feed fix, which is already the default -- the control
+# must be in the SAME batch, since defaults have moved since the last run.
 CANDIDATES = {
-    "v14 HEAD":     {},
-    "feed x0.5":    {"feed_routine_mult": 0.5},
-    "feed x0.15":   {"feed_routine_mult": 0.15},
-    "feed x0.05":   {"feed_routine_mult": 0.05},
+    "control":      {"drop_needs_room": False},
+    "droproom":     {},
+    "sell$1":       {"drop_needs_room": False, "min_sell_price": 1},
+    "both":         {"min_sell_price": 1},
 }
 
 

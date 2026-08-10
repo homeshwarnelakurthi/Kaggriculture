@@ -669,6 +669,38 @@ Held back from submission deliberately: v14 went up the same day with ZERO
 episodes, and a third submission would displace the 1304-rated replay tape.
 Ship this only once v14 has >= 15 episodes.
 
+## Two engine "loopholes" that are REAL but never occur (measured, not shipped)
+
+Both were read correctly out of the engine and both are worth nothing here.
+Recording them so neither gets re-proposed from the source alone.
+
+1. **DROP destroys the remainder when the shed is full.** The engine runs
+   `take = min(n, room); if take: shed[item] += take; del inv[item]` -- that
+   `del` is unconditional, so dropping 6 milk into room for 2 loses 4. Unit
+   inventories have NO capacity limit, so holding is free.
+2. **A $1 sale does not raise market inventory**, and unsold shed stock scores
+   ZERO at day 30, so dumping a floored product looks like free money that also
+   frees capped shed space.
+
+Gauntlet, 1,120 episodes, 4 configs: **all four rows identical to the dollar**
+(74% ALL / 50% worst / $76,618). That is the signature of variants that do not
+differ, so it was instrumented directly rather than assumed. Over 2,157 turns:
+
+    max shed total          95   (cap 100)
+    turns with shed >= 80   10
+    DROP actions issued     28
+    times DROP guard fires   0
+    shed items quoted < $2   0
+
+The two conditions never coincide, and nothing of ours ever floors -- we sell
+continuously into markets the town keeps draining. `drop_needs_room` is kept as
+free insurance against a silent destructive failure; `min_sell_price` stays at 2.
+
+Correction to an in-session claim: a smoke run after these edits showed weeds
+36 -> 24 and strawberry 5 -> 10, which was attributed to these two fixes. It was
+not -- both are inert. That improvement came from the FEED fix, which had
+already become the default by then.
+
 ## METHODOLOGY TRAP: the gauntlet's absolute numbers drift with DEFAULTS
 
 In the run above `v14 HEAD` scored 64% ALL / 20% worst. In the run the day
