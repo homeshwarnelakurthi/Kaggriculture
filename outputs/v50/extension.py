@@ -1,0 +1,95 @@
+# Forecast a short worker reschedule through the next overnight deposit.
+_V50_PARENT=agent
+_V50_STATES={}
+_V50_STATS={}
+def _v50_project(obs,actions):
+    player=int(obs['player']);view=copy.deepcopy(obs);sold={i:0 for i in PRODUCTS}
+    for off,a in enumerate(actions):
+        view['step']=int(obs['step'])+off
+        farm,private=_r127_fields(view,a)
+        stock,buys,sales=_r97_market_stock(private['shed'],a.get('market',[]))
+        for order in a.get('market',[]):
+            if len(order)>=3 and order[0]=='BUY_SEED':private['seeds'][order[1]]=private['seeds'].get(order[1],0)+max(0,int(order[2]))
+        for index,q in sales.items():sold[a['market'][index][1]]+=q
+        private['shed']=stock;view['farms'][player]=farm;view['private']=private
+    final,lost=_r97_delivery(private['shed'],private,True)
+    return farm,private,{i:final.get(i,0)+sold[i] for i in PRODUCTS},lost
+
+def _v50_plan(obs,action):
+    step=int(obs['step']);hour=step%24;player=int(obs['player'])
+    if not 288<=step<672 or not 12<=hour<=20:return action,None
+    farm=obs['farms'][player];positions=[farm['farmer'],*farm['hands']]
+    if not any(len(c)>1 and c[0]=='PLACE' and c[1] not in ('WHEAT','FERTILIZER') for c in _r128_commands(action)):return action,None
+    count=24-hour
+    actions=[action]+[copy.deepcopy(_r128_future(obs,k)) for k in range(1,count)]
+    if any(o and o[0] not in ('SELL','BUY_SEED') for a in actions for o in a.get('market',[])):return action,None
+    seed_cost=sum(max(0,int(o[2]))*{'WHEAT':10,'CARROT':20,'TOMATO':50,'STRAWBERRY':100,'MELON':80}.get(o[1],1000) for a in actions for o in a.get('market',[]) if len(o)>2 and o[0]=='BUY_SEED')
+    if farm['money']<seed_cost+3000:return action,None
+    before,bp,owned,loss=_v50_project(obs,actions)
+    if loss.get('STRAWBERRY',0)<=0:return action,None
+    # Existing market controllers can make room when shed stock is available.
+    # This scheduler addresses only overflow made entirely of carried goods.
+    _,carried_loss=_r97_delivery({},bp,True)
+    if carried_loss.get('STRAWBERRY',0)<=0:return action,None
+    for actor,c in enumerate(_r128_commands(action)[:len(positions)]):
+        if len(c)<2 or c[0]!='PLACE' or c[1] in ('WHEAT','FERTILIZER') or not _shed_adjacent(positions[actor],10):continue
+        inv=obs['private']['inventories'][actor]
+        if inv.get('FERTILIZER',0)<=0 or inv.get('WHEAT',0)<=0:continue
+        # Only replace an unbroken existing route, and do not displace future
+        # input pickups or structure/crop construction.
+        commands=[]
+        for a in actions:
+            cs=_r128_commands(a)
+            if actor>=len(cs):break
+            commands.append(cs[actor])
+        if len(commands)!=count or any(c[0] in ('PICKUP','PLANT','BUILD_COOP','BUILD_PASTURE','DIG') for c in commands[1:]):continue
+        skips=[k for k,c in enumerate(commands) if k>=2 and c[0] in ('PASS','COLLECT_FERTILIZER')]
+        for skip in reversed(skips):
+            wheat=sum(c[0]=='FEED' for c in commands[1:])
+            if not 0<wheat<=inv['WHEAT']:continue
+            replacement=[['DROP'],['PICKUP','WHEAT',wheat],*commands[1:skip],*commands[skip+1:]]
+            if len(replacement)!=count:continue
+            trials=[_r132_set_command(a,actor,c) for a,c in zip(actions,replacement)]
+            after,ap,stock,newloss=_v50_project(obs,trials)
+            # Full productive board and final positions must be identical.
+            def productive(f):
+                return [[{k:v for k,v in t.items() if k!='fertilizer_available'} if isinstance(t,dict) else t for t in row] for row in f['tiles']]
+            if before['farmer']!=after['farmer'] or before['hands']!=after['hands'] or productive(before)!=productive(after):continue
+            if any(newloss.get(i,0)>loss.get(i,0) for i in ('STRAWBERRY','MILK','WOOL','MELON','TOMATO','CARROT')):continue
+            gain=sum((stock[i]-owned[i])*max(1,int(obs['market']['prices'].get(i,1))) for i in PRODUCTS)
+            if gain<=25:continue
+            # Record positions before each committed action for runtime checks.
+            pos=list(positions[actor]);queue=[]
+            for offset,c in enumerate(replacement):
+                queue.append(dict(step=step+offset,position=list(pos),command=c))
+                if c[0] in MOVES:
+                    dx,dy=MOVES[c[0]];pos=[max(0,min(9,pos[0]+dx)),max(0,min(9,pos[1]+dy))]
+            return trials[0],dict(actor=actor,queue=queue[1:],gain=gain,recovered={i:loss.get(i,0)-newloss.get(i,0) for i in PRODUCTS})
+    return action,None
+
+def agent(observation,configuration=None):
+    action=_V50_PARENT(observation,configuration)
+    step=int(observation['step']);player=int(observation['player'])
+    state=_V50_STATES.get(player)
+    if state is None or step!=state['last']+1:
+        state={'last':step,'plan':None};_V50_STATES[player]=state
+        _V50_STATS.clear();_V50_STATS.update(delivery_plans=0,delivery_commands=0,delivery_guard_failures=0,delivery_errors=0,predicted_value_recovered=0)
+    state['last']=step
+    try:
+        if not _r132_standard(configuration):return action
+        plan=state['plan']
+        if plan:
+            item=plan['queue'].pop(0);actor=plan['actor'];f=observation['farms'][player];positions=[f['farmer'],*f['hands']]
+            if item['step']==step and actor<len(positions) and list(positions[actor])==item['position']:
+                action=_r132_set_command(action,actor,item['command']);_V50_STATS['delivery_commands']+=1
+            else:_V50_STATS['delivery_guard_failures']+=1;state['plan']=None
+            if not plan['queue']:state['plan']=None
+        else:
+            action,plan=_v50_plan(observation,action)
+            if plan:
+                state['plan']=plan;_V50_STATS['delivery_plans']+=1;_V50_STATS['predicted_value_recovered']+=plan['gain']
+                _V50_STATS.setdefault('delivery_start_steps',[]).append(step)
+    except Exception:_V50_STATS['delivery_errors']+=1
+    _V50_STATS.update(getattr(_V50_PARENT,'telemetry',{}))
+    return action
+agent.telemetry=_V50_STATS

@@ -12,3 +12,6 @@ logs/
 replays/
 runs/
 submission*.tar.gz
+
+# Recovered agents, pinned runtime and checkpointed experiments
+work/

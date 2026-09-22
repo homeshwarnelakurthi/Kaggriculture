@@ -1,0 +1,10 @@
+{
+  "name": "v43",
+  "parent_submission": "56237315",
+  "parent_sha256": "03e263f1a20db29d6aa3404e978b97549bdac7f81d2b7f8dea5b36a3d6e91edc",
+  "horizon": 6,
+  "queue_optimizer": true,
+  "main_sha256": "f4b9e7ca732f19d957b111264f50989d655a66e1dd0d11001956f844d35fd12f",
+  "archive_sha256": "764d13f08c5d283c2225f45e6245c87fb60fac28148110d85a10a9652d004818",
+  "runtime": "kaggle-environments==1.32.7"
+}

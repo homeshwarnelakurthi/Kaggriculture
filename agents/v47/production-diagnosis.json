@@ -1,0 +1,119 @@
+[
+  {
+    "episode": 110250683,
+    "baseline": {
+      "seat": 0,
+      "name": "Homii_N",
+      "produced": 78,
+      "cap_lost": 16,
+      "discarded": 0,
+      "production_days": 47,
+      "fed_days": 43,
+      "care_days": 45,
+      "bonuses": 47,
+      "left_on_animals": 0
+    },
+    "first_cap_experiment": {
+      "seat": 0,
+      "name": "Homii_N",
+      "produced": 82,
+      "cap_lost": 12,
+      "discarded": 0,
+      "production_days": 47,
+      "fed_days": 43,
+      "care_days": 45,
+      "bonuses": 47,
+      "left_on_animals": 0
+    },
+    "opponent": {
+      "seat": 1,
+      "name": "SkOnTheRocks",
+      "produced": 78,
+      "cap_lost": 16,
+      "discarded": 0,
+      "production_days": 47,
+      "fed_days": 43,
+      "care_days": 45,
+      "bonuses": 47,
+      "left_on_animals": 0
+    }
+  },
+  {
+    "episode": 110241309,
+    "baseline": {
+      "seat": 1,
+      "name": "Homii_N",
+      "produced": 78,
+      "cap_lost": 16,
+      "discarded": 6,
+      "production_days": 47,
+      "fed_days": 43,
+      "care_days": 45,
+      "bonuses": 47,
+      "left_on_animals": 0
+    },
+    "first_cap_experiment": {
+      "seat": 1,
+      "name": "Homii_N",
+      "produced": 82,
+      "cap_lost": 12,
+      "discarded": 6,
+      "production_days": 47,
+      "fed_days": 43,
+      "care_days": 45,
+      "bonuses": 47,
+      "left_on_animals": 0
+    },
+    "opponent": {
+      "seat": 0,
+      "name": "lucataco",
+      "produced": 83,
+      "cap_lost": 10,
+      "discarded": 4,
+      "production_days": 47,
+      "fed_days": 43,
+      "care_days": 44,
+      "bonuses": 46,
+      "left_on_animals": 0
+    }
+  },
+  {
+    "episode": 110236449,
+    "baseline": {
+      "seat": 0,
+      "name": "Homii_N",
+      "produced": 138,
+      "cap_lost": 33,
+      "discarded": 6,
+      "production_days": 87,
+      "fed_days": 80,
+      "care_days": 85,
+      "bonuses": 84,
+      "left_on_animals": 0
+    },
+    "first_cap_experiment": {
+      "seat": 0,
+      "name": "Homii_N",
+      "produced": 142,
+      "cap_lost": 29,
+      "discarded": 6,
+      "production_days": 87,
+      "fed_days": 80,
+      "care_days": 85,
+      "bonuses": 84,
+      "left_on_animals": 0
+    },
+    "opponent": {
+      "seat": 1,
+      "name": "Stephen Schott",
+      "produced": 161,
+      "cap_lost": 6,
+      "discarded": 6,
+      "production_days": 87,
+      "fed_days": 80,
+      "care_days": 79,
+      "bonuses": 80,
+      "left_on_animals": 0
+    }
+  }
+]

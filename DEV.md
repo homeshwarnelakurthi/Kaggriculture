@@ -101,6 +101,80 @@ def make_agent(ov):
     return mine
 ```
 
+## READ FIRST: the V44-V52 collapse, and why the offline harness lied (2026-09-22)
+
+Between 2026-09-15 and 2026-09-22 a separate line of work (built outside the
+`kagri/` package, in the gitignored `agents/`, `work/` and `outputs/` folders)
+produced nine versions. **Every one of them won its offline validation and then
+lost ladder rating.** The team fell from 2546.9 to 1727.3, roughly -826 points
+and ~1,600 places (rank 1,166 of 9,057 -> 2,158 of 9,852).
+
+| version | offline verdict | ladder |
+|---|---|---|
+| **V43** | -- | **2546.9** (176 eps vs ~2,490-rated opponents) |
+| V44 | **24/24 wins** vs V43, margin +1790 | 2148.3 (-399) |
+| V45 | **20/20 wins** vs V44, +1459 | 2089.5 (-59) |
+| V46 | 18W/2L vs V45, +518 | 1846.3 (-243) |
+| V47 | 14W/4T/2L vs V46, +177 | 1812.8 (-34) |
+| V48 | 7W/3L vs V47, +442 | (not separately scored) |
+| V50 | **6/6 wins vs V43**, +2688 | 165.6 -- agent did nothing, $3,000 = starting bank |
+| V51/V52 | "entry-point repair" | ~1725 |
+
+V44 beat V43 twenty-four games to nothing and dropped 399 rating points. V50 beat
+V43 6-0 by +2,688 coins and its line scored 165.6. This is not a noisy signal, it
+is an INVERTED one.
+
+**Four causes, all of which this file already warned about.**
+
+1. **It optimised COIN MARGIN, which the competition does not score.** Every
+   decision is ranked on `mean_margin` / `mean_margin_change`. Scoring is
+   win/loss/tie only. V47's own release table reads
+   `Development regression | wide | 0/0/8 | +132.5` -- ZERO wins in eight games,
+   shipped because it lost by 132 fewer coins. Losing by less earns no rating.
+2. **Each version was measured against the PREVIOUS version, never a fixed
+   anchor.** v45 vs v44, v46 vs v45, v47 vs v46, v48 vs v47. Nine chained
+   hill-climbing steps on 4-20 games each; small-sample selection bias compounds
+   and the chain drifts off the thing that worked. Cf. "benchmark against git
+   HEAD", learned here in August.
+3. **Sample sizes of 4, 6, 8, 10, 20 games.** This file records +/-74 rating
+   noise and "do not act on <15 episodes" after two IDENTICAL agents scored
+   551.8 and 625.5.
+4. **A trivially weak opponent inflated every average.** `barnyard` margins run
+   +83,000 to +99,620. Same broken proxy as `starter`: the replay tape earns
+   $190,661 vs `starter` and $79,254 vs real opponents.
+
+**The true signal was present and was overridden.** `wide` is the strongest
+opponent in their pool: v46 0W/8L, v47 0W/8L and 0W/4L, v48 0W/4L and 0W/6L.
+Four consecutive versions at a ~0% worst matchup, each shipped because the
+margin improved. The standing rule here is RANK ON WORST MATCHUP, NEVER MEAN
+MONEY.
+
+Credit where due: the execution was careful -- hash-verified builds, seat-swapped
+paired observations, immutability and engine-cap unit checks, and honest caveats
+in the READMEs ("Local wins do not guarantee a higher Kaggle rating"). V47's
+README even states that `wide` and `trader_front` "are reactive derivatives of
+the same route family, not independent competitors" -- the same mirror-match
+blind spot as our own gauntlet. The craft was good; the OBJECTIVE and the
+REFERENCE POINT were wrong.
+
+Secondary risk: V47's max turn time was 714 ms against a 1,000 ms `actTimeout`,
+and its replay fixtures took 72-85 s/episode against V46's 18 s -- a 4x slowdown
+toward the 60 s episode budget.
+
+**Action taken 2026-09-22**: V43 resubmitted as ref `56471368` from
+`agents/v43/v43.tar.gz`, verified identical to the original (archive sha256
+`764d13f0...d004818`, main sha256 `f4b9e7ca...35fd12f`, both matching
+`agents/v43/build.json`) and smoke-tested locally (720 steps, DONE both seats,
+~3.1 s). Kept V52 in the second slot so the team score does not crater while V43
+re-climbs from 600. Next step: once V43 is visibly climbing, replace V52 with
+`work/recovered/56237315/main.py` (sha256 `03e263f1...`, ladder 2430.2 on 178
+episodes) so both active slots hold LADDER-PROVEN agents.
+
+**Rule going forward**: with the anti-correlation above, do not ship anything
+validated by that pipeline. Any future offline gate must rank on WIN RATE at the
+worst matchup, use >= 15-20 games per cell, anchor to a FIXED reference (V43),
+drop `barnyard`, and include genuinely independent opponents.
+
 ## Where the real ladder stands (2026-08-03)
 
 Three submissions, all below the 600 start: v1 594.6, v2 564.7, v3 544.7.
@@ -753,6 +827,112 @@ fertiliser to USE -- especially at $20-60 when an opponent has crashed it -- is
 the one place trading the market beats farming it. Kill switch first: count
 actual FERTILIZE actions per game, since DEV.md records this pipeline was once
 "implemented and correct but inert".
+
+## WHAT A STRONG AGENT ACTUALLY DOES (2026-08-11) � two measurements, one correction
+
+Kaggle removed GetEpisodeReplay (404s even on episodes we already hold), so top
+games cannot be watched directly. Two other routes worked.
+
+### 1. Replaying the action tape locally (tools/tape_board.py)
+
+We HOLD a strong agent's full 719-turn tape: `main.py` is a replay clone of a
+public notebook that peaked at 1358 (top 27% of 2,976). Replayed against
+`starter`, the board it builds:
+
+    day  tiles used  weeds  quads     money  hands  board
+      2          23      0      1        94      3  COW:3 MELON:8 SHEEP:1 WHEAT:11
+      8          40      0      2     2,137      8  COW:5 MELON:11 SHEEP:6 STRAW:12 WHEAT:6
+     12          61      1      3    16,034     10  COW:8 MELON:10 SHEEP:6 STRAW:33 WHEAT:4
+     16          71      1      3    34,453     10  COW:8 MELON:14 SHEEP:6 STRAW:40 WHEAT:3
+     26          64      4      3   151,143     14  COW:8 MELON:2  SHEEP:6 STRAW:22 WHEAT:26
+
+    ACTION SPLIT   move 50.2%  work 43.0%  idle 6.8%
+    OURS           move 66%    work 23%    idle 10%
+
+### RESULT of testing those differences (gauntlet, 1,120 eps, in-batch control)
+
+    quad3        100 81 66 100 72 100 91   87% ALL / 66% worst / $79,695
+    control      100 66 56  88 59 100 59   75% / 56% / $76,339
+    sheep6       100 69 53  75 47  94 62   71% / 47% / $76,340
+    tape-all     100 12  3  56  6  59 19   37% /  3% / $70,535
+    ramp         100  0  0  41  0  75  3   31% /  0% / $66,087
+
+**THE HAND RAMP IS THE WORST CHANGE EVER TESTED IN THIS PROJECT (0% worst).**
+And it was the headline inference from the tape. The note below claiming the
+tape "contradicts the older DEV.md line that both sides hire 12, so labour is
+NOT the difference" is WRONG -- the old line was right. Our labour ceiling is
+`expected_units * tiles_per_unit`, so cutting the early crew collapses the whole
+tile budget. Exactly the `land_first_day` lesson again: a strong player's
+opening suits THEIR architecture, not ours. `tape-all` scored 3% purely because
+the ramp dragged the bundle down.
+
+`sheep6` also failed (47% worst vs 56%). `target_sheep: 0` stands.
+
+`quad3` -- NOT buying the fourth quadrant -- is a genuine win, and it is the
+UTILISATION half of the tape reading: we buy land we cannot work, which is where
+the 24-36 weed tiles come from. Under confirmation at higher seeds before it
+ships, since 66% vs 56% is ~1sd in the deciding cell.
+
+Standing lesson, now three times over (land timing, hand ramp, mimic-top):
+**copying a stronger player's BUILD ORDER fails; copying their DIAGNOSIS works.**
+The opening herd (v14) worked because it fixed a gate that made early livestock
+unreachable. The ramp failed because it transplanted a number.
+
+Four differences, all now parameterised and tested:
+  - **hands RAMP** 3/6/8/10/14 while we hire 12 on day 0 for $376 -- the exact
+    money the v14 opening herd needs. NOTE this contradicts the older DEV.md
+    line "both sides hire 12, so labour is NOT the difference", which was
+    sampled from MID-ladder replays.
+  - **3 quadrants, never 4.** We reach 4 by day 12. Our failed `land_first_day`
+    experiments delayed land WITHOUT fixing utilisation, so they just produced
+    more idle crew.
+  - **6 sheep** from day 8. We run `target_sheep: 0`, dropped on a gauntlet that
+    was our-agent-vs-our-agent with provably inert mix targets.
+  - **wheat collapses to 1-3 tiles mid-game then jumps to 26 by day 26** -- feed
+    bought not grown, then a late wheat crop into the 4x demand step-up.
+
+### 2. Top-of-ladder money, via ListEpisodes (tools/top_stats.py)
+
+ListEpisodes still returns rewards and ratings. The endpoint refuses a bare
+teamId and throttles hard; tools/top_stats.py climbs the ladder (matchmaking
+means our own opponents never include the top) and CHECKPOINTS each team, since
+a single run reliably collects only a few. 7 of 12 teams, 630 games:
+
+    BHackers        3097.3   97 games  66% win   $91,218
+    sleepyai.org    3069.6  121        44%       $82,328
+    Wufang Hong     3061.4   92        60%       $89,705
+    Ueddy           3059.9   76        87%       $87,360
+    Yoganjaneyulu   3032.0   64        81%       $85,875
+    Jince           3031.8   98        77%       $87,473
+    Yvonne.         3029.7   82        74%       $86,561
+    POOLED                  630                  mean $87,093  median $83,920
+
+    US (the tape)   1358.1  127        46%       $79,254
+
+### THE CORRECTION � absolute money vs `starter` is a BROKEN proxy
+
+The tape earns **$190,661 against `starter`** and **$79,254 against real
+opponents** -- it loses 58% of its money the moment somebody else bids for the
+same pots. Top agents average $87,093. So the money gap is roughly **10%, not
+2.2x**, and an in-session claim that "the gap is execution, 2.2x money" was
+wrong because it compared a tape-vs-starter figure to our own vs-starter figure.
+
+Both things are true at once, and this is the important synthesis:
+  - the EXECUTION differences are real (43% vs 23% work share, 71 vs 30 tiles)
+  - they do NOT convert into proportionally more money once the opponent is
+    competent, because the market SATURATES: fixed pots plus shared town demand
+    compress everyone toward ~$85k
+
+**So producing more is not the win condition.** The win condition is taking a
+larger SHARE of contested pots, sooner -- which points straight at the
+opponent-modelling thread untouched since day one: their farm tiles are public,
+so their melon and strawberry maturity dates are computable, and those goods are
+a race to sell before the price floors.
+
+Confound worth keeping: the top teams' $87k is against >=2500 opponents while
+our $79k is the tape against its ~1300 pool. Ours faced WEAKER opposition and
+still earned less, so the true gap is wider than 10% -- but nowhere near 2.2x.
+5 of 12 teams still missing to throttling.
 
 ## LADDER REALITY CHECK (2026-08-07) � read this before planning anything
 

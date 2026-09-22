@@ -1,0 +1,231 @@
+{
+  "release_holdout": {
+    "games": 20,
+    "wins": 14,
+    "ties": 4,
+    "losses": 2,
+    "mean_margin": 177.3,
+    "min_margin": -40.0,
+    "max_turn_ms": 714.077,
+    "cap_harvests": 16,
+    "nonzero_errors": []
+  },
+  "regression_matchups": {
+    "wide": {
+      "v47": {
+        "games": 8,
+        "wins": 0,
+        "ties": 0,
+        "losses": 8,
+        "mean_margin": -283.875,
+        "min_margin": -902.0,
+        "max_turn_ms": 570.998,
+        "cap_harvests": 6,
+        "nonzero_errors": []
+      },
+      "v46": {
+        "games": 8,
+        "wins": 0,
+        "ties": 0,
+        "losses": 8,
+        "mean_margin": -416.375,
+        "min_margin": -902.0,
+        "max_turn_ms": 168.379,
+        "cap_harvests": 0,
+        "nonzero_errors": []
+      },
+      "mean_margin_change": 132.5,
+      "minimum_margin_change": 0.0,
+      "improved": 6,
+      "equal": 2,
+      "regressed": 0,
+      "same_shop_sequences": 8
+    },
+    "trader_front": {
+      "v47": {
+        "games": 8,
+        "wins": 8,
+        "ties": 0,
+        "losses": 0,
+        "mean_margin": 4718.125,
+        "min_margin": 3812.0,
+        "max_turn_ms": 506.451,
+        "cap_harvests": 6,
+        "nonzero_errors": []
+      },
+      "v46": {
+        "games": 8,
+        "wins": 8,
+        "ties": 0,
+        "losses": 0,
+        "mean_margin": 4598.125,
+        "min_margin": 3812.0,
+        "max_turn_ms": 145.062,
+        "cap_harvests": 0,
+        "nonzero_errors": []
+      },
+      "mean_margin_change": 120.0,
+      "minimum_margin_change": 0.0,
+      "improved": 6,
+      "equal": 2,
+      "regressed": 0,
+      "same_shop_sequences": 8
+    }
+  },
+  "fresh_matchups": {
+    "wide": {
+      "v47": {
+        "games": 4,
+        "wins": 0,
+        "ties": 0,
+        "losses": 4,
+        "mean_margin": -1073.0,
+        "min_margin": -1797.0,
+        "max_turn_ms": 426.905,
+        "cap_harvests": 2,
+        "nonzero_errors": []
+      },
+      "v46": {
+        "games": 4,
+        "wins": 0,
+        "ties": 0,
+        "losses": 4,
+        "mean_margin": -1169.5,
+        "min_margin": -1797.0,
+        "max_turn_ms": 299.753,
+        "cap_harvests": 0,
+        "nonzero_errors": []
+      },
+      "mean_margin_change": 96.5,
+      "minimum_margin_change": 0.0,
+      "improved": 2,
+      "equal": 2,
+      "regressed": 0,
+      "same_shop_sequences": 4
+    },
+    "trader_front": {
+      "v47": {
+        "games": 4,
+        "wins": 4,
+        "ties": 0,
+        "losses": 0,
+        "mean_margin": 6564.5,
+        "min_margin": 5256.0,
+        "max_turn_ms": 436.947,
+        "cap_harvests": 2,
+        "nonzero_errors": []
+      },
+      "v46": {
+        "games": 4,
+        "wins": 4,
+        "ties": 0,
+        "losses": 0,
+        "mean_margin": 6465.5,
+        "min_margin": 5256.0,
+        "max_turn_ms": 294.386,
+        "cap_harvests": 0,
+        "nonzero_errors": []
+      },
+      "mean_margin_change": 99.0,
+      "minimum_margin_change": 0.0,
+      "improved": 2,
+      "equal": 2,
+      "regressed": 0,
+      "same_shop_sequences": 4
+    }
+  },
+  "replay_fixtures": [
+    {
+      "candidate": "guarded",
+      "episode": 110241309,
+      "seat": 1,
+      "rewards": [
+        111805.0,
+        111742.0
+      ],
+      "margin": -63.0,
+      "baseline_margin": -63.0,
+      "steps": 720,
+      "status": [
+        "DONE",
+        "DONE"
+      ],
+      "seconds": 72.82368659973145
+    },
+    {
+      "candidate": "guarded",
+      "episode": 110236449,
+      "seat": 0,
+      "rewards": [
+        79106.0,
+        81197.0
+      ],
+      "margin": -2091.0,
+      "baseline_margin": -2091.0,
+      "steps": 720,
+      "status": [
+        "DONE",
+        "DONE"
+      ],
+      "seconds": 83.21305751800537
+    },
+    {
+      "candidate": "guarded",
+      "episode": 110250683,
+      "seat": 0,
+      "rewards": [
+        136519.0,
+        136265.0
+      ],
+      "margin": 254.0,
+      "baseline_margin": -385.0,
+      "steps": 720,
+      "status": [
+        "DONE",
+        "DONE"
+      ],
+      "seconds": 84.60491824150085
+    }
+  ],
+  "checks": [
+    {
+      "unit_checks": [
+        "exact_engine_cap_recovery",
+        "action_and_observation_immutable",
+        "fertilizer_reserve_protected",
+        "overflow_rejected",
+        "essential_work_preserved",
+        "uncapped_production_untouched",
+        "fertilizer_value_guard",
+        "escape_not_counted_as_production"
+      ]
+    },
+    {
+      "uncertain_mirror_guard": true
+    },
+    {
+      "self_harvest_tracking": true,
+      "tracking_expiry": true,
+      "real_feed_divergence_preserved": true,
+      "observation_immutable": true
+    },
+    {
+      "file_loader": true,
+      "seed": 853,
+      "seat": 0,
+      "rewards": [
+        169677.0,
+        3431.0
+      ]
+    },
+    {
+      "file_loader": true,
+      "seed": 853,
+      "seat": 1,
+      "rewards": [
+        3431.0,
+        169677.0
+      ]
+    }
+  ]
+}

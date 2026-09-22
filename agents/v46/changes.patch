@@ -1,0 +1,43 @@
+--- v45/main.py
++++ v46/main.py
+@@ -3585,8 +3585,9 @@
+                 model=_FLOW_STATE[int(obs['player'])]
+                 quote=_flow_quote(obs,item,due_step-step,amount)
+                 pressure=sum(stock.values())+sum(sum(inv.values()) for inv in obs['private']['inventories'])>90
+-                similar=model['similarity']>=.9 and _R44_PROBES.get(int(obs['player']),{}).get('matched',False)
+-                if due_step-step>8 and not (similar and (quote['expected']<quote['now'] or pressure)):continue
++                similar=model.get('synchronized',False) or (model['similarity']>=.9 and _R44_PROBES.get(int(obs['player']),{}).get('matched',False))
++                # A full day of matching public production supports the longer reservation.
++                if due_step-step>8 and not (model.get('synchronized',False) or (similar and (quote['expected']<quote['now'] or pressure))):continue
+                 if not similar and not pressure and quote['expected']>quote['now']+2 and due_step-step>4:
+                     model['decisions'][item]={'action':'hold_for_demand','quantity':amount,**quote}
+                     _FLOW_STATS['held_reservations']+=1
+@@ -3721,3 +3722,28 @@
+     return result
+ agent.telemetry=_FLOW_STATS
+ agent=globals().pop('agent')
++
++# V46: use observed production synchrony, not equal cash, as sale-timing evidence.
++_V46_FORECAST_PARENT=_flow_forecast
++_V46_SYNC={}
++def _flow_forecast(obs,config):
++    model=_V46_FORECAST_PARENT(obs,config)
++    player=int(obs['player']);step=int(obs['step'])
++    a,b=obs['farms'][player],obs['farms'][1-player]
++    state=_V46_SYNC.get(player)
++    if state is None or step!=state['last']+1:
++        state={'last':-1,'history':[]};_V46_SYNC[player]=state
++    same=all(a[k]==b[k] for k in ('farmer','hands','unlocked_quadrants'))
++    if same:
++        # Random weeds on unused land do not indicate different production.
++        for ra,rb in zip(a['tiles'],b['tiles']):
++            for ta,tb in zip(ra,rb):
++                pa=ta if isinstance(ta,dict) and (ta.get('crop') or ta.get('animal')) else None
++                pb=tb if isinstance(tb,dict) and (tb.get('crop') or tb.get('animal')) else None
++                if pa!=pb:same=False;break
++            if not same:break
++    state['history']=(state['history']+[same])[-24:];state['last']=step
++    model['synchronized']=len(state['history'])==24 and all(state['history'])
++    _FLOW_STATS['synchronized_turns']=_FLOW_STATS.get('synchronized_turns',0)+int(model['synchronized'])
++    return model
++agent=globals().pop('agent')

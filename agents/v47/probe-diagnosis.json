@@ -1,0 +1,114 @@
+[
+  {
+    "candidate": "v46",
+    "seed": 821,
+    "events": [
+      {
+        "step": 571,
+        "cap": 0,
+        "matched": true,
+        "synchronized": true,
+        "market": [
+          [
+            "BUY_SEED",
+            "WHEAT",
+            2
+          ]
+        ],
+        "similarity": 1.0
+      }
+    ],
+    "rewards": [
+      120843.0,
+      116426.0
+    ]
+  },
+  {
+    "candidate": "v46",
+    "seed": 822,
+    "events": [
+      {
+        "step": 399,
+        "cap": 0,
+        "matched": true,
+        "synchronized": false,
+        "market": [
+          [
+            "SELL",
+            "WOOL",
+            6
+          ]
+        ],
+        "similarity": 0.9863013698630136
+      }
+    ],
+    "rewards": [
+      79727.0,
+      75132.0
+    ]
+  },
+  {
+    "candidate": "coherent",
+    "seed": 821,
+    "events": [
+      {
+        "step": 383,
+        "cap": 1,
+        "matched": false,
+        "synchronized": true,
+        "market": [],
+        "similarity": 1.0
+      },
+      {
+        "step": 571,
+        "cap": 1,
+        "matched": true,
+        "synchronized": true,
+        "market": [
+          [
+            "BUY_SEED",
+            "WHEAT",
+            2
+          ]
+        ],
+        "similarity": 1.0
+      }
+    ],
+    "rewards": [
+      120960.0,
+      116439.0
+    ]
+  },
+  {
+    "candidate": "coherent",
+    "seed": 822,
+    "events": [
+      {
+        "step": 383,
+        "cap": 1,
+        "matched": false,
+        "synchronized": false,
+        "market": [],
+        "similarity": 0.9864864864864865
+      },
+      {
+        "step": 399,
+        "cap": 1,
+        "matched": true,
+        "synchronized": false,
+        "market": [
+          [
+            "SELL",
+            "WOOL",
+            6
+          ]
+        ],
+        "similarity": 0.9863013698630136
+      }
+    ],
+    "rewards": [
+      79238.0,
+      75801.0
+    ]
+  }
+]

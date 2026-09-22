@@ -1,0 +1,9 @@
+{
+  "version": "V46",
+  "status": "submitted to Kaggle; Pending",
+  "source_sha256": "62fc71b3e218d4d67a7564439943da35efc68cf3570c4985d66106c91e044bf8",
+  "archive_sha256": "b34af5b7af8e21b78e5f1c9a281161259949ed17de623e700a6b6163be5fead5",
+  "archive_bytes": 164910,
+  "base": "V45",
+  "change": "Stock-backed sale reservations use one full day of matching public productive tiles and worker positions; preserve V45 fallback when production diverges. No extra egg harvesting or wheat-trading strategy included."
+}

@@ -1,0 +1,22 @@
+{
+  "created_utc": "2026-09-15T15:37:36.133914+00:00",
+  "scope": "offline improvement experiments; no Kaggle result queries or submissions",
+  "files": {
+    "submitted_source": {
+      "path": "H:\\Kaggriculture\\agents\\v43\\main.py",
+      "sha256": "f4b9e7ca732f19d957b111264f50989d655a66e1dd0d11001956f844d35fd12f"
+    },
+    "submitted_archive": {
+      "path": "H:\\Kaggriculture\\agents\\v43\\v43.tar.gz",
+      "sha256": "764d13f08c5d283c2225f45e6245c87fb60fac28148110d85a10a9652d004818"
+    },
+    "engine": {
+      "path": "H:\\Kaggriculture\\work\\runtime1327\\kaggle_environments\\envs\\kaggriculture\\kaggriculture.py",
+      "sha256": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e"
+    },
+    "benchmark": {
+      "path": "H:\\Kaggriculture\\tools\\benchmark_agents.py",
+      "sha256": "143d1ece3f58b479a5be869484c3b85b9bad9ed5b1f75e062c9a0605bab0214c"
+    }
+  }
+}

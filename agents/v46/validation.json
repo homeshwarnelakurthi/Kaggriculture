@@ -1,0 +1,216 @@
+{
+  "holdout_vs_v45": {
+    "games": 20,
+    "wins": 18,
+    "ties": 0,
+    "losses": 2,
+    "mean_margin": 518.2,
+    "minimum_margin": -338.0,
+    "maximum_turn_ms": 245.913,
+    "nonzero_errors": []
+  },
+  "screen": {
+    "v45": {
+      "games": 8,
+      "wins": 8,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 409.75,
+      "minimum_margin": 244.0,
+      "maximum_turn_ms": 161.139,
+      "nonzero_errors": []
+    },
+    "wide": {
+      "games": 8,
+      "wins": 4,
+      "ties": 0,
+      "losses": 4,
+      "mean_margin": -348.75,
+      "minimum_margin": -865.0,
+      "maximum_turn_ms": 268.372,
+      "nonzero_errors": []
+    },
+    "barnyard": {
+      "games": 8,
+      "wins": 8,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 91224.875,
+      "minimum_margin": 74975.0,
+      "maximum_turn_ms": 192.815,
+      "nonzero_errors": []
+    }
+  },
+  "paired_external": {
+    "wide": {
+      "v46": {
+        "games": 8,
+        "wins": 0,
+        "ties": 0,
+        "losses": 8,
+        "mean_margin": -307.5,
+        "minimum_margin": -467.0,
+        "maximum_turn_ms": 157.18,
+        "nonzero_errors": []
+      },
+      "v45": {
+        "games": 8,
+        "wins": 0,
+        "ties": 0,
+        "losses": 8,
+        "mean_margin": -1239.0,
+        "minimum_margin": -2733.0,
+        "maximum_turn_ms": 159.812,
+        "nonzero_errors": []
+      },
+      "mean_margin_change": 931.5,
+      "minimum_margin_change": 144.0,
+      "same_shop_sequence_pairs": 8
+    },
+    "trader": {
+      "v46": {
+        "games": 8,
+        "wins": 0,
+        "ties": 0,
+        "losses": 8,
+        "mean_margin": -307.5,
+        "minimum_margin": -467.0,
+        "maximum_turn_ms": 190.762,
+        "nonzero_errors": []
+      },
+      "v45": {
+        "games": 8,
+        "wins": 0,
+        "ties": 0,
+        "losses": 8,
+        "mean_margin": -1238.5,
+        "minimum_margin": -2733.0,
+        "maximum_turn_ms": 133.452,
+        "nonzero_errors": []
+      },
+      "mean_margin_change": 931.0,
+      "minimum_margin_change": 144.0,
+      "same_shop_sequence_pairs": 8
+    }
+  },
+  "front_trade": {
+    "v46": {
+      "games": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 6039.0,
+      "minimum_margin": 5361.0,
+      "maximum_turn_ms": 137.535,
+      "nonzero_errors": []
+    },
+    "v45": {
+      "games": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 3989.3333333333335,
+      "minimum_margin": 3252.0,
+      "maximum_turn_ms": 171.39,
+      "nonzero_errors": []
+    },
+    "mean_margin_change": 2049.6666666666665,
+    "minimum_margin_change": 422.0
+  },
+  "replay_fixtures": [
+    {
+      "candidate": "sync_productive",
+      "episode": 110236449,
+      "seat": 0,
+      "rewards": [
+        79106.0,
+        81197.0
+      ],
+      "margin": -2091.0,
+      "baseline_margin": -2091.0,
+      "steps": 720,
+      "status": [
+        "DONE",
+        "DONE"
+      ],
+      "seconds": 17.932210206985474
+    },
+    {
+      "candidate": "sync_productive",
+      "episode": 110241309,
+      "seat": 1,
+      "rewards": [
+        111805.0,
+        111742.0
+      ],
+      "margin": -63.0,
+      "baseline_margin": -63.0,
+      "steps": 720,
+      "status": [
+        "DONE",
+        "DONE"
+      ],
+      "seconds": 18.13895606994629
+    },
+    {
+      "candidate": "sync_productive",
+      "episode": 110250683,
+      "seat": 0,
+      "rewards": [
+        136384.0,
+        136300.0
+      ],
+      "margin": 84.0,
+      "baseline_margin": -385.0,
+      "steps": 720,
+      "status": [
+        "DONE",
+        "DONE"
+      ],
+      "seconds": 18.77637529373169
+    }
+  ],
+  "final_checks": [
+    {
+      "synchrony_guards": true,
+      "mutation_guard": true,
+      "gap_reset": true
+    },
+    {
+      "final_action_equivalence": true,
+      "seed": 761,
+      "seat": 0,
+      "rewards": [
+        98255.0,
+        98547.0
+      ]
+    },
+    {
+      "final_action_equivalence": true,
+      "seed": 761,
+      "seat": 1,
+      "rewards": [
+        98547.0,
+        98255.0
+      ]
+    },
+    {
+      "file_loader": true,
+      "seed": 762,
+      "seat": 0,
+      "rewards": [
+        177761.0,
+        3640.0
+      ]
+    },
+    {
+      "file_loader": true,
+      "seed": 762,
+      "seat": 1,
+      "rewards": [
+        3575.0,
+        169281.0
+      ]
+    }
+  ]
+}

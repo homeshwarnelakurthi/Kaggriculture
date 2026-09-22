@@ -1,0 +1,26 @@
+[
+  {
+    "seat": 0,
+    "steps": 720,
+    "status": [
+      "DONE",
+      "DONE"
+    ],
+    "rewards": [
+      3000.0,
+      3596.0
+    ]
+  },
+  {
+    "seat": 1,
+    "steps": 720,
+    "status": [
+      "DONE",
+      "DONE"
+    ],
+    "rewards": [
+      3596.0,
+      3000.0
+    ]
+  }
+]

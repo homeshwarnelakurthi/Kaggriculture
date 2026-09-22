@@ -14,6 +14,18 @@ DEFAULTS = {
     # so the floor is deliberately tiny — the fib curve is the real cap.
     "hire_money_floor": 30.0,
     "hire_bank_fraction": 0.20,     # never spend more than this share of the bank on a crew
+    # RAMP the crew rather than front-loading it. Replaying a 1358-rated action
+    # tape (tools/tape_board.py) shows hands at 3 on day 2, 6 on day 4, 8 on
+    # day 8, 10 on day 12, 14 by day 26 -- while we hire 12 on day 0 for $376,
+    # which is exactly the money the v14 opening herd needs.
+    # Cap is hands_day0 + hands_ramp * day, clamped by max_hands.
+    # hands_ramp 0.0 DISABLES the ramp and reproduces the flat cap exactly.
+    "hands_ramp": 0.0,
+    "hands_day0": 3,
+    # The same tape never buys the fourth quadrant -- it sits on 3 all game while
+    # we reach 4 by day 12. More land we cannot work is just weeds: we run 24-36
+    # weed tiles against the tape's 1-4. 4 = current behaviour.
+    "max_quadrants": 4,
     # v12 (search over the LABOUR CEILING, holding v11's gate/pacing fixed):
     # tiles_per_unit 7.0 -> 6.5 and animal_labour_cost 2.5 -> 4.0. Note the
     # direction: an animal tile costs MORE labour than assumed, not less. Being

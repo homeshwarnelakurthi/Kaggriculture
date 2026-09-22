@@ -1,0 +1,162 @@
+{
+  "holdout-games.jsonl": {
+    "h7/v43": {
+      "episodes": 24,
+      "seeds": [
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322
+      ],
+      "valid": 24,
+      "wins": 24,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 1869.5833333333333,
+      "minimum_margin": 417.0,
+      "maximum_turn_ms": 438.029,
+      "nonzero_errors": {},
+      "loss_details": []
+    },
+    "h8/v43": {
+      "episodes": 24,
+      "seeds": [
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322
+      ],
+      "valid": 24,
+      "wins": 24,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 1790.4166666666667,
+      "minimum_margin": 385.0,
+      "maximum_turn_ms": 455.976,
+      "nonzero_errors": {},
+      "loss_details": []
+    }
+  },
+  "regression-games.jsonl": {
+    "h8/barnyard": {
+      "episodes": 6,
+      "seeds": [
+        331,
+        332,
+        333
+      ],
+      "valid": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 116898.0,
+      "minimum_margin": 113828.0,
+      "maximum_turn_ms": 332.219,
+      "nonzero_errors": {},
+      "loss_details": []
+    },
+    "h8/v42": {
+      "episodes": 6,
+      "seeds": [
+        331,
+        332,
+        333
+      ],
+      "valid": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 2106.3333333333335,
+      "minimum_margin": 1244.0,
+      "maximum_turn_ms": 238.838,
+      "nonzero_errors": {},
+      "loss_details": []
+    },
+    "v43/barnyard": {
+      "episodes": 6,
+      "seeds": [
+        331,
+        332,
+        333
+      ],
+      "valid": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 116761.5,
+      "minimum_margin": 113711.0,
+      "maximum_turn_ms": 76.569,
+      "nonzero_errors": {},
+      "loss_details": []
+    },
+    "v43/v42": {
+      "episodes": 6,
+      "seeds": [
+        331,
+        332,
+        333
+      ],
+      "valid": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 2170.6666666666665,
+      "minimum_margin": 1254.0,
+      "maximum_turn_ms": 185.71,
+      "nonzero_errors": {},
+      "loss_details": []
+    }
+  },
+  "screen-games.jsonl": {
+    "h7/v43": {
+      "episodes": 6,
+      "seeds": [
+        301,
+        302,
+        303
+      ],
+      "valid": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 1857.6666666666667,
+      "minimum_margin": 144.0,
+      "maximum_turn_ms": 114.602,
+      "nonzero_errors": {},
+      "loss_details": []
+    },
+    "h8/v43": {
+      "episodes": 6,
+      "seeds": [
+        301,
+        302,
+        303
+      ],
+      "valid": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 2017.6666666666667,
+      "minimum_margin": 411.0,
+      "maximum_turn_ms": 83.839,
+      "nonzero_errors": {},
+      "loss_details": []
+    }
+  }
+}

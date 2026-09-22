@@ -1,0 +1,9 @@
+{
+  "version": "V45",
+  "status": "submitted; Pending",
+  "parent_source_sha256": "860df5a5fd9bbcaa41e621d0b4d148a0c470fe98e2fb1514cb1cadc786b59e1c",
+  "source_sha256": "87fac5f010384f7fb0555b4d4c85e73aa9542edac5ce25b12e5371f150a49373",
+  "archive_sha256": "e113694803f211d5a5abc9de3e04a68df37006d97180cfe2379630a026c077ae",
+  "archive_bytes": 164312,
+  "validation_note": "20/20holdoutwins vsV44 and12/12externalwins. Final safety fixes: targeted tests plus two full-game action-equivalence checks; exact final file passed two actual-loader games."
+}

@@ -22,8 +22,18 @@ def target_hands(view, p):
     """
     budget = min(view.money - p["hire_money_floor"],
                  view.money * p["hire_bank_fraction"])
+    # RAMP the crew instead of front-loading it. Replaying a strong agent's
+    # action tape shows hands going 3 (d2) -> 6 (d4) -> 8 (d8) -> 10 (d12) ->
+    # 14 (d26), while we hire 12 on day 0 for $376 -- the exact money the
+    # opening herd needs. Note this contradicts the older DEV.md reading that
+    # "both sides hire 12, so labour is NOT the difference"; that was sampled
+    # from mid-ladder replays, this is a 1358-rated tape sampled at hour 23.
+    # ramp 0.0 disables, reproducing the flat cap exactly.
+    cap = int(p["max_hands"])
+    if p["hands_ramp"] > 0:
+        cap = min(cap, int(p["hands_day0"] + p["hands_ramp"] * view.day))
     best = 0
-    for k in range(1, int(p["max_hands"]) + 1):
+    for k in range(1, max(0, cap) + 1):
         if fib(k - 1) > p["hand_value_per_action"] * 24:
             break
         if cumulative_hire_cost(k) > budget:
@@ -158,7 +168,7 @@ def economics(view, p):
     # difference here is that the freed cash has somewhere better to go.
     if (p["land_first_day"] <= view.day <= p["buy_land_last_day"]
             and not (pl.opening and p["open_land_hold"])
-            and n_extra < len(LAND_ORDER)):
+            and n_extra < min(len(LAND_ORDER), int(p["max_quadrants"]) - 1)):
         cost = LAND_PRICES[n_extra]
         # Do not buy land we have no labour to farm — extra tiles we cannot
         # tend just grow weeds and cost actions to clear.

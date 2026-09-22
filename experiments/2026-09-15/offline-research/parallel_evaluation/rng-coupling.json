@@ -1,0 +1,46 @@
+{
+  "different_shop_draws": 54,
+  "seeds_tested": 100,
+  "examples": [
+    {
+      "seed": 1,
+      "day": 2,
+      "empty_tiles_a": 20,
+      "empty_tiles_b": 21,
+      "shop_a": "ICE_CREAM_SHOP",
+      "shop_b": "BAKERY"
+    },
+    {
+      "seed": 2,
+      "day": 2,
+      "empty_tiles_a": 20,
+      "empty_tiles_b": 21,
+      "shop_a": "PET_CAFE",
+      "shop_b": "BAKERY"
+    },
+    {
+      "seed": 3,
+      "day": 2,
+      "empty_tiles_a": 20,
+      "empty_tiles_b": 21,
+      "shop_a": "PIZZA_SHOP",
+      "shop_b": "FARMERS_MARKET"
+    },
+    {
+      "seed": 4,
+      "day": 2,
+      "empty_tiles_a": 20,
+      "empty_tiles_b": 21,
+      "shop_a": "BAKERY",
+      "shop_b": "PIZZA_SHOP"
+    },
+    {
+      "seed": 5,
+      "day": 2,
+      "empty_tiles_a": 20,
+      "empty_tiles_b": 21,
+      "shop_a": "PIZZA_SHOP",
+      "shop_b": "SMOOTHIE_SHOP"
+    }
+  ]
+}

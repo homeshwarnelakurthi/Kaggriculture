@@ -1,0 +1,38 @@
+[
+  {
+    "seed": 1241,
+    "seat": 0,
+    "actions_equal": true,
+    "rewards": [
+      168679.0,
+      3681.0
+    ]
+  },
+  {
+    "seed": 1241,
+    "seat": 1,
+    "actions_equal": true,
+    "rewards": [
+      3681.0,
+      168679.0
+    ]
+  },
+  {
+    "seed": 1251,
+    "seat": 0,
+    "actions_equal": true,
+    "rewards": [
+      172156.0,
+      3571.0
+    ]
+  },
+  {
+    "seed": 1251,
+    "seat": 1,
+    "actions_equal": true,
+    "rewards": [
+      3593.0,
+      169391.0
+    ]
+  }
+]

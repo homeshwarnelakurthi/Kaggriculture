@@ -1,0 +1,59 @@
+{
+  "version": "V50",
+  "base": "V48",
+  "status": "experimental; not submitted",
+  "source_sha256": "61037d72e6b88d6dc5f7fbf8ccbb6cdb463a30ffa3398fd10d966e30b6e8cff3",
+  "archive_sha256": "c2a3e580e80478b32214a0f9faa5fc7cadf4f4d9f4f1e66d56114e78c8ae2b2b",
+  "validation": {
+    "v48 vs wide": {
+      "games": 6,
+      "wins": 2,
+      "ties": 0,
+      "losses": 4,
+      "mean_margin": -831.3333333333334,
+      "min_margin": -2165.0,
+      "plans": 0,
+      "max_turn_ms": 223.218
+    },
+    "v50 vs v43": {
+      "games": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 2688.6666666666665,
+      "min_margin": 2255.0,
+      "plans": 2,
+      "max_turn_ms": 110.406
+    },
+    "v50 vs v47": {
+      "games": 6,
+      "wins": 4,
+      "ties": 0,
+      "losses": 2,
+      "mean_margin": 676.0,
+      "min_margin": -404.0,
+      "plans": 2,
+      "max_turn_ms": 164.744
+    },
+    "v50 vs v48": {
+      "games": 6,
+      "wins": 2,
+      "ties": 4,
+      "losses": 0,
+      "mean_margin": 254.0,
+      "min_margin": 0.0,
+      "plans": 2,
+      "max_turn_ms": 114.337
+    },
+    "v50 vs wide": {
+      "games": 6,
+      "wins": 4,
+      "ties": 0,
+      "losses": 2,
+      "mean_margin": -532.3333333333334,
+      "min_margin": -2165.0,
+      "plans": 2,
+      "max_turn_ms": 170.37
+    }
+  }
+}

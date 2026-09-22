@@ -1,0 +1,10 @@
+{
+  "competition": "kaggriculture",
+  "file": "v46.tar.gz",
+  "status": "Pending",
+  "verified_utc": "2026-09-18T01:49:03.712001+00:00",
+  "source_sha256": "62fc71b3e218d4d67a7564439943da35efc68cf3570c4985d66106c91e044bf8",
+  "archive_sha256": "b34af5b7af8e21b78e5f1c9a281161259949ed17de623e700a6b6163be5fead5",
+  "url": "https://www.kaggle.com/competitions/kaggriculture/submissions",
+  "verification": "Authenticated Kaggle submissions row shows v46.tar.gz Pending after upload and Submit. No score available yet."
+}

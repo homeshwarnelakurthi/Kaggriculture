@@ -1,0 +1,188 @@
+{
+  "screen": {
+    "combined/v44": {
+      "games": 6,
+      "invalid": 0,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "seeds": [
+        501,
+        502,
+        503
+      ],
+      "mean_margin": 1913.0,
+      "minimum_margin": 1307.0,
+      "max_turn_ms": 574.231,
+      "nonzero_errors": {},
+      "storage_sale_units": 142,
+      "held_reservations": 0,
+      "early_deposit_units": 0
+    },
+    "storage/v44": {
+      "games": 6,
+      "invalid": 0,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "seeds": [
+        501,
+        502,
+        503
+      ],
+      "mean_margin": 839.6666666666666,
+      "minimum_margin": 495.0,
+      "max_turn_ms": 292.643,
+      "nonzero_errors": {},
+      "storage_sale_units": 142,
+      "held_reservations": 0,
+      "early_deposit_units": 0
+    }
+  },
+  "screen2": {
+    "full/v44": {
+      "games": 6,
+      "invalid": 0,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "seeds": [
+        501,
+        502,
+        503
+      ],
+      "mean_margin": 1663.6666666666667,
+      "minimum_margin": 1251.0,
+      "max_turn_ms": 163.921,
+      "nonzero_errors": {},
+      "storage_sale_units": 142,
+      "held_reservations": 4,
+      "early_deposit_units": 0
+    },
+    "inventory/v44": {
+      "games": 6,
+      "invalid": 0,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "seeds": [
+        501,
+        502,
+        503
+      ],
+      "mean_margin": 839.6666666666666,
+      "minimum_margin": 495.0,
+      "max_turn_ms": 126.761,
+      "nonzero_errors": {},
+      "storage_sale_units": 142,
+      "held_reservations": 0,
+      "early_deposit_units": 0
+    }
+  },
+  "holdout": {
+    "v45/v44": {
+      "games": 20,
+      "invalid": 0,
+      "wins": 20,
+      "ties": 0,
+      "losses": 0,
+      "seeds": [
+        521,
+        522,
+        523,
+        524,
+        525,
+        526,
+        527,
+        528,
+        529,
+        530
+      ],
+      "mean_margin": 1459.3,
+      "minimum_margin": 913.0,
+      "max_turn_ms": 436.663,
+      "nonzero_errors": {},
+      "storage_sale_units": 290,
+      "held_reservations": 14,
+      "early_deposit_units": 0
+    }
+  },
+  "external": {
+    "v44/barnyard": {
+      "games": 6,
+      "invalid": 0,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "seeds": [
+        541,
+        542,
+        543
+      ],
+      "mean_margin": 82849.66666666667,
+      "minimum_margin": 76290.0,
+      "max_turn_ms": 377.698,
+      "nonzero_errors": {},
+      "storage_sale_units": 0,
+      "held_reservations": 0,
+      "early_deposit_units": 0
+    },
+    "v44/v43": {
+      "games": 6,
+      "invalid": 0,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "seeds": [
+        541,
+        542,
+        543
+      ],
+      "mean_margin": 3280.0,
+      "minimum_margin": 2909.0,
+      "max_turn_ms": 455.416,
+      "nonzero_errors": {},
+      "storage_sale_units": 0,
+      "held_reservations": 0,
+      "early_deposit_units": 0
+    },
+    "v45/barnyard": {
+      "games": 6,
+      "invalid": 0,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "seeds": [
+        541,
+        542,
+        543
+      ],
+      "mean_margin": 83190.16666666667,
+      "minimum_margin": 76265.0,
+      "max_turn_ms": 284.383,
+      "nonzero_errors": {},
+      "storage_sale_units": 30,
+      "held_reservations": 138,
+      "early_deposit_units": 0
+    },
+    "v45/v43": {
+      "games": 6,
+      "invalid": 0,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "seeds": [
+        541,
+        542,
+        543
+      ],
+      "mean_margin": 3529.0,
+      "minimum_margin": 2784.0,
+      "max_turn_ms": 232.14,
+      "nonzero_errors": {},
+      "storage_sale_units": 38,
+      "held_reservations": 38,
+      "early_deposit_units": 0
+    }
+  }
+}

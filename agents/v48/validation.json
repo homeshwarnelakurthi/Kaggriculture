@@ -1,0 +1,251 @@
+{
+  "screen": {
+    "combined vs v47": {
+      "games": 4,
+      "valid": 4,
+      "wins": 4,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 908.0,
+      "worst": 614.0,
+      "max_turn_ms": 59.724,
+      "errors": []
+    },
+    "harvest vs v47": {
+      "games": 4,
+      "valid": 4,
+      "wins": 4,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 347.5,
+      "worst": 228.0,
+      "max_turn_ms": 131.6,
+      "errors": []
+    },
+    "invest vs v47": {
+      "games": 4,
+      "valid": 4,
+      "wins": 4,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 394.5,
+      "worst": 49.0,
+      "max_turn_ms": 161.683,
+      "errors": []
+    }
+  },
+  "external": {
+    "combined vs barnyard": {
+      "games": 4,
+      "valid": 4,
+      "wins": 4,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 99620.0,
+      "worst": 89770.0,
+      "max_turn_ms": 218.611,
+      "errors": []
+    },
+    "combined vs wide": {
+      "games": 4,
+      "valid": 4,
+      "wins": 2,
+      "ties": 0,
+      "losses": 2,
+      "mean_margin": 134.5,
+      "worst": -600.0,
+      "max_turn_ms": 197.793,
+      "errors": []
+    },
+    "harvest vs barnyard": {
+      "games": 4,
+      "valid": 4,
+      "wins": 4,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 99525.0,
+      "worst": 89033.0,
+      "max_turn_ms": 133.429,
+      "errors": []
+    },
+    "harvest vs wide": {
+      "games": 4,
+      "valid": 4,
+      "wins": 0,
+      "ties": 0,
+      "losses": 4,
+      "mean_margin": -419.0,
+      "worst": -710.0,
+      "max_turn_ms": 147.375,
+      "errors": []
+    },
+    "invest vs barnyard": {
+      "games": 4,
+      "valid": 4,
+      "wins": 4,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 99432.25,
+      "worst": 89770.0,
+      "max_turn_ms": 249.802,
+      "errors": []
+    },
+    "invest vs wide": {
+      "games": 4,
+      "valid": 4,
+      "wins": 2,
+      "ties": 0,
+      "losses": 2,
+      "mean_margin": -66.0,
+      "worst": -688.0,
+      "max_turn_ms": 219.737,
+      "errors": []
+    },
+    "v47 vs barnyard": {
+      "games": 4,
+      "valid": 4,
+      "wins": 4,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 99210.0,
+      "worst": 89033.0,
+      "max_turn_ms": 204.115,
+      "errors": []
+    },
+    "v47 vs wide": {
+      "games": 4,
+      "valid": 4,
+      "wins": 0,
+      "ties": 0,
+      "losses": 4,
+      "mean_margin": -595.0,
+      "worst": -791.0,
+      "max_turn_ms": 232.908,
+      "errors": []
+    }
+  },
+  "holdout": {
+    "combined vs v47": {
+      "games": 10,
+      "valid": 10,
+      "wins": 7,
+      "ties": 0,
+      "losses": 3,
+      "mean_margin": 441.7,
+      "worst": -421.0,
+      "max_turn_ms": 199.944,
+      "errors": []
+    },
+    "combined vs wide": {
+      "games": 10,
+      "valid": 10,
+      "wins": 3,
+      "ties": 0,
+      "losses": 7,
+      "mean_margin": -318.9,
+      "worst": -1865.0,
+      "max_turn_ms": 300.191,
+      "errors": []
+    }
+  },
+  "paired": {
+    "combined vs trader_front": {
+      "games": 6,
+      "valid": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 5858.0,
+      "worst": 5227.0,
+      "max_turn_ms": 118.187,
+      "errors": []
+    },
+    "combined vs wide": {
+      "games": 6,
+      "valid": 6,
+      "wins": 0,
+      "ties": 0,
+      "losses": 6,
+      "mean_margin": -847.0,
+      "worst": -2162.0,
+      "max_turn_ms": 133.15,
+      "errors": []
+    },
+    "v47 vs trader_front": {
+      "games": 6,
+      "valid": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 5699.33,
+      "worst": 5122.0,
+      "max_turn_ms": 295.248,
+      "errors": []
+    },
+    "v47 vs wide": {
+      "games": 6,
+      "valid": 6,
+      "wins": 0,
+      "ties": 0,
+      "losses": 6,
+      "mean_margin": -912.0,
+      "worst": -1657.0,
+      "max_turn_ms": 231.586,
+      "errors": []
+    }
+  },
+  "buffered": {
+    "buffered vs v47": {
+      "games": 10,
+      "valid": 10,
+      "wins": 7,
+      "ties": 0,
+      "losses": 3,
+      "mean_margin": 617.5,
+      "worst": -367.0,
+      "max_turn_ms": 232.872,
+      "errors": []
+    },
+    "buffered vs wide": {
+      "games": 10,
+      "valid": 10,
+      "wins": 5,
+      "ties": 0,
+      "losses": 5,
+      "mean_margin": -199.4,
+      "worst": -1809.0,
+      "max_turn_ms": 268.372,
+      "errors": []
+    }
+  },
+  "buffered-paired": {
+    "buffered vs trader_front": {
+      "games": 6,
+      "valid": 6,
+      "wins": 6,
+      "ties": 0,
+      "losses": 0,
+      "mean_margin": 5338.67,
+      "worst": 3644.0,
+      "max_turn_ms": 88.346,
+      "errors": []
+    },
+    "buffered vs wide": {
+      "games": 6,
+      "valid": 6,
+      "wins": 0,
+      "ties": 0,
+      "losses": 6,
+      "mean_margin": -867.67,
+      "worst": -2046.0,
+      "max_turn_ms": 168.813,
+      "errors": []
+    }
+  },
+  "sources": {
+    "harvest": "029907ea859bac22d2177bd73abeed191ceb3dfcbf349f622d3808c9689c7539",
+    "invest": "f300664eaba82be756c80ae2170b190bd557b1c850810d0074a707217693c760",
+    "combined": "bf2bed29e353f345796ac7d8851fa371208e31bf045121e0a8de19961691bb9e",
+    "buffered": "f2c46b949632c7a0fc81dbf8d00cee77485c715402cac29643a08fdf22595f88"
+  }
+}

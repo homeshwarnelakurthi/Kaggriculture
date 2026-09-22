@@ -1,0 +1,8 @@
+{
+  "name": "V44",
+  "source_sha256": "860df5a5fd9bbcaa41e621d0b4d148a0c470fe98e2fb1514cb1cadc786b59e1c",
+  "archive_sha256": "fa273acdccb8696c79ad542d601ad789d8a1a43a1a950186e3a60f9c2a1133e5",
+  "change": "V43 sale reservation horizon6to8; unchanged field/queue behavior",
+  "validation": "24/24holdoutwins againstV43 seeds311-322;12/12externalwins vsV42/Barnyard seeds331-333; noinvalidgames/errors",
+  "status": "submitted; Kaggle Pending"
+}

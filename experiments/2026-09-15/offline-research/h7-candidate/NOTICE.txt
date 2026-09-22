@@ -1,0 +1,21 @@
+Kaggriculture agent - Homii_N, 2026-09-14
+
+Derived from this account's existing submission 56237315, downloaded from:
+https://www.kaggle.com/code/homeshwarrao/farming-score-v4-a-better-shop?scriptVersionId=349859928
+
+This is a derivative of a route-based agent, not a newly trained model or
+wholly original source. All recovered source comments, attributions, embedded
+route data and existing license headers have been preserved. The recovered
+source credits Kaggle/kaggle-environments contributors, Ahmed Berat Ozer,
+Dmitrii Gluzdov, fieldbook, tetsutani, lucifer19, prvsiyan and other public
+capabilities named in the code. The archive originally contained only main.py;
+it did not include a complete standalone upstream NOTICE or license file.
+Full upstream provenance has not been independently verified.
+
+Homii_N changes extend the existing stock-backed sale reservation horizon.
+Any optional queue optimizer is new code that changes only all-sale ordering
+under an explicit mirror scenario; no opponent private inventory is accessed.
+Originality and licensing obligations mentioned in BRIEFING.md remain separate
+from the local performance validation and have not been resolved with hosts.
+
+Offline experiment: change V43 sale reservation bound from6to7. Unsubmitted; not established as a universal upgrade.

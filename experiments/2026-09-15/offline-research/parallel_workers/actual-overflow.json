@@ -1,0 +1,149 @@
+{
+  "games": [
+    {
+      "seed": 301,
+      "rewards": [
+        64388.0,
+        61558.0
+      ],
+      "status": [
+        "DONE",
+        "DONE"
+      ]
+    },
+    {
+      "seed": 302,
+      "rewards": [
+        76474.0,
+        76170.0
+      ],
+      "status": [
+        "DONE",
+        "DONE"
+      ]
+    },
+    {
+      "seed": 303,
+      "rewards": [
+        65981.0,
+        63476.0
+      ],
+      "status": [
+        "DONE",
+        "DONE"
+      ]
+    }
+  ],
+  "actual_discarded": {
+    "EGG": 19,
+    "WHEAT": 27,
+    "STRAWBERRY": 2,
+    "MILK": 1,
+    "FERTILIZER": 4
+  },
+  "units": 53,
+  "quote_marked_value": 2513,
+  "events": [
+    {
+      "seed": 302,
+      "day": 20,
+      "discarded": {
+        "EGG": 3
+      },
+      "quotes": {
+        "EGG": 56
+      },
+      "quote_marked_value": 168
+    },
+    {
+      "seed": 302,
+      "day": 21,
+      "discarded": {
+        "WHEAT": 3,
+        "STRAWBERRY": 2
+      },
+      "quotes": {
+        "WHEAT": 44,
+        "STRAWBERRY": 141
+      },
+      "quote_marked_value": 414
+    },
+    {
+      "seed": 302,
+      "day": 22,
+      "discarded": {
+        "WHEAT": 9,
+        "MILK": 1
+      },
+      "quotes": {
+        "WHEAT": 43,
+        "MILK": 3
+      },
+      "quote_marked_value": 390
+    },
+    {
+      "seed": 302,
+      "day": 23,
+      "discarded": {
+        "WHEAT": 4,
+        "EGG": 2
+      },
+      "quotes": {
+        "WHEAT": 43,
+        "EGG": 57
+      },
+      "quote_marked_value": 286
+    },
+    {
+      "seed": 302,
+      "day": 25,
+      "discarded": {
+        "EGG": 6,
+        "FERTILIZER": 2
+      },
+      "quotes": {
+        "EGG": 58,
+        "FERTILIZER": 19
+      },
+      "quote_marked_value": 386
+    },
+    {
+      "seed": 303,
+      "day": 22,
+      "discarded": {
+        "WHEAT": 7
+      },
+      "quotes": {
+        "WHEAT": 39
+      },
+      "quote_marked_value": 273
+    },
+    {
+      "seed": 303,
+      "day": 23,
+      "discarded": {
+        "WHEAT": 4,
+        "EGG": 2
+      },
+      "quotes": {
+        "WHEAT": 38,
+        "EGG": 52
+      },
+      "quote_marked_value": 256
+    },
+    {
+      "seed": 303,
+      "day": 25,
+      "discarded": {
+        "EGG": 6,
+        "FERTILIZER": 2
+      },
+      "quotes": {
+        "EGG": 52,
+        "FERTILIZER": 14
+      },
+      "quote_marked_value": 340
+    }
+  ],
+  "valuation_caveat": "Displayed prices at overnight drop are descriptive only, not recoverable profit. Fertilizer cannot be sold, and counterfactual sale timing changes prices."
+}

@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-09-16T02:14:09.102031+00:00",
+  "status": "Pending",
+  "name": "v45.tar.gz",
+  "source": "https://www.kaggle.com/competitions/kaggriculture/submissions",
+  "archive_sha256": "e113694803f211d5a5abc9de3e04a68df37006d97180cfe2379630a026c077ae",
+  "source_sha256": "87fac5f010384f7fb0555b4d4c85e73aa9542edac5ce25b12e5371f150a49373",
+  "other_displayed_scores": {
+    "V44": 2263.6,
+    "V43": 2546.4
+  },
+  "note": "Submission visibly registered in Kaggle. Scores are snapshots, not settled results."
+}

@@ -1,0 +1,331 @@
+{
+  "sources": [
+    {
+      "path": "H:\\Kaggriculture\\work\\v43-validation.jsonl",
+      "sha256": "f98106f3ca5b734c14e72110052b026fe81eab61182993e277cf08ee7038692e"
+    }
+  ],
+  "matchups": [
+    {
+      "candidate": "v43",
+      "opponent": "route",
+      "episodes": 40,
+      "valid_episodes": 40,
+      "invalid_episodes": 0,
+      "wins": 40,
+      "ties": 0,
+      "losses": 0,
+      "unique_seeds": 20,
+      "complete_seat_pairs": 20,
+      "unpaired_or_invalid_seeds": [],
+      "mean_paired_game_points": 1.0,
+      "mean_coin_margin": 25779.95,
+      "min_coin_margin": 17430.0,
+      "max_turn_ms": 688.797,
+      "telemetry_nonzero_problem_counts": {},
+      "seed_pairs": [
+        {
+          "seed": 101,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 21331.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 102,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 25152.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 103,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 19711.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 104,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 22196.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 105,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 29890.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 106,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 43956.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 107,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 17661.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 108,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 19080.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 109,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 21818.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 110,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 18160.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 111,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 19467.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 112,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 25642.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 113,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 31355.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 114,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 19312.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 115,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 29490.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 116,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 27977.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 117,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 28915.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 118,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 19879.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 119,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 42002.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 120,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 32605.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        }
+      ]
+    },
+    {
+      "candidate": "v43",
+      "opponent": "v42",
+      "episodes": 40,
+      "valid_episodes": 40,
+      "invalid_episodes": 0,
+      "wins": 40,
+      "ties": 0,
+      "losses": 0,
+      "unique_seeds": 20,
+      "complete_seat_pairs": 20,
+      "unpaired_or_invalid_seeds": [],
+      "mean_paired_game_points": 1.0,
+      "mean_coin_margin": 1348.4,
+      "min_coin_margin": 412.0,
+      "max_turn_ms": 262.41,
+      "telemetry_nonzero_problem_counts": {},
+      "seed_pairs": [
+        {
+          "seed": 101,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 1307.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 102,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 2007.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 103,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 1189.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 104,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 1714.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 105,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 1723.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 106,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 942.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 107,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 1285.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 108,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 770.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 109,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 637.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 110,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 412.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 111,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 726.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 112,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 1339.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 113,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 1260.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 114,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 544.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 115,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 2684.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 116,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 1303.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 117,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 636.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 118,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 1876.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 119,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 1521.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        },
+        {
+          "seed": 120,
+          "mean_game_points": 1.0,
+          "mean_coin_margin": 3093.0,
+          "wins_both_seats": true,
+          "loses_either_seat": false
+        }
+      ]
+    }
+  ],
+  "interpretation": "Coins diagnose changes; game wins/ties/losses measure success. Both seats share a seed. Related opponents do not establish leaderboard strength. Missing planned seeds cannot be detected without a planned-run manifest."
+}

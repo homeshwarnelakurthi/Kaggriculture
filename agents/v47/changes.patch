@@ -1,0 +1,84 @@
+--- v46/main.py
++++ v47/main.py
+@@ -3724,6 +3724,7 @@
+ agent=globals().pop('agent')
+ 
+ # V46: use observed production synchrony, not equal cash, as sale-timing evidence.
++_V47_CAP_EFFECTS={}
+ _V46_FORECAST_PARENT=_flow_forecast
+ _V46_SYNC={}
+ def _flow_forecast(obs,config):
+@@ -3733,13 +3734,22 @@
+     state=_V46_SYNC.get(player)
+     if state is None or step!=state['last']+1:
+         state={'last':-1,'history':[]};_V46_SYNC[player]=state
++        _V47_CAP_EFFECTS[player]={}
+     same=all(a[k]==b[k] for k in ('farmer','hands','unlocked_quadrants'))
+     if same:
+         # Random weeds on unused land do not indicate different production.
+-        for ra,rb in zip(a['tiles'],b['tiles']):
+-            for ta,tb in zip(ra,rb):
++        for y,(ra,rb) in enumerate(zip(a['tiles'],b['tiles'])):
++            for x,(ta,tb) in enumerate(zip(ra,rb)):
+                 pa=ta if isinstance(ta,dict) and (ta.get('crop') or ta.get('animal')) else None
+                 pb=tb if isinstance(tb,dict) and (tb.get('crop') or tb.get('animal')) else None
++                until=_V47_CAP_EFFECTS.get(player,{}).get((x,y),-1)
++                if pa==pb or step>until:
++                    _V47_CAP_EFFECTS.get(player,{}).pop((x,y),None)
++                elif pa and pb and pa.get('animal')==pb.get('animal')=='GOOSE':
++                    # Our own approved harvest explains only the held-egg difference.
++                    # Feeding, care, position and all other productive state must match.
++                    pa={k:v for k,v in pa.items() if k!='yield_units'}
++                    pb={k:v for k,v in pb.items() if k!='yield_units'}
+                 if pa!=pb:same=False;break
+             if not same:break
+     state['history']=(state['history']+[same])[-24:];state['last']=step
+@@ -3747,3 +3757,48 @@
+     _FLOW_STATS['synchronized_turns']=_FLOW_STATS.get('synchronized_turns',0)+int(model['synchronized'])
+     return model
+ agent=globals().pop('agent')
++
++# V47 experiment: prevent capped goose production at the overnight refresh.
++_V47_PRODUCTION_PARENT=_flow_production
++
++def _flow_production(obs,action):
++    action=_V47_PRODUCTION_PARENT(obs,action)
++    step=int(obs['step']);day=step//24
++    if step%24!=23 or not 144<=step<696:return action
++    model=_FLOW_STATE.get(int(obs['player']),{})
++    # Avoid changing supply while mirror-based market assumptions are uncertain.
++    if model.get('similarity',0)>=.9 and not model.get('synchronized',False):return action
++    farm,private=_r127_fields(obs,action)
++    commands=_r128_commands(action)
++    positions=[obs['farms'][obs['player']]['farmer'],*obs['farms'][obs['player']]['hands']]
++    result=action
++    for actor,(pos,c) in enumerate(zip(positions,commands)):
++        x,y=pos;before=obs['farms'][obs['player']]['tiles'][y][x]
++        if not isinstance(before,dict) or before.get('animal')!='GOOSE':continue
++        harmless=c==['PASS'] or c==['CARE'] and before.get('cared_today')
++        fertilizer=c==['COLLECT_FERTILIZER']
++        if not (harmless or fertilizer):continue
++        tile=farm['tiles'][y][x]
++        if not isinstance(tile,dict) or tile.get('animal')!='GOOSE':continue
++        if day+1-tile['placed_day']<4:continue
++        if not tile.get('fed_today') and tile.get('consecutive_unfed',0)>=1:continue
++        bonus=tile.get('pending_care_bonus',0) if tile.get('fed_today') else 0
++        lost=max(0,int(tile.get('yield_units',0))+1+bonus-4)
++        if lost<=0:continue
++        # Value only newly unblocked production, not the existing eggs moved earlier.
++        if fertilizer and before.get('fertilizer_available') and lost*obs['market']['prices']['EGG']<=obs['market']['prices']['FERTILIZER']:continue
++        trial=_r132_set_command(result,actor,['HARVEST'])
++        newfarm,newprivate=_r127_fields(obs,trial)
++        oldstock,_,_=_r97_market_stock(private['shed'],result.get('market',[]))
++        newstock,_,_=_r97_market_stock(newprivate['shed'],trial.get('market',[]))
++        oldfinal,oldloss=_r97_delivery(oldstock,private,True)
++        newfinal,newloss=_r97_delivery(newstock,newprivate,True)
++        if any(newloss.get(i,0)>oldloss.get(i,0) for i in PRODUCTS):continue
++        if any(newfinal.get(i,0)<min(_flow_reserve(obs,i),oldfinal.get(i,0)) for i in ('WHEAT','FERTILIZER')):continue
++        if newprivate['inventories'][actor].get('EGG',0)<=private['inventories'][actor].get('EGG',0):continue
++        result=trial;farm,private=newfarm,newprivate
++        _V47_CAP_EFFECTS.setdefault(int(obs['player']),{})[(x,y)]=step+72
++        _FLOW_STATS['cap_harvests']=_FLOW_STATS.get('cap_harvests',0)+1
++        _FLOW_STATS['cap_units_prevented']=_FLOW_STATS.get('cap_units_prevented',0)+lost
++    return result
++agent=globals().pop('agent')

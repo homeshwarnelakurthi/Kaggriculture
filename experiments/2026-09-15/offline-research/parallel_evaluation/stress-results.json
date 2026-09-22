@@ -1,0 +1,7759 @@
+{
+  "summary": {
+    "same_order_hidden_stock": {
+      "cases": 337,
+      "losses": 2,
+      "minimum_gain": -17,
+      "mean_gain": 199.64688427299703,
+      "example": {
+        "trial": 366,
+        "mode": "same_order_hidden_stock",
+        "gain": -17,
+        "own_stock": {
+          "TOMATO": 21,
+          "CARROT": 15,
+          "MILK": 20,
+          "WOOL": 4
+        },
+        "rival_stock": {
+          "TOMATO": 40,
+          "CARROT": 17,
+          "MILK": 0,
+          "WOOL": 17
+        },
+        "market_inventory": {
+          "WHEAT": 9944,
+          "CARROT": 9912,
+          "TOMATO": 9770,
+          "STRAWBERRY": 10089,
+          "MELON": 9829,
+          "EGG": 10334,
+          "MILK": 9973,
+          "WOOL": 9613,
+          "FERTILIZER": 10063
+        },
+        "original": [
+          [
+            "SELL",
+            "TOMATO",
+            21
+          ],
+          [
+            "SELL",
+            "CARROT",
+            15
+          ],
+          [
+            "SELL",
+            "MILK",
+            20
+          ],
+          [
+            "SELL",
+            "WOOL",
+            4
+          ]
+        ],
+        "optimized": [
+          [
+            "SELL",
+            "TOMATO",
+            21
+          ],
+          [
+            "SELL",
+            "MILK",
+            20
+          ],
+          [
+            "SELL",
+            "CARROT",
+            15
+          ],
+          [
+            "SELL",
+            "WOOL",
+            4
+          ]
+        ],
+        "rival": [
+          [
+            "SELL",
+            "TOMATO",
+            21
+          ],
+          [
+            "SELL",
+            "CARROT",
+            15
+          ],
+          [
+            "SELL",
+            "MILK",
+            20
+          ],
+          [
+            "SELL",
+            "WOOL",
+            4
+          ]
+        ]
+      }
+    },
+    "different_order_hidden_stock": {
+      "cases": 337,
+      "losses": 45,
+      "minimum_gain": -225,
+      "mean_gain": 77.67952522255193,
+      "example": {
+        "trial": 8,
+        "mode": "different_order_hidden_stock",
+        "gain": -6,
+        "own_stock": {
+          "EGG": 6,
+          "MILK": 15,
+          "MELON": 9,
+          "STRAWBERRY": 2
+        },
+        "rival_stock": {
+          "EGG": 36,
+          "MILK": 36,
+          "MELON": 19,
+          "STRAWBERRY": 7
+        },
+        "market_inventory": {
+          "WHEAT": 9838,
+          "CARROT": 9976,
+          "TOMATO": 10395,
+          "STRAWBERRY": 9917,
+          "MELON": 10063,
+          "EGG": 9873,
+          "MILK": 9529,
+          "WOOL": 10053,
+          "FERTILIZER": 9909
+        },
+        "original": [
+          [
+            "SELL",
+            "EGG",
+            6
+          ],
+          [
+            "SELL",
+            "MILK",
+            15
+          ],
+          [
+            "SELL",
+            "MELON",
+            9
+          ],
+          [
+            "SELL",
+            "STRAWBERRY",
+            2
+          ]
+        ],
+        "optimized": [
+          [
+            "SELL",
+            "MILK",
+            15
+          ],
+          [
+            "SELL",
+            "MELON",
+            9
+          ],
+          [
+            "SELL",
+            "STRAWBERRY",
+            2
+          ],
+          [
+            "SELL",
+            "EGG",
+            6
+          ]
+        ],
+        "rival": [
+          [
+            "SELL",
+            "STRAWBERRY",
+            2
+          ],
+          [
+            "SELL",
+            "EGG",
+            6
+          ],
+          [
+            "SELL",
+            "MILK",
+            15
+          ],
+          [
+            "SELL",
+            "MELON",
+            9
+          ]
+        ]
+      }
+    }
+  },
+  "results": [
+    {
+      "trial": 1,
+      "mode": "same_order_hidden_stock",
+      "gain": 1035
+    },
+    {
+      "trial": 1,
+      "mode": "different_order_hidden_stock",
+      "gain": 65
+    },
+    {
+      "trial": 3,
+      "mode": "same_order_hidden_stock",
+      "gain": 4
+    },
+    {
+      "trial": 3,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 8,
+      "mode": "same_order_hidden_stock",
+      "gain": 159
+    },
+    {
+      "trial": 8,
+      "mode": "different_order_hidden_stock",
+      "gain": -6,
+      "own_stock": {
+        "EGG": 6,
+        "MILK": 15,
+        "MELON": 9,
+        "STRAWBERRY": 2
+      },
+      "rival_stock": {
+        "EGG": 36,
+        "MILK": 36,
+        "MELON": 19,
+        "STRAWBERRY": 7
+      },
+      "market_inventory": {
+        "WHEAT": 9838,
+        "CARROT": 9976,
+        "TOMATO": 10395,
+        "STRAWBERRY": 9917,
+        "MELON": 10063,
+        "EGG": 9873,
+        "MILK": 9529,
+        "WOOL": 10053,
+        "FERTILIZER": 9909
+      },
+      "original": [
+        [
+          "SELL",
+          "EGG",
+          6
+        ],
+        [
+          "SELL",
+          "MILK",
+          15
+        ],
+        [
+          "SELL",
+          "MELON",
+          9
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          2
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MILK",
+          15
+        ],
+        [
+          "SELL",
+          "MELON",
+          9
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          2
+        ],
+        [
+          "SELL",
+          "EGG",
+          6
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          2
+        ],
+        [
+          "SELL",
+          "EGG",
+          6
+        ],
+        [
+          "SELL",
+          "MILK",
+          15
+        ],
+        [
+          "SELL",
+          "MELON",
+          9
+        ]
+      ]
+    },
+    {
+      "trial": 9,
+      "mode": "same_order_hidden_stock",
+      "gain": 64
+    },
+    {
+      "trial": 9,
+      "mode": "different_order_hidden_stock",
+      "gain": 19
+    },
+    {
+      "trial": 10,
+      "mode": "same_order_hidden_stock",
+      "gain": 423
+    },
+    {
+      "trial": 10,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 11,
+      "mode": "same_order_hidden_stock",
+      "gain": 155
+    },
+    {
+      "trial": 11,
+      "mode": "different_order_hidden_stock",
+      "gain": -12,
+      "own_stock": {
+        "MILK": 16,
+        "WOOL": 25,
+        "WHEAT": 25,
+        "MELON": 7
+      },
+      "rival_stock": {
+        "MILK": 36,
+        "WOOL": 14,
+        "WHEAT": 33,
+        "MELON": 29
+      },
+      "market_inventory": {
+        "WHEAT": 9942,
+        "CARROT": 10035,
+        "TOMATO": 10091,
+        "STRAWBERRY": 9785,
+        "MELON": 10178,
+        "EGG": 10361,
+        "MILK": 9885,
+        "WOOL": 10051,
+        "FERTILIZER": 9872
+      },
+      "original": [
+        [
+          "SELL",
+          "MILK",
+          16
+        ],
+        [
+          "SELL",
+          "WOOL",
+          25
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          25
+        ],
+        [
+          "SELL",
+          "MELON",
+          7
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "WOOL",
+          25
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          25
+        ],
+        [
+          "SELL",
+          "MILK",
+          16
+        ],
+        [
+          "SELL",
+          "MELON",
+          7
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "WOOL",
+          25
+        ],
+        [
+          "SELL",
+          "MILK",
+          16
+        ],
+        [
+          "SELL",
+          "MELON",
+          7
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          25
+        ]
+      ]
+    },
+    {
+      "trial": 12,
+      "mode": "same_order_hidden_stock",
+      "gain": 68
+    },
+    {
+      "trial": 12,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 13,
+      "mode": "same_order_hidden_stock",
+      "gain": 66
+    },
+    {
+      "trial": 13,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 15,
+      "mode": "same_order_hidden_stock",
+      "gain": 110
+    },
+    {
+      "trial": 15,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 18,
+      "mode": "same_order_hidden_stock",
+      "gain": 765
+    },
+    {
+      "trial": 18,
+      "mode": "different_order_hidden_stock",
+      "gain": 756
+    },
+    {
+      "trial": 19,
+      "mode": "same_order_hidden_stock",
+      "gain": 411
+    },
+    {
+      "trial": 19,
+      "mode": "different_order_hidden_stock",
+      "gain": 411
+    },
+    {
+      "trial": 22,
+      "mode": "same_order_hidden_stock",
+      "gain": 10
+    },
+    {
+      "trial": 22,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 24,
+      "mode": "same_order_hidden_stock",
+      "gain": 68
+    },
+    {
+      "trial": 24,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 25,
+      "mode": "same_order_hidden_stock",
+      "gain": 67
+    },
+    {
+      "trial": 25,
+      "mode": "different_order_hidden_stock",
+      "gain": 34
+    },
+    {
+      "trial": 26,
+      "mode": "same_order_hidden_stock",
+      "gain": 56
+    },
+    {
+      "trial": 26,
+      "mode": "different_order_hidden_stock",
+      "gain": 17
+    },
+    {
+      "trial": 29,
+      "mode": "same_order_hidden_stock",
+      "gain": 26
+    },
+    {
+      "trial": 29,
+      "mode": "different_order_hidden_stock",
+      "gain": 19
+    },
+    {
+      "trial": 30,
+      "mode": "same_order_hidden_stock",
+      "gain": 66
+    },
+    {
+      "trial": 30,
+      "mode": "different_order_hidden_stock",
+      "gain": 30
+    },
+    {
+      "trial": 31,
+      "mode": "same_order_hidden_stock",
+      "gain": 245
+    },
+    {
+      "trial": 31,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 34,
+      "mode": "same_order_hidden_stock",
+      "gain": 448
+    },
+    {
+      "trial": 34,
+      "mode": "different_order_hidden_stock",
+      "gain": 55
+    },
+    {
+      "trial": 36,
+      "mode": "same_order_hidden_stock",
+      "gain": 378
+    },
+    {
+      "trial": 36,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 37,
+      "mode": "same_order_hidden_stock",
+      "gain": 49
+    },
+    {
+      "trial": 37,
+      "mode": "different_order_hidden_stock",
+      "gain": 49
+    },
+    {
+      "trial": 38,
+      "mode": "same_order_hidden_stock",
+      "gain": 69
+    },
+    {
+      "trial": 38,
+      "mode": "different_order_hidden_stock",
+      "gain": 16
+    },
+    {
+      "trial": 39,
+      "mode": "same_order_hidden_stock",
+      "gain": 39
+    },
+    {
+      "trial": 39,
+      "mode": "different_order_hidden_stock",
+      "gain": 3
+    },
+    {
+      "trial": 40,
+      "mode": "same_order_hidden_stock",
+      "gain": 169
+    },
+    {
+      "trial": 40,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 41,
+      "mode": "same_order_hidden_stock",
+      "gain": 45
+    },
+    {
+      "trial": 41,
+      "mode": "different_order_hidden_stock",
+      "gain": 49
+    },
+    {
+      "trial": 42,
+      "mode": "same_order_hidden_stock",
+      "gain": 143
+    },
+    {
+      "trial": 42,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 43,
+      "mode": "same_order_hidden_stock",
+      "gain": 29
+    },
+    {
+      "trial": 43,
+      "mode": "different_order_hidden_stock",
+      "gain": 12
+    },
+    {
+      "trial": 44,
+      "mode": "same_order_hidden_stock",
+      "gain": 22
+    },
+    {
+      "trial": 44,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 45,
+      "mode": "same_order_hidden_stock",
+      "gain": 255
+    },
+    {
+      "trial": 45,
+      "mode": "different_order_hidden_stock",
+      "gain": 102
+    },
+    {
+      "trial": 46,
+      "mode": "same_order_hidden_stock",
+      "gain": 156
+    },
+    {
+      "trial": 46,
+      "mode": "different_order_hidden_stock",
+      "gain": 7
+    },
+    {
+      "trial": 49,
+      "mode": "same_order_hidden_stock",
+      "gain": 364
+    },
+    {
+      "trial": 49,
+      "mode": "different_order_hidden_stock",
+      "gain": 344
+    },
+    {
+      "trial": 50,
+      "mode": "same_order_hidden_stock",
+      "gain": 316
+    },
+    {
+      "trial": 50,
+      "mode": "different_order_hidden_stock",
+      "gain": 253
+    },
+    {
+      "trial": 51,
+      "mode": "same_order_hidden_stock",
+      "gain": 69
+    },
+    {
+      "trial": 51,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 53,
+      "mode": "same_order_hidden_stock",
+      "gain": 52
+    },
+    {
+      "trial": 53,
+      "mode": "different_order_hidden_stock",
+      "gain": 53
+    },
+    {
+      "trial": 54,
+      "mode": "same_order_hidden_stock",
+      "gain": 557
+    },
+    {
+      "trial": 54,
+      "mode": "different_order_hidden_stock",
+      "gain": 95
+    },
+    {
+      "trial": 55,
+      "mode": "same_order_hidden_stock",
+      "gain": 292
+    },
+    {
+      "trial": 55,
+      "mode": "different_order_hidden_stock",
+      "gain": -94,
+      "own_stock": {
+        "MELON": 8,
+        "MILK": 24,
+        "WHEAT": 7,
+        "STRAWBERRY": 4
+      },
+      "rival_stock": {
+        "MELON": 34,
+        "MILK": 35,
+        "WHEAT": 40,
+        "STRAWBERRY": 4
+      },
+      "market_inventory": {
+        "WHEAT": 9913,
+        "CARROT": 10301,
+        "TOMATO": 9724,
+        "STRAWBERRY": 9608,
+        "MELON": 9993,
+        "EGG": 10323,
+        "MILK": 9932,
+        "WOOL": 9920,
+        "FERTILIZER": 9507
+      },
+      "original": [
+        [
+          "SELL",
+          "MELON",
+          8
+        ],
+        [
+          "SELL",
+          "MILK",
+          24
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          7
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          4
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MILK",
+          24
+        ],
+        [
+          "SELL",
+          "MELON",
+          8
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          4
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          7
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MELON",
+          8
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          4
+        ],
+        [
+          "SELL",
+          "MILK",
+          24
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          7
+        ]
+      ]
+    },
+    {
+      "trial": 57,
+      "mode": "same_order_hidden_stock",
+      "gain": 99
+    },
+    {
+      "trial": 57,
+      "mode": "different_order_hidden_stock",
+      "gain": 4
+    },
+    {
+      "trial": 58,
+      "mode": "same_order_hidden_stock",
+      "gain": 93
+    },
+    {
+      "trial": 58,
+      "mode": "different_order_hidden_stock",
+      "gain": -110,
+      "own_stock": {
+        "WOOL": 21,
+        "STRAWBERRY": 23,
+        "MELON": 6,
+        "TOMATO": 17
+      },
+      "rival_stock": {
+        "WOOL": 29,
+        "STRAWBERRY": 35,
+        "MELON": 13,
+        "TOMATO": 38
+      },
+      "market_inventory": {
+        "WHEAT": 10076,
+        "CARROT": 9952,
+        "TOMATO": 10161,
+        "STRAWBERRY": 9618,
+        "MELON": 9797,
+        "EGG": 9935,
+        "MILK": 10105,
+        "WOOL": 9912,
+        "FERTILIZER": 9550
+      },
+      "original": [
+        [
+          "SELL",
+          "WOOL",
+          21
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          23
+        ],
+        [
+          "SELL",
+          "MELON",
+          6
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          17
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          23
+        ],
+        [
+          "SELL",
+          "MELON",
+          6
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          17
+        ],
+        [
+          "SELL",
+          "WOOL",
+          21
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MELON",
+          6
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          17
+        ],
+        [
+          "SELL",
+          "WOOL",
+          21
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          23
+        ]
+      ]
+    },
+    {
+      "trial": 60,
+      "mode": "same_order_hidden_stock",
+      "gain": 63
+    },
+    {
+      "trial": 60,
+      "mode": "different_order_hidden_stock",
+      "gain": 24
+    },
+    {
+      "trial": 61,
+      "mode": "same_order_hidden_stock",
+      "gain": 86
+    },
+    {
+      "trial": 61,
+      "mode": "different_order_hidden_stock",
+      "gain": 19
+    },
+    {
+      "trial": 62,
+      "mode": "same_order_hidden_stock",
+      "gain": 62
+    },
+    {
+      "trial": 62,
+      "mode": "different_order_hidden_stock",
+      "gain": 39
+    },
+    {
+      "trial": 63,
+      "mode": "same_order_hidden_stock",
+      "gain": 21
+    },
+    {
+      "trial": 63,
+      "mode": "different_order_hidden_stock",
+      "gain": 20
+    },
+    {
+      "trial": 64,
+      "mode": "same_order_hidden_stock",
+      "gain": 107
+    },
+    {
+      "trial": 64,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 65,
+      "mode": "same_order_hidden_stock",
+      "gain": 142
+    },
+    {
+      "trial": 65,
+      "mode": "different_order_hidden_stock",
+      "gain": -18,
+      "own_stock": {
+        "WHEAT": 19,
+        "CARROT": 13,
+        "STRAWBERRY": 24,
+        "TOMATO": 24
+      },
+      "rival_stock": {
+        "WHEAT": 22,
+        "CARROT": 22,
+        "STRAWBERRY": 15,
+        "TOMATO": 3
+      },
+      "market_inventory": {
+        "WHEAT": 9877,
+        "CARROT": 10248,
+        "TOMATO": 9849,
+        "STRAWBERRY": 9738,
+        "MELON": 10014,
+        "EGG": 10055,
+        "MILK": 9881,
+        "WOOL": 10344,
+        "FERTILIZER": 10001
+      },
+      "original": [
+        [
+          "SELL",
+          "WHEAT",
+          19
+        ],
+        [
+          "SELL",
+          "CARROT",
+          13
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          24
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          24
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "WHEAT",
+          19
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          24
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          24
+        ],
+        [
+          "SELL",
+          "CARROT",
+          13
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          24
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          24
+        ],
+        [
+          "SELL",
+          "CARROT",
+          13
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          19
+        ]
+      ]
+    },
+    {
+      "trial": 67,
+      "mode": "same_order_hidden_stock",
+      "gain": 990
+    },
+    {
+      "trial": 67,
+      "mode": "different_order_hidden_stock",
+      "gain": 990
+    },
+    {
+      "trial": 68,
+      "mode": "same_order_hidden_stock",
+      "gain": 39
+    },
+    {
+      "trial": 68,
+      "mode": "different_order_hidden_stock",
+      "gain": -6,
+      "own_stock": {
+        "TOMATO": 7,
+        "CARROT": 24,
+        "WOOL": 17,
+        "WHEAT": 13
+      },
+      "rival_stock": {
+        "TOMATO": 25,
+        "CARROT": 34,
+        "WOOL": 0,
+        "WHEAT": 12
+      },
+      "market_inventory": {
+        "WHEAT": 10385,
+        "CARROT": 9578,
+        "TOMATO": 9934,
+        "STRAWBERRY": 10153,
+        "MELON": 10154,
+        "EGG": 10086,
+        "MILK": 10242,
+        "WOOL": 10262,
+        "FERTILIZER": 9844
+      },
+      "original": [
+        [
+          "SELL",
+          "TOMATO",
+          7
+        ],
+        [
+          "SELL",
+          "CARROT",
+          24
+        ],
+        [
+          "SELL",
+          "WOOL",
+          17
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          13
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "CARROT",
+          24
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          7
+        ],
+        [
+          "SELL",
+          "WOOL",
+          17
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          13
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          7
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          13
+        ],
+        [
+          "SELL",
+          "WOOL",
+          17
+        ],
+        [
+          "SELL",
+          "CARROT",
+          24
+        ]
+      ]
+    },
+    {
+      "trial": 69,
+      "mode": "same_order_hidden_stock",
+      "gain": 118
+    },
+    {
+      "trial": 69,
+      "mode": "different_order_hidden_stock",
+      "gain": 118
+    },
+    {
+      "trial": 72,
+      "mode": "same_order_hidden_stock",
+      "gain": 86
+    },
+    {
+      "trial": 72,
+      "mode": "different_order_hidden_stock",
+      "gain": -38,
+      "own_stock": {
+        "TOMATO": 19,
+        "MILK": 9,
+        "WOOL": 17,
+        "STRAWBERRY": 15
+      },
+      "rival_stock": {
+        "TOMATO": 32,
+        "MILK": 36,
+        "WOOL": 9,
+        "STRAWBERRY": 32
+      },
+      "market_inventory": {
+        "WHEAT": 10304,
+        "CARROT": 9866,
+        "TOMATO": 10330,
+        "STRAWBERRY": 9852,
+        "MELON": 10324,
+        "EGG": 10071,
+        "MILK": 9597,
+        "WOOL": 9698,
+        "FERTILIZER": 9807
+      },
+      "original": [
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ],
+        [
+          "SELL",
+          "MILK",
+          9
+        ],
+        [
+          "SELL",
+          "WOOL",
+          17
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          15
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MILK",
+          9
+        ],
+        [
+          "SELL",
+          "WOOL",
+          17
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          15
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          15
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ],
+        [
+          "SELL",
+          "WOOL",
+          17
+        ],
+        [
+          "SELL",
+          "MILK",
+          9
+        ]
+      ]
+    },
+    {
+      "trial": 73,
+      "mode": "same_order_hidden_stock",
+      "gain": 101
+    },
+    {
+      "trial": 73,
+      "mode": "different_order_hidden_stock",
+      "gain": 26
+    },
+    {
+      "trial": 74,
+      "mode": "same_order_hidden_stock",
+      "gain": 32
+    },
+    {
+      "trial": 74,
+      "mode": "different_order_hidden_stock",
+      "gain": 29
+    },
+    {
+      "trial": 75,
+      "mode": "same_order_hidden_stock",
+      "gain": 209
+    },
+    {
+      "trial": 75,
+      "mode": "different_order_hidden_stock",
+      "gain": -15,
+      "own_stock": {
+        "MELON": 25,
+        "STRAWBERRY": 25,
+        "TOMATO": 23,
+        "MILK": 25
+      },
+      "rival_stock": {
+        "MELON": 17,
+        "STRAWBERRY": 20,
+        "TOMATO": 27,
+        "MILK": 3
+      },
+      "market_inventory": {
+        "WHEAT": 10165,
+        "CARROT": 10380,
+        "TOMATO": 10200,
+        "STRAWBERRY": 9680,
+        "MELON": 9733,
+        "EGG": 10176,
+        "MILK": 9675,
+        "WOOL": 9872,
+        "FERTILIZER": 10260
+      },
+      "original": [
+        [
+          "SELL",
+          "MELON",
+          25
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          23
+        ],
+        [
+          "SELL",
+          "MILK",
+          25
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          23
+        ],
+        [
+          "SELL",
+          "MILK",
+          25
+        ],
+        [
+          "SELL",
+          "MELON",
+          25
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          23
+        ],
+        [
+          "SELL",
+          "MILK",
+          25
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "MELON",
+          25
+        ]
+      ]
+    },
+    {
+      "trial": 76,
+      "mode": "same_order_hidden_stock",
+      "gain": 38
+    },
+    {
+      "trial": 76,
+      "mode": "different_order_hidden_stock",
+      "gain": 14
+    },
+    {
+      "trial": 77,
+      "mode": "same_order_hidden_stock",
+      "gain": 65
+    },
+    {
+      "trial": 77,
+      "mode": "different_order_hidden_stock",
+      "gain": 41
+    },
+    {
+      "trial": 81,
+      "mode": "same_order_hidden_stock",
+      "gain": 10
+    },
+    {
+      "trial": 81,
+      "mode": "different_order_hidden_stock",
+      "gain": -8,
+      "own_stock": {
+        "EGG": 7,
+        "WOOL": 21,
+        "STRAWBERRY": 5,
+        "CARROT": 4
+      },
+      "rival_stock": {
+        "EGG": 2,
+        "WOOL": 3,
+        "STRAWBERRY": 11,
+        "CARROT": 0
+      },
+      "market_inventory": {
+        "WHEAT": 9991,
+        "CARROT": 10323,
+        "TOMATO": 9810,
+        "STRAWBERRY": 10361,
+        "MELON": 9669,
+        "EGG": 9535,
+        "MILK": 9966,
+        "WOOL": 9900,
+        "FERTILIZER": 9828
+      },
+      "original": [
+        [
+          "SELL",
+          "EGG",
+          7
+        ],
+        [
+          "SELL",
+          "WOOL",
+          21
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          5
+        ],
+        [
+          "SELL",
+          "CARROT",
+          4
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "WOOL",
+          21
+        ],
+        [
+          "SELL",
+          "EGG",
+          7
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          5
+        ],
+        [
+          "SELL",
+          "CARROT",
+          4
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "WOOL",
+          21
+        ],
+        [
+          "SELL",
+          "EGG",
+          7
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          5
+        ],
+        [
+          "SELL",
+          "CARROT",
+          4
+        ]
+      ]
+    },
+    {
+      "trial": 82,
+      "mode": "same_order_hidden_stock",
+      "gain": 181
+    },
+    {
+      "trial": 82,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 83,
+      "mode": "same_order_hidden_stock",
+      "gain": 921
+    },
+    {
+      "trial": 83,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 84,
+      "mode": "same_order_hidden_stock",
+      "gain": 349
+    },
+    {
+      "trial": 84,
+      "mode": "different_order_hidden_stock",
+      "gain": -7,
+      "own_stock": {
+        "MILK": 9,
+        "TOMATO": 21,
+        "CARROT": 12,
+        "WOOL": 21
+      },
+      "rival_stock": {
+        "MILK": 3,
+        "TOMATO": 9,
+        "CARROT": 27,
+        "WOOL": 33
+      },
+      "market_inventory": {
+        "WHEAT": 10308,
+        "CARROT": 10097,
+        "TOMATO": 10089,
+        "STRAWBERRY": 10394,
+        "MELON": 9518,
+        "EGG": 9797,
+        "MILK": 9916,
+        "WOOL": 9963,
+        "FERTILIZER": 10147
+      },
+      "original": [
+        [
+          "SELL",
+          "MILK",
+          9
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "CARROT",
+          12
+        ],
+        [
+          "SELL",
+          "WOOL",
+          21
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "CARROT",
+          12
+        ],
+        [
+          "SELL",
+          "WOOL",
+          21
+        ],
+        [
+          "SELL",
+          "MILK",
+          9
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "WOOL",
+          21
+        ],
+        [
+          "SELL",
+          "CARROT",
+          12
+        ],
+        [
+          "SELL",
+          "MILK",
+          9
+        ]
+      ]
+    },
+    {
+      "trial": 85,
+      "mode": "same_order_hidden_stock",
+      "gain": 59
+    },
+    {
+      "trial": 85,
+      "mode": "different_order_hidden_stock",
+      "gain": 59
+    },
+    {
+      "trial": 86,
+      "mode": "same_order_hidden_stock",
+      "gain": 4
+    },
+    {
+      "trial": 86,
+      "mode": "different_order_hidden_stock",
+      "gain": 4
+    },
+    {
+      "trial": 87,
+      "mode": "same_order_hidden_stock",
+      "gain": 31
+    },
+    {
+      "trial": 87,
+      "mode": "different_order_hidden_stock",
+      "gain": 31
+    },
+    {
+      "trial": 88,
+      "mode": "same_order_hidden_stock",
+      "gain": 111
+    },
+    {
+      "trial": 88,
+      "mode": "different_order_hidden_stock",
+      "gain": 1
+    },
+    {
+      "trial": 89,
+      "mode": "same_order_hidden_stock",
+      "gain": 625
+    },
+    {
+      "trial": 89,
+      "mode": "different_order_hidden_stock",
+      "gain": 76
+    },
+    {
+      "trial": 91,
+      "mode": "same_order_hidden_stock",
+      "gain": 86
+    },
+    {
+      "trial": 91,
+      "mode": "different_order_hidden_stock",
+      "gain": 78
+    },
+    {
+      "trial": 92,
+      "mode": "same_order_hidden_stock",
+      "gain": 76
+    },
+    {
+      "trial": 92,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 93,
+      "mode": "same_order_hidden_stock",
+      "gain": 997
+    },
+    {
+      "trial": 93,
+      "mode": "different_order_hidden_stock",
+      "gain": 997
+    },
+    {
+      "trial": 94,
+      "mode": "same_order_hidden_stock",
+      "gain": 292
+    },
+    {
+      "trial": 94,
+      "mode": "different_order_hidden_stock",
+      "gain": 292
+    },
+    {
+      "trial": 95,
+      "mode": "same_order_hidden_stock",
+      "gain": 28
+    },
+    {
+      "trial": 95,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 97,
+      "mode": "same_order_hidden_stock",
+      "gain": 76
+    },
+    {
+      "trial": 97,
+      "mode": "different_order_hidden_stock",
+      "gain": 2
+    },
+    {
+      "trial": 98,
+      "mode": "same_order_hidden_stock",
+      "gain": 190
+    },
+    {
+      "trial": 98,
+      "mode": "different_order_hidden_stock",
+      "gain": -6,
+      "own_stock": {
+        "EGG": 5,
+        "MELON": 10,
+        "TOMATO": 10,
+        "CARROT": 18
+      },
+      "rival_stock": {
+        "EGG": 13,
+        "MELON": 26,
+        "TOMATO": 35,
+        "CARROT": 18
+      },
+      "market_inventory": {
+        "WHEAT": 9993,
+        "CARROT": 9500,
+        "TOMATO": 9716,
+        "STRAWBERRY": 10312,
+        "MELON": 10018,
+        "EGG": 9724,
+        "MILK": 9598,
+        "WOOL": 10286,
+        "FERTILIZER": 9629
+      },
+      "original": [
+        [
+          "SELL",
+          "EGG",
+          5
+        ],
+        [
+          "SELL",
+          "MELON",
+          10
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          10
+        ],
+        [
+          "SELL",
+          "CARROT",
+          18
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MELON",
+          10
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          10
+        ],
+        [
+          "SELL",
+          "CARROT",
+          18
+        ],
+        [
+          "SELL",
+          "EGG",
+          5
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "CARROT",
+          18
+        ],
+        [
+          "SELL",
+          "EGG",
+          5
+        ],
+        [
+          "SELL",
+          "MELON",
+          10
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          10
+        ]
+      ]
+    },
+    {
+      "trial": 99,
+      "mode": "same_order_hidden_stock",
+      "gain": 195
+    },
+    {
+      "trial": 99,
+      "mode": "different_order_hidden_stock",
+      "gain": 6
+    },
+    {
+      "trial": 100,
+      "mode": "same_order_hidden_stock",
+      "gain": 33
+    },
+    {
+      "trial": 100,
+      "mode": "different_order_hidden_stock",
+      "gain": 33
+    },
+    {
+      "trial": 102,
+      "mode": "same_order_hidden_stock",
+      "gain": 32
+    },
+    {
+      "trial": 102,
+      "mode": "different_order_hidden_stock",
+      "gain": 26
+    },
+    {
+      "trial": 104,
+      "mode": "same_order_hidden_stock",
+      "gain": 646
+    },
+    {
+      "trial": 104,
+      "mode": "different_order_hidden_stock",
+      "gain": 409
+    },
+    {
+      "trial": 105,
+      "mode": "same_order_hidden_stock",
+      "gain": 234
+    },
+    {
+      "trial": 105,
+      "mode": "different_order_hidden_stock",
+      "gain": 18
+    },
+    {
+      "trial": 106,
+      "mode": "same_order_hidden_stock",
+      "gain": 158
+    },
+    {
+      "trial": 106,
+      "mode": "different_order_hidden_stock",
+      "gain": 158
+    },
+    {
+      "trial": 107,
+      "mode": "same_order_hidden_stock",
+      "gain": 28
+    },
+    {
+      "trial": 107,
+      "mode": "different_order_hidden_stock",
+      "gain": 12
+    },
+    {
+      "trial": 108,
+      "mode": "same_order_hidden_stock",
+      "gain": 62
+    },
+    {
+      "trial": 108,
+      "mode": "different_order_hidden_stock",
+      "gain": 49
+    },
+    {
+      "trial": 109,
+      "mode": "same_order_hidden_stock",
+      "gain": 173
+    },
+    {
+      "trial": 109,
+      "mode": "different_order_hidden_stock",
+      "gain": 173
+    },
+    {
+      "trial": 110,
+      "mode": "same_order_hidden_stock",
+      "gain": 193
+    },
+    {
+      "trial": 110,
+      "mode": "different_order_hidden_stock",
+      "gain": 12
+    },
+    {
+      "trial": 111,
+      "mode": "same_order_hidden_stock",
+      "gain": 1152
+    },
+    {
+      "trial": 111,
+      "mode": "different_order_hidden_stock",
+      "gain": -5,
+      "own_stock": {
+        "CARROT": 7,
+        "MELON": 22,
+        "STRAWBERRY": 17,
+        "WHEAT": 3
+      },
+      "rival_stock": {
+        "CARROT": 6,
+        "MELON": 28,
+        "STRAWBERRY": 35,
+        "WHEAT": 27
+      },
+      "market_inventory": {
+        "WHEAT": 10347,
+        "CARROT": 9655,
+        "TOMATO": 10097,
+        "STRAWBERRY": 10108,
+        "MELON": 10098,
+        "EGG": 10373,
+        "MILK": 10276,
+        "WOOL": 10186,
+        "FERTILIZER": 10033
+      },
+      "original": [
+        [
+          "SELL",
+          "CARROT",
+          7
+        ],
+        [
+          "SELL",
+          "MELON",
+          22
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          17
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          3
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MELON",
+          22
+        ],
+        [
+          "SELL",
+          "CARROT",
+          7
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          17
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          3
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "CARROT",
+          7
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          17
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          3
+        ],
+        [
+          "SELL",
+          "MELON",
+          22
+        ]
+      ]
+    },
+    {
+      "trial": 113,
+      "mode": "same_order_hidden_stock",
+      "gain": 62
+    },
+    {
+      "trial": 113,
+      "mode": "different_order_hidden_stock",
+      "gain": -28,
+      "own_stock": {
+        "EGG": 20,
+        "STRAWBERRY": 20,
+        "MILK": 9,
+        "CARROT": 21
+      },
+      "rival_stock": {
+        "EGG": 13,
+        "STRAWBERRY": 2,
+        "MILK": 1,
+        "CARROT": 34
+      },
+      "market_inventory": {
+        "WHEAT": 10041,
+        "CARROT": 9515,
+        "TOMATO": 10033,
+        "STRAWBERRY": 9510,
+        "MELON": 9909,
+        "EGG": 9892,
+        "MILK": 9857,
+        "WOOL": 10225,
+        "FERTILIZER": 9850
+      },
+      "original": [
+        [
+          "SELL",
+          "EGG",
+          20
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          20
+        ],
+        [
+          "SELL",
+          "MILK",
+          9
+        ],
+        [
+          "SELL",
+          "CARROT",
+          21
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          20
+        ],
+        [
+          "SELL",
+          "MILK",
+          9
+        ],
+        [
+          "SELL",
+          "CARROT",
+          21
+        ],
+        [
+          "SELL",
+          "EGG",
+          20
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "CARROT",
+          21
+        ],
+        [
+          "SELL",
+          "MILK",
+          9
+        ],
+        [
+          "SELL",
+          "EGG",
+          20
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          20
+        ]
+      ]
+    },
+    {
+      "trial": 116,
+      "mode": "same_order_hidden_stock",
+      "gain": 40
+    },
+    {
+      "trial": 116,
+      "mode": "different_order_hidden_stock",
+      "gain": 40
+    },
+    {
+      "trial": 117,
+      "mode": "same_order_hidden_stock",
+      "gain": 18
+    },
+    {
+      "trial": 117,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 118,
+      "mode": "same_order_hidden_stock",
+      "gain": 110
+    },
+    {
+      "trial": 118,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 119,
+      "mode": "same_order_hidden_stock",
+      "gain": 88
+    },
+    {
+      "trial": 119,
+      "mode": "different_order_hidden_stock",
+      "gain": 42
+    },
+    {
+      "trial": 120,
+      "mode": "same_order_hidden_stock",
+      "gain": 1262
+    },
+    {
+      "trial": 120,
+      "mode": "different_order_hidden_stock",
+      "gain": 1258
+    },
+    {
+      "trial": 121,
+      "mode": "same_order_hidden_stock",
+      "gain": 39
+    },
+    {
+      "trial": 121,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 122,
+      "mode": "same_order_hidden_stock",
+      "gain": 26
+    },
+    {
+      "trial": 122,
+      "mode": "different_order_hidden_stock",
+      "gain": -7,
+      "own_stock": {
+        "STRAWBERRY": 12,
+        "TOMATO": 8,
+        "CARROT": 21,
+        "WHEAT": 12
+      },
+      "rival_stock": {
+        "STRAWBERRY": 8,
+        "TOMATO": 24,
+        "CARROT": 40,
+        "WHEAT": 0
+      },
+      "market_inventory": {
+        "WHEAT": 10189,
+        "CARROT": 9557,
+        "TOMATO": 9869,
+        "STRAWBERRY": 9951,
+        "MELON": 10361,
+        "EGG": 9746,
+        "MILK": 9550,
+        "WOOL": 9763,
+        "FERTILIZER": 9833
+      },
+      "original": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          12
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          8
+        ],
+        [
+          "SELL",
+          "CARROT",
+          21
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          12
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          12
+        ],
+        [
+          "SELL",
+          "CARROT",
+          21
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          8
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          12
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "CARROT",
+          21
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          8
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          12
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          12
+        ]
+      ]
+    },
+    {
+      "trial": 123,
+      "mode": "same_order_hidden_stock",
+      "gain": 69
+    },
+    {
+      "trial": 123,
+      "mode": "different_order_hidden_stock",
+      "gain": 10
+    },
+    {
+      "trial": 124,
+      "mode": "same_order_hidden_stock",
+      "gain": 7
+    },
+    {
+      "trial": 124,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 125,
+      "mode": "same_order_hidden_stock",
+      "gain": 613
+    },
+    {
+      "trial": 125,
+      "mode": "different_order_hidden_stock",
+      "gain": 613
+    },
+    {
+      "trial": 128,
+      "mode": "same_order_hidden_stock",
+      "gain": 192
+    },
+    {
+      "trial": 128,
+      "mode": "different_order_hidden_stock",
+      "gain": 181
+    },
+    {
+      "trial": 129,
+      "mode": "same_order_hidden_stock",
+      "gain": 128
+    },
+    {
+      "trial": 129,
+      "mode": "different_order_hidden_stock",
+      "gain": 121
+    },
+    {
+      "trial": 130,
+      "mode": "same_order_hidden_stock",
+      "gain": 74
+    },
+    {
+      "trial": 130,
+      "mode": "different_order_hidden_stock",
+      "gain": 9
+    },
+    {
+      "trial": 131,
+      "mode": "same_order_hidden_stock",
+      "gain": 143
+    },
+    {
+      "trial": 131,
+      "mode": "different_order_hidden_stock",
+      "gain": 138
+    },
+    {
+      "trial": 133,
+      "mode": "same_order_hidden_stock",
+      "gain": 93
+    },
+    {
+      "trial": 133,
+      "mode": "different_order_hidden_stock",
+      "gain": 29
+    },
+    {
+      "trial": 135,
+      "mode": "same_order_hidden_stock",
+      "gain": 56
+    },
+    {
+      "trial": 135,
+      "mode": "different_order_hidden_stock",
+      "gain": 44
+    },
+    {
+      "trial": 136,
+      "mode": "same_order_hidden_stock",
+      "gain": 1702
+    },
+    {
+      "trial": 136,
+      "mode": "different_order_hidden_stock",
+      "gain": 916
+    },
+    {
+      "trial": 137,
+      "mode": "same_order_hidden_stock",
+      "gain": 79
+    },
+    {
+      "trial": 137,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 138,
+      "mode": "same_order_hidden_stock",
+      "gain": 630
+    },
+    {
+      "trial": 138,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 139,
+      "mode": "same_order_hidden_stock",
+      "gain": 122
+    },
+    {
+      "trial": 139,
+      "mode": "different_order_hidden_stock",
+      "gain": -18,
+      "own_stock": {
+        "MILK": 6,
+        "CARROT": 15,
+        "WHEAT": 17,
+        "TOMATO": 7
+      },
+      "rival_stock": {
+        "MILK": 24,
+        "CARROT": 30,
+        "WHEAT": 24,
+        "TOMATO": 22
+      },
+      "market_inventory": {
+        "WHEAT": 9800,
+        "CARROT": 9903,
+        "TOMATO": 9542,
+        "STRAWBERRY": 9968,
+        "MELON": 10017,
+        "EGG": 10052,
+        "MILK": 10019,
+        "WOOL": 9863,
+        "FERTILIZER": 9782
+      },
+      "original": [
+        [
+          "SELL",
+          "MILK",
+          6
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          17
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          7
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MILK",
+          6
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          17
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          7
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "WHEAT",
+          17
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          7
+        ],
+        [
+          "SELL",
+          "MILK",
+          6
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ]
+      ]
+    },
+    {
+      "trial": 140,
+      "mode": "same_order_hidden_stock",
+      "gain": 153
+    },
+    {
+      "trial": 140,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 141,
+      "mode": "same_order_hidden_stock",
+      "gain": 64
+    },
+    {
+      "trial": 141,
+      "mode": "different_order_hidden_stock",
+      "gain": 64
+    },
+    {
+      "trial": 143,
+      "mode": "same_order_hidden_stock",
+      "gain": 40
+    },
+    {
+      "trial": 143,
+      "mode": "different_order_hidden_stock",
+      "gain": 38
+    },
+    {
+      "trial": 146,
+      "mode": "same_order_hidden_stock",
+      "gain": 309
+    },
+    {
+      "trial": 146,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 150,
+      "mode": "same_order_hidden_stock",
+      "gain": 29
+    },
+    {
+      "trial": 150,
+      "mode": "different_order_hidden_stock",
+      "gain": 26
+    },
+    {
+      "trial": 152,
+      "mode": "same_order_hidden_stock",
+      "gain": 224
+    },
+    {
+      "trial": 152,
+      "mode": "different_order_hidden_stock",
+      "gain": 218
+    },
+    {
+      "trial": 153,
+      "mode": "same_order_hidden_stock",
+      "gain": 23
+    },
+    {
+      "trial": 153,
+      "mode": "different_order_hidden_stock",
+      "gain": 23
+    },
+    {
+      "trial": 154,
+      "mode": "same_order_hidden_stock",
+      "gain": 25
+    },
+    {
+      "trial": 154,
+      "mode": "different_order_hidden_stock",
+      "gain": 2
+    },
+    {
+      "trial": 159,
+      "mode": "same_order_hidden_stock",
+      "gain": 28
+    },
+    {
+      "trial": 159,
+      "mode": "different_order_hidden_stock",
+      "gain": 20
+    },
+    {
+      "trial": 161,
+      "mode": "same_order_hidden_stock",
+      "gain": 368
+    },
+    {
+      "trial": 161,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 162,
+      "mode": "same_order_hidden_stock",
+      "gain": 110
+    },
+    {
+      "trial": 162,
+      "mode": "different_order_hidden_stock",
+      "gain": 110
+    },
+    {
+      "trial": 163,
+      "mode": "same_order_hidden_stock",
+      "gain": 78
+    },
+    {
+      "trial": 163,
+      "mode": "different_order_hidden_stock",
+      "gain": 78
+    },
+    {
+      "trial": 166,
+      "mode": "same_order_hidden_stock",
+      "gain": 51
+    },
+    {
+      "trial": 166,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 167,
+      "mode": "same_order_hidden_stock",
+      "gain": 92
+    },
+    {
+      "trial": 167,
+      "mode": "different_order_hidden_stock",
+      "gain": 4
+    },
+    {
+      "trial": 168,
+      "mode": "same_order_hidden_stock",
+      "gain": 407
+    },
+    {
+      "trial": 168,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 169,
+      "mode": "same_order_hidden_stock",
+      "gain": 86
+    },
+    {
+      "trial": 169,
+      "mode": "different_order_hidden_stock",
+      "gain": 8
+    },
+    {
+      "trial": 170,
+      "mode": "same_order_hidden_stock",
+      "gain": 130
+    },
+    {
+      "trial": 170,
+      "mode": "different_order_hidden_stock",
+      "gain": -29,
+      "own_stock": {
+        "TOMATO": 25,
+        "STRAWBERRY": 19,
+        "WOOL": 7,
+        "MILK": 5
+      },
+      "rival_stock": {
+        "TOMATO": 27,
+        "STRAWBERRY": 28,
+        "WOOL": 39,
+        "MILK": 35
+      },
+      "market_inventory": {
+        "WHEAT": 9832,
+        "CARROT": 10104,
+        "TOMATO": 9633,
+        "STRAWBERRY": 9891,
+        "MELON": 10342,
+        "EGG": 9747,
+        "MILK": 9711,
+        "WOOL": 10043,
+        "FERTILIZER": 9854
+      },
+      "original": [
+        [
+          "SELL",
+          "TOMATO",
+          25
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          19
+        ],
+        [
+          "SELL",
+          "WOOL",
+          7
+        ],
+        [
+          "SELL",
+          "MILK",
+          5
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          25
+        ],
+        [
+          "SELL",
+          "WOOL",
+          7
+        ],
+        [
+          "SELL",
+          "MILK",
+          5
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          19
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          25
+        ],
+        [
+          "SELL",
+          "WOOL",
+          7
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          19
+        ],
+        [
+          "SELL",
+          "MILK",
+          5
+        ]
+      ]
+    },
+    {
+      "trial": 171,
+      "mode": "same_order_hidden_stock",
+      "gain": 48
+    },
+    {
+      "trial": 171,
+      "mode": "different_order_hidden_stock",
+      "gain": 48
+    },
+    {
+      "trial": 172,
+      "mode": "same_order_hidden_stock",
+      "gain": 120
+    },
+    {
+      "trial": 172,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 173,
+      "mode": "same_order_hidden_stock",
+      "gain": 63
+    },
+    {
+      "trial": 173,
+      "mode": "different_order_hidden_stock",
+      "gain": -69,
+      "own_stock": {
+        "MILK": 20,
+        "TOMATO": 17,
+        "WOOL": 24,
+        "MELON": 23
+      },
+      "rival_stock": {
+        "MILK": 24,
+        "TOMATO": 1,
+        "WOOL": 8,
+        "MELON": 33
+      },
+      "market_inventory": {
+        "WHEAT": 9932,
+        "CARROT": 9948,
+        "TOMATO": 10004,
+        "STRAWBERRY": 9744,
+        "MELON": 9762,
+        "EGG": 9504,
+        "MILK": 9561,
+        "WOOL": 9958,
+        "FERTILIZER": 10392
+      },
+      "original": [
+        [
+          "SELL",
+          "MILK",
+          20
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          17
+        ],
+        [
+          "SELL",
+          "WOOL",
+          24
+        ],
+        [
+          "SELL",
+          "MELON",
+          23
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          17
+        ],
+        [
+          "SELL",
+          "WOOL",
+          24
+        ],
+        [
+          "SELL",
+          "MELON",
+          23
+        ],
+        [
+          "SELL",
+          "MILK",
+          20
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MELON",
+          23
+        ],
+        [
+          "SELL",
+          "WOOL",
+          24
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          17
+        ],
+        [
+          "SELL",
+          "MILK",
+          20
+        ]
+      ]
+    },
+    {
+      "trial": 174,
+      "mode": "same_order_hidden_stock",
+      "gain": 605
+    },
+    {
+      "trial": 174,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 175,
+      "mode": "same_order_hidden_stock",
+      "gain": 457
+    },
+    {
+      "trial": 175,
+      "mode": "different_order_hidden_stock",
+      "gain": 457
+    },
+    {
+      "trial": 176,
+      "mode": "same_order_hidden_stock",
+      "gain": 208
+    },
+    {
+      "trial": 176,
+      "mode": "different_order_hidden_stock",
+      "gain": 17
+    },
+    {
+      "trial": 177,
+      "mode": "same_order_hidden_stock",
+      "gain": 138
+    },
+    {
+      "trial": 177,
+      "mode": "different_order_hidden_stock",
+      "gain": -10,
+      "own_stock": {
+        "CARROT": 18,
+        "STRAWBERRY": 25,
+        "MELON": 1,
+        "WHEAT": 3
+      },
+      "rival_stock": {
+        "CARROT": 11,
+        "STRAWBERRY": 17,
+        "MELON": 25,
+        "WHEAT": 27
+      },
+      "market_inventory": {
+        "WHEAT": 9862,
+        "CARROT": 9935,
+        "TOMATO": 10311,
+        "STRAWBERRY": 9724,
+        "MELON": 10217,
+        "EGG": 10301,
+        "MILK": 10166,
+        "WOOL": 10225,
+        "FERTILIZER": 10260
+      },
+      "original": [
+        [
+          "SELL",
+          "CARROT",
+          18
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "MELON",
+          1
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          3
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "CARROT",
+          18
+        ],
+        [
+          "SELL",
+          "MELON",
+          1
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          3
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "CARROT",
+          18
+        ],
+        [
+          "SELL",
+          "MELON",
+          1
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          3
+        ]
+      ]
+    },
+    {
+      "trial": 178,
+      "mode": "same_order_hidden_stock",
+      "gain": 174
+    },
+    {
+      "trial": 178,
+      "mode": "different_order_hidden_stock",
+      "gain": -4,
+      "own_stock": {
+        "WOOL": 6,
+        "STRAWBERRY": 22,
+        "TOMATO": 16,
+        "MILK": 9
+      },
+      "rival_stock": {
+        "WOOL": 9,
+        "STRAWBERRY": 15,
+        "TOMATO": 16,
+        "MILK": 0
+      },
+      "market_inventory": {
+        "WHEAT": 10066,
+        "CARROT": 9650,
+        "TOMATO": 9975,
+        "STRAWBERRY": 9747,
+        "MELON": 9600,
+        "EGG": 10226,
+        "MILK": 9892,
+        "WOOL": 9765,
+        "FERTILIZER": 10110
+      },
+      "original": [
+        [
+          "SELL",
+          "WOOL",
+          6
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          22
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          16
+        ],
+        [
+          "SELL",
+          "MILK",
+          9
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          22
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          16
+        ],
+        [
+          "SELL",
+          "MILK",
+          9
+        ],
+        [
+          "SELL",
+          "WOOL",
+          6
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          16
+        ],
+        [
+          "SELL",
+          "WOOL",
+          6
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          22
+        ],
+        [
+          "SELL",
+          "MILK",
+          9
+        ]
+      ]
+    },
+    {
+      "trial": 183,
+      "mode": "same_order_hidden_stock",
+      "gain": 22
+    },
+    {
+      "trial": 183,
+      "mode": "different_order_hidden_stock",
+      "gain": -8,
+      "own_stock": {
+        "MELON": 22,
+        "CARROT": 9,
+        "TOMATO": 21,
+        "MILK": 11
+      },
+      "rival_stock": {
+        "MELON": 36,
+        "CARROT": 19,
+        "TOMATO": 10,
+        "MILK": 19
+      },
+      "market_inventory": {
+        "WHEAT": 10277,
+        "CARROT": 10033,
+        "TOMATO": 10170,
+        "STRAWBERRY": 10237,
+        "MELON": 9928,
+        "EGG": 9588,
+        "MILK": 10093,
+        "WOOL": 10299,
+        "FERTILIZER": 9757
+      },
+      "original": [
+        [
+          "SELL",
+          "MELON",
+          22
+        ],
+        [
+          "SELL",
+          "CARROT",
+          9
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "MILK",
+          11
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MELON",
+          22
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "CARROT",
+          9
+        ],
+        [
+          "SELL",
+          "MILK",
+          11
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MELON",
+          22
+        ],
+        [
+          "SELL",
+          "MILK",
+          11
+        ],
+        [
+          "SELL",
+          "CARROT",
+          9
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ]
+      ]
+    },
+    {
+      "trial": 185,
+      "mode": "same_order_hidden_stock",
+      "gain": 263
+    },
+    {
+      "trial": 185,
+      "mode": "different_order_hidden_stock",
+      "gain": 261
+    },
+    {
+      "trial": 187,
+      "mode": "same_order_hidden_stock",
+      "gain": 22
+    },
+    {
+      "trial": 187,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 188,
+      "mode": "same_order_hidden_stock",
+      "gain": 1215
+    },
+    {
+      "trial": 188,
+      "mode": "different_order_hidden_stock",
+      "gain": 7
+    },
+    {
+      "trial": 189,
+      "mode": "same_order_hidden_stock",
+      "gain": 221
+    },
+    {
+      "trial": 189,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 190,
+      "mode": "same_order_hidden_stock",
+      "gain": 122
+    },
+    {
+      "trial": 190,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 191,
+      "mode": "same_order_hidden_stock",
+      "gain": 277
+    },
+    {
+      "trial": 191,
+      "mode": "different_order_hidden_stock",
+      "gain": -4,
+      "own_stock": {
+        "EGG": 7,
+        "STRAWBERRY": 23,
+        "CARROT": 3,
+        "MILK": 6
+      },
+      "rival_stock": {
+        "EGG": 11,
+        "STRAWBERRY": 14,
+        "CARROT": 34,
+        "MILK": 30
+      },
+      "market_inventory": {
+        "WHEAT": 9631,
+        "CARROT": 9619,
+        "TOMATO": 9955,
+        "STRAWBERRY": 9914,
+        "MELON": 9909,
+        "EGG": 9951,
+        "MILK": 9983,
+        "WOOL": 10299,
+        "FERTILIZER": 9620
+      },
+      "original": [
+        [
+          "SELL",
+          "EGG",
+          7
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          23
+        ],
+        [
+          "SELL",
+          "CARROT",
+          3
+        ],
+        [
+          "SELL",
+          "MILK",
+          6
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          23
+        ],
+        [
+          "SELL",
+          "CARROT",
+          3
+        ],
+        [
+          "SELL",
+          "MILK",
+          6
+        ],
+        [
+          "SELL",
+          "EGG",
+          7
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MILK",
+          6
+        ],
+        [
+          "SELL",
+          "CARROT",
+          3
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          23
+        ],
+        [
+          "SELL",
+          "EGG",
+          7
+        ]
+      ]
+    },
+    {
+      "trial": 192,
+      "mode": "same_order_hidden_stock",
+      "gain": 122
+    },
+    {
+      "trial": 192,
+      "mode": "different_order_hidden_stock",
+      "gain": -7,
+      "own_stock": {
+        "CARROT": 8,
+        "WHEAT": 21,
+        "STRAWBERRY": 23,
+        "MELON": 22
+      },
+      "rival_stock": {
+        "CARROT": 24,
+        "WHEAT": 33,
+        "STRAWBERRY": 38,
+        "MELON": 1
+      },
+      "market_inventory": {
+        "WHEAT": 9678,
+        "CARROT": 10151,
+        "TOMATO": 9894,
+        "STRAWBERRY": 9553,
+        "MELON": 9938,
+        "EGG": 10158,
+        "MILK": 10345,
+        "WOOL": 9814,
+        "FERTILIZER": 10252
+      },
+      "original": [
+        [
+          "SELL",
+          "CARROT",
+          8
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          21
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          23
+        ],
+        [
+          "SELL",
+          "MELON",
+          22
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "WHEAT",
+          21
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          23
+        ],
+        [
+          "SELL",
+          "MELON",
+          22
+        ],
+        [
+          "SELL",
+          "CARROT",
+          8
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "CARROT",
+          8
+        ],
+        [
+          "SELL",
+          "MELON",
+          22
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          21
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          23
+        ]
+      ]
+    },
+    {
+      "trial": 193,
+      "mode": "same_order_hidden_stock",
+      "gain": 33
+    },
+    {
+      "trial": 193,
+      "mode": "different_order_hidden_stock",
+      "gain": 18
+    },
+    {
+      "trial": 194,
+      "mode": "same_order_hidden_stock",
+      "gain": 157
+    },
+    {
+      "trial": 194,
+      "mode": "different_order_hidden_stock",
+      "gain": 93
+    },
+    {
+      "trial": 195,
+      "mode": "same_order_hidden_stock",
+      "gain": 229
+    },
+    {
+      "trial": 195,
+      "mode": "different_order_hidden_stock",
+      "gain": 201
+    },
+    {
+      "trial": 196,
+      "mode": "same_order_hidden_stock",
+      "gain": 162
+    },
+    {
+      "trial": 196,
+      "mode": "different_order_hidden_stock",
+      "gain": 5
+    },
+    {
+      "trial": 197,
+      "mode": "same_order_hidden_stock",
+      "gain": 174
+    },
+    {
+      "trial": 197,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 198,
+      "mode": "same_order_hidden_stock",
+      "gain": 41
+    },
+    {
+      "trial": 198,
+      "mode": "different_order_hidden_stock",
+      "gain": 38
+    },
+    {
+      "trial": 199,
+      "mode": "same_order_hidden_stock",
+      "gain": 28
+    },
+    {
+      "trial": 199,
+      "mode": "different_order_hidden_stock",
+      "gain": 28
+    },
+    {
+      "trial": 200,
+      "mode": "same_order_hidden_stock",
+      "gain": 629
+    },
+    {
+      "trial": 200,
+      "mode": "different_order_hidden_stock",
+      "gain": -12,
+      "own_stock": {
+        "WHEAT": 23,
+        "TOMATO": 17,
+        "STRAWBERRY": 15,
+        "EGG": 4
+      },
+      "rival_stock": {
+        "WHEAT": 6,
+        "TOMATO": 10,
+        "STRAWBERRY": 6,
+        "EGG": 24
+      },
+      "market_inventory": {
+        "WHEAT": 9831,
+        "CARROT": 10073,
+        "TOMATO": 9542,
+        "STRAWBERRY": 9755,
+        "MELON": 9509,
+        "EGG": 10322,
+        "MILK": 10027,
+        "WOOL": 9627,
+        "FERTILIZER": 10324
+      },
+      "original": [
+        [
+          "SELL",
+          "WHEAT",
+          23
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          17
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          15
+        ],
+        [
+          "SELL",
+          "EGG",
+          4
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          17
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          15
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          23
+        ],
+        [
+          "SELL",
+          "EGG",
+          4
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "EGG",
+          4
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          23
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          17
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          15
+        ]
+      ]
+    },
+    {
+      "trial": 201,
+      "mode": "same_order_hidden_stock",
+      "gain": 93
+    },
+    {
+      "trial": 201,
+      "mode": "different_order_hidden_stock",
+      "gain": 84
+    },
+    {
+      "trial": 202,
+      "mode": "same_order_hidden_stock",
+      "gain": 39
+    },
+    {
+      "trial": 202,
+      "mode": "different_order_hidden_stock",
+      "gain": 7
+    },
+    {
+      "trial": 205,
+      "mode": "same_order_hidden_stock",
+      "gain": 47
+    },
+    {
+      "trial": 205,
+      "mode": "different_order_hidden_stock",
+      "gain": 47
+    },
+    {
+      "trial": 206,
+      "mode": "same_order_hidden_stock",
+      "gain": 35
+    },
+    {
+      "trial": 206,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 207,
+      "mode": "same_order_hidden_stock",
+      "gain": 102
+    },
+    {
+      "trial": 207,
+      "mode": "different_order_hidden_stock",
+      "gain": 62
+    },
+    {
+      "trial": 211,
+      "mode": "same_order_hidden_stock",
+      "gain": 246
+    },
+    {
+      "trial": 211,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 212,
+      "mode": "same_order_hidden_stock",
+      "gain": 1376
+    },
+    {
+      "trial": 212,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 213,
+      "mode": "same_order_hidden_stock",
+      "gain": 959
+    },
+    {
+      "trial": 213,
+      "mode": "different_order_hidden_stock",
+      "gain": 73
+    },
+    {
+      "trial": 214,
+      "mode": "same_order_hidden_stock",
+      "gain": 97
+    },
+    {
+      "trial": 214,
+      "mode": "different_order_hidden_stock",
+      "gain": 97
+    },
+    {
+      "trial": 215,
+      "mode": "same_order_hidden_stock",
+      "gain": 42
+    },
+    {
+      "trial": 215,
+      "mode": "different_order_hidden_stock",
+      "gain": 3
+    },
+    {
+      "trial": 216,
+      "mode": "same_order_hidden_stock",
+      "gain": 92
+    },
+    {
+      "trial": 216,
+      "mode": "different_order_hidden_stock",
+      "gain": 66
+    },
+    {
+      "trial": 218,
+      "mode": "same_order_hidden_stock",
+      "gain": 61
+    },
+    {
+      "trial": 218,
+      "mode": "different_order_hidden_stock",
+      "gain": 37
+    },
+    {
+      "trial": 220,
+      "mode": "same_order_hidden_stock",
+      "gain": 104
+    },
+    {
+      "trial": 220,
+      "mode": "different_order_hidden_stock",
+      "gain": 10
+    },
+    {
+      "trial": 221,
+      "mode": "same_order_hidden_stock",
+      "gain": 30
+    },
+    {
+      "trial": 221,
+      "mode": "different_order_hidden_stock",
+      "gain": 26
+    },
+    {
+      "trial": 222,
+      "mode": "same_order_hidden_stock",
+      "gain": 80
+    },
+    {
+      "trial": 222,
+      "mode": "different_order_hidden_stock",
+      "gain": 80
+    },
+    {
+      "trial": 223,
+      "mode": "same_order_hidden_stock",
+      "gain": 91
+    },
+    {
+      "trial": 223,
+      "mode": "different_order_hidden_stock",
+      "gain": 50
+    },
+    {
+      "trial": 224,
+      "mode": "same_order_hidden_stock",
+      "gain": 76
+    },
+    {
+      "trial": 224,
+      "mode": "different_order_hidden_stock",
+      "gain": 35
+    },
+    {
+      "trial": 225,
+      "mode": "same_order_hidden_stock",
+      "gain": 302
+    },
+    {
+      "trial": 225,
+      "mode": "different_order_hidden_stock",
+      "gain": 301
+    },
+    {
+      "trial": 226,
+      "mode": "same_order_hidden_stock",
+      "gain": 101
+    },
+    {
+      "trial": 226,
+      "mode": "different_order_hidden_stock",
+      "gain": 101
+    },
+    {
+      "trial": 229,
+      "mode": "same_order_hidden_stock",
+      "gain": 155
+    },
+    {
+      "trial": 229,
+      "mode": "different_order_hidden_stock",
+      "gain": 155
+    },
+    {
+      "trial": 230,
+      "mode": "same_order_hidden_stock",
+      "gain": 8
+    },
+    {
+      "trial": 230,
+      "mode": "different_order_hidden_stock",
+      "gain": -3,
+      "own_stock": {
+        "MILK": 24,
+        "MELON": 18,
+        "STRAWBERRY": 16,
+        "TOMATO": 2
+      },
+      "rival_stock": {
+        "MILK": 32,
+        "MELON": 6,
+        "STRAWBERRY": 0,
+        "TOMATO": 38
+      },
+      "market_inventory": {
+        "WHEAT": 9571,
+        "CARROT": 10100,
+        "TOMATO": 9527,
+        "STRAWBERRY": 9705,
+        "MELON": 9918,
+        "EGG": 10150,
+        "MILK": 9686,
+        "WOOL": 10105,
+        "FERTILIZER": 9540
+      },
+      "original": [
+        [
+          "SELL",
+          "MILK",
+          24
+        ],
+        [
+          "SELL",
+          "MELON",
+          18
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          16
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          2
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MILK",
+          24
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          16
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          2
+        ],
+        [
+          "SELL",
+          "MELON",
+          18
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          2
+        ],
+        [
+          "SELL",
+          "MELON",
+          18
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          16
+        ],
+        [
+          "SELL",
+          "MILK",
+          24
+        ]
+      ]
+    },
+    {
+      "trial": 233,
+      "mode": "same_order_hidden_stock",
+      "gain": 97
+    },
+    {
+      "trial": 233,
+      "mode": "different_order_hidden_stock",
+      "gain": 72
+    },
+    {
+      "trial": 238,
+      "mode": "same_order_hidden_stock",
+      "gain": 74
+    },
+    {
+      "trial": 238,
+      "mode": "different_order_hidden_stock",
+      "gain": -2,
+      "own_stock": {
+        "WHEAT": 10,
+        "MILK": 10,
+        "STRAWBERRY": 25,
+        "MELON": 7
+      },
+      "rival_stock": {
+        "WHEAT": 32,
+        "MILK": 7,
+        "STRAWBERRY": 5,
+        "MELON": 17
+      },
+      "market_inventory": {
+        "WHEAT": 9649,
+        "CARROT": 9792,
+        "TOMATO": 9800,
+        "STRAWBERRY": 9760,
+        "MELON": 9731,
+        "EGG": 10267,
+        "MILK": 9582,
+        "WOOL": 10153,
+        "FERTILIZER": 9901
+      },
+      "original": [
+        [
+          "SELL",
+          "WHEAT",
+          10
+        ],
+        [
+          "SELL",
+          "MILK",
+          10
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "MELON",
+          7
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MILK",
+          10
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          10
+        ],
+        [
+          "SELL",
+          "MELON",
+          7
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "WHEAT",
+          10
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "MILK",
+          10
+        ],
+        [
+          "SELL",
+          "MELON",
+          7
+        ]
+      ]
+    },
+    {
+      "trial": 240,
+      "mode": "same_order_hidden_stock",
+      "gain": 673
+    },
+    {
+      "trial": 240,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 242,
+      "mode": "same_order_hidden_stock",
+      "gain": 28
+    },
+    {
+      "trial": 242,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 243,
+      "mode": "same_order_hidden_stock",
+      "gain": 29
+    },
+    {
+      "trial": 243,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 244,
+      "mode": "same_order_hidden_stock",
+      "gain": 817
+    },
+    {
+      "trial": 244,
+      "mode": "different_order_hidden_stock",
+      "gain": 41
+    },
+    {
+      "trial": 245,
+      "mode": "same_order_hidden_stock",
+      "gain": 82
+    },
+    {
+      "trial": 245,
+      "mode": "different_order_hidden_stock",
+      "gain": -6,
+      "own_stock": {
+        "WHEAT": 14,
+        "WOOL": 18,
+        "MELON": 23,
+        "TOMATO": 19
+      },
+      "rival_stock": {
+        "WHEAT": 38,
+        "WOOL": 17,
+        "MELON": 24,
+        "TOMATO": 17
+      },
+      "market_inventory": {
+        "WHEAT": 9672,
+        "CARROT": 9579,
+        "TOMATO": 10333,
+        "STRAWBERRY": 9506,
+        "MELON": 9794,
+        "EGG": 9974,
+        "MILK": 9719,
+        "WOOL": 9912,
+        "FERTILIZER": 9567
+      },
+      "original": [
+        [
+          "SELL",
+          "WHEAT",
+          14
+        ],
+        [
+          "SELL",
+          "WOOL",
+          18
+        ],
+        [
+          "SELL",
+          "MELON",
+          23
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "WOOL",
+          18
+        ],
+        [
+          "SELL",
+          "MELON",
+          23
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          14
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "WHEAT",
+          14
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ],
+        [
+          "SELL",
+          "WOOL",
+          18
+        ],
+        [
+          "SELL",
+          "MELON",
+          23
+        ]
+      ]
+    },
+    {
+      "trial": 246,
+      "mode": "same_order_hidden_stock",
+      "gain": 184
+    },
+    {
+      "trial": 246,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 247,
+      "mode": "same_order_hidden_stock",
+      "gain": 70
+    },
+    {
+      "trial": 247,
+      "mode": "different_order_hidden_stock",
+      "gain": 46
+    },
+    {
+      "trial": 249,
+      "mode": "same_order_hidden_stock",
+      "gain": 48
+    },
+    {
+      "trial": 249,
+      "mode": "different_order_hidden_stock",
+      "gain": 48
+    },
+    {
+      "trial": 250,
+      "mode": "same_order_hidden_stock",
+      "gain": 44
+    },
+    {
+      "trial": 250,
+      "mode": "different_order_hidden_stock",
+      "gain": 6
+    },
+    {
+      "trial": 251,
+      "mode": "same_order_hidden_stock",
+      "gain": 38
+    },
+    {
+      "trial": 251,
+      "mode": "different_order_hidden_stock",
+      "gain": 14
+    },
+    {
+      "trial": 254,
+      "mode": "same_order_hidden_stock",
+      "gain": 79
+    },
+    {
+      "trial": 254,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 256,
+      "mode": "same_order_hidden_stock",
+      "gain": 39
+    },
+    {
+      "trial": 256,
+      "mode": "different_order_hidden_stock",
+      "gain": -20,
+      "own_stock": {
+        "EGG": 7,
+        "TOMATO": 2,
+        "MILK": 13,
+        "STRAWBERRY": 2
+      },
+      "rival_stock": {
+        "EGG": 25,
+        "TOMATO": 0,
+        "MILK": 23,
+        "STRAWBERRY": 4
+      },
+      "market_inventory": {
+        "WHEAT": 10119,
+        "CARROT": 10232,
+        "TOMATO": 9586,
+        "STRAWBERRY": 10298,
+        "MELON": 10180,
+        "EGG": 9611,
+        "MILK": 9758,
+        "WOOL": 9518,
+        "FERTILIZER": 10106
+      },
+      "original": [
+        [
+          "SELL",
+          "EGG",
+          7
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          2
+        ],
+        [
+          "SELL",
+          "MILK",
+          13
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          2
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          2
+        ],
+        [
+          "SELL",
+          "MILK",
+          13
+        ],
+        [
+          "SELL",
+          "EGG",
+          7
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          2
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MILK",
+          13
+        ],
+        [
+          "SELL",
+          "EGG",
+          7
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          2
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          2
+        ]
+      ]
+    },
+    {
+      "trial": 259,
+      "mode": "same_order_hidden_stock",
+      "gain": 310
+    },
+    {
+      "trial": 259,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 260,
+      "mode": "same_order_hidden_stock",
+      "gain": 82
+    },
+    {
+      "trial": 260,
+      "mode": "different_order_hidden_stock",
+      "gain": 54
+    },
+    {
+      "trial": 261,
+      "mode": "same_order_hidden_stock",
+      "gain": 423
+    },
+    {
+      "trial": 261,
+      "mode": "different_order_hidden_stock",
+      "gain": 423
+    },
+    {
+      "trial": 265,
+      "mode": "same_order_hidden_stock",
+      "gain": 980
+    },
+    {
+      "trial": 265,
+      "mode": "different_order_hidden_stock",
+      "gain": 128
+    },
+    {
+      "trial": 266,
+      "mode": "same_order_hidden_stock",
+      "gain": 54
+    },
+    {
+      "trial": 266,
+      "mode": "different_order_hidden_stock",
+      "gain": 52
+    },
+    {
+      "trial": 267,
+      "mode": "same_order_hidden_stock",
+      "gain": 115
+    },
+    {
+      "trial": 267,
+      "mode": "different_order_hidden_stock",
+      "gain": -57,
+      "own_stock": {
+        "CARROT": 24,
+        "WOOL": 13,
+        "EGG": 8,
+        "WHEAT": 19
+      },
+      "rival_stock": {
+        "CARROT": 10,
+        "WOOL": 1,
+        "EGG": 35,
+        "WHEAT": 36
+      },
+      "market_inventory": {
+        "WHEAT": 9845,
+        "CARROT": 9505,
+        "TOMATO": 10182,
+        "STRAWBERRY": 10108,
+        "MELON": 9738,
+        "EGG": 9854,
+        "MILK": 9949,
+        "WOOL": 10049,
+        "FERTILIZER": 9995
+      },
+      "original": [
+        [
+          "SELL",
+          "CARROT",
+          24
+        ],
+        [
+          "SELL",
+          "WOOL",
+          13
+        ],
+        [
+          "SELL",
+          "EGG",
+          8
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          19
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "WOOL",
+          13
+        ],
+        [
+          "SELL",
+          "EGG",
+          8
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          19
+        ],
+        [
+          "SELL",
+          "CARROT",
+          24
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "WOOL",
+          13
+        ],
+        [
+          "SELL",
+          "CARROT",
+          24
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          19
+        ],
+        [
+          "SELL",
+          "EGG",
+          8
+        ]
+      ]
+    },
+    {
+      "trial": 268,
+      "mode": "same_order_hidden_stock",
+      "gain": 144
+    },
+    {
+      "trial": 268,
+      "mode": "different_order_hidden_stock",
+      "gain": 144
+    },
+    {
+      "trial": 269,
+      "mode": "same_order_hidden_stock",
+      "gain": 76
+    },
+    {
+      "trial": 269,
+      "mode": "different_order_hidden_stock",
+      "gain": 76
+    },
+    {
+      "trial": 270,
+      "mode": "same_order_hidden_stock",
+      "gain": 88
+    },
+    {
+      "trial": 270,
+      "mode": "different_order_hidden_stock",
+      "gain": 86
+    },
+    {
+      "trial": 271,
+      "mode": "same_order_hidden_stock",
+      "gain": 534
+    },
+    {
+      "trial": 271,
+      "mode": "different_order_hidden_stock",
+      "gain": 512
+    },
+    {
+      "trial": 273,
+      "mode": "same_order_hidden_stock",
+      "gain": 36
+    },
+    {
+      "trial": 273,
+      "mode": "different_order_hidden_stock",
+      "gain": 36
+    },
+    {
+      "trial": 274,
+      "mode": "same_order_hidden_stock",
+      "gain": 78
+    },
+    {
+      "trial": 274,
+      "mode": "different_order_hidden_stock",
+      "gain": 70
+    },
+    {
+      "trial": 275,
+      "mode": "same_order_hidden_stock",
+      "gain": 44
+    },
+    {
+      "trial": 275,
+      "mode": "different_order_hidden_stock",
+      "gain": 44
+    },
+    {
+      "trial": 276,
+      "mode": "same_order_hidden_stock",
+      "gain": 27
+    },
+    {
+      "trial": 276,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 277,
+      "mode": "same_order_hidden_stock",
+      "gain": 159
+    },
+    {
+      "trial": 277,
+      "mode": "different_order_hidden_stock",
+      "gain": 30
+    },
+    {
+      "trial": 278,
+      "mode": "same_order_hidden_stock",
+      "gain": 796
+    },
+    {
+      "trial": 278,
+      "mode": "different_order_hidden_stock",
+      "gain": 796
+    },
+    {
+      "trial": 280,
+      "mode": "same_order_hidden_stock",
+      "gain": 65
+    },
+    {
+      "trial": 280,
+      "mode": "different_order_hidden_stock",
+      "gain": 65
+    },
+    {
+      "trial": 281,
+      "mode": "same_order_hidden_stock",
+      "gain": 105
+    },
+    {
+      "trial": 281,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 282,
+      "mode": "same_order_hidden_stock",
+      "gain": 141
+    },
+    {
+      "trial": 282,
+      "mode": "different_order_hidden_stock",
+      "gain": 44
+    },
+    {
+      "trial": 283,
+      "mode": "same_order_hidden_stock",
+      "gain": 730
+    },
+    {
+      "trial": 283,
+      "mode": "different_order_hidden_stock",
+      "gain": 723
+    },
+    {
+      "trial": 284,
+      "mode": "same_order_hidden_stock",
+      "gain": 110
+    },
+    {
+      "trial": 284,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 287,
+      "mode": "same_order_hidden_stock",
+      "gain": 85
+    },
+    {
+      "trial": 287,
+      "mode": "different_order_hidden_stock",
+      "gain": 67
+    },
+    {
+      "trial": 289,
+      "mode": "same_order_hidden_stock",
+      "gain": 24
+    },
+    {
+      "trial": 289,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 290,
+      "mode": "same_order_hidden_stock",
+      "gain": 58
+    },
+    {
+      "trial": 290,
+      "mode": "different_order_hidden_stock",
+      "gain": 26
+    },
+    {
+      "trial": 291,
+      "mode": "same_order_hidden_stock",
+      "gain": 15
+    },
+    {
+      "trial": 291,
+      "mode": "different_order_hidden_stock",
+      "gain": -2,
+      "own_stock": {
+        "TOMATO": 9,
+        "CARROT": 7,
+        "STRAWBERRY": 11,
+        "MELON": 19
+      },
+      "rival_stock": {
+        "TOMATO": 6,
+        "CARROT": 14,
+        "STRAWBERRY": 0,
+        "MELON": 22
+      },
+      "market_inventory": {
+        "WHEAT": 9929,
+        "CARROT": 9841,
+        "TOMATO": 10030,
+        "STRAWBERRY": 9654,
+        "MELON": 9791,
+        "EGG": 9963,
+        "MILK": 10226,
+        "WOOL": 9671,
+        "FERTILIZER": 9834
+      },
+      "original": [
+        [
+          "SELL",
+          "TOMATO",
+          9
+        ],
+        [
+          "SELL",
+          "CARROT",
+          7
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          11
+        ],
+        [
+          "SELL",
+          "MELON",
+          19
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          9
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          11
+        ],
+        [
+          "SELL",
+          "MELON",
+          19
+        ],
+        [
+          "SELL",
+          "CARROT",
+          7
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MELON",
+          19
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          11
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          9
+        ],
+        [
+          "SELL",
+          "CARROT",
+          7
+        ]
+      ]
+    },
+    {
+      "trial": 293,
+      "mode": "same_order_hidden_stock",
+      "gain": 35
+    },
+    {
+      "trial": 293,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 295,
+      "mode": "same_order_hidden_stock",
+      "gain": 143
+    },
+    {
+      "trial": 295,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 297,
+      "mode": "same_order_hidden_stock",
+      "gain": 60
+    },
+    {
+      "trial": 297,
+      "mode": "different_order_hidden_stock",
+      "gain": 60
+    },
+    {
+      "trial": 298,
+      "mode": "same_order_hidden_stock",
+      "gain": 304
+    },
+    {
+      "trial": 298,
+      "mode": "different_order_hidden_stock",
+      "gain": 359
+    },
+    {
+      "trial": 299,
+      "mode": "same_order_hidden_stock",
+      "gain": 43
+    },
+    {
+      "trial": 299,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 301,
+      "mode": "same_order_hidden_stock",
+      "gain": 53
+    },
+    {
+      "trial": 301,
+      "mode": "different_order_hidden_stock",
+      "gain": 53
+    },
+    {
+      "trial": 302,
+      "mode": "same_order_hidden_stock",
+      "gain": 36
+    },
+    {
+      "trial": 302,
+      "mode": "different_order_hidden_stock",
+      "gain": 18
+    },
+    {
+      "trial": 303,
+      "mode": "same_order_hidden_stock",
+      "gain": 19
+    },
+    {
+      "trial": 303,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 307,
+      "mode": "same_order_hidden_stock",
+      "gain": 10
+    },
+    {
+      "trial": 307,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 308,
+      "mode": "same_order_hidden_stock",
+      "gain": 220
+    },
+    {
+      "trial": 308,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 309,
+      "mode": "same_order_hidden_stock",
+      "gain": 701
+    },
+    {
+      "trial": 309,
+      "mode": "different_order_hidden_stock",
+      "gain": 137
+    },
+    {
+      "trial": 311,
+      "mode": "same_order_hidden_stock",
+      "gain": 53
+    },
+    {
+      "trial": 311,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 313,
+      "mode": "same_order_hidden_stock",
+      "gain": 8
+    },
+    {
+      "trial": 313,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 314,
+      "mode": "same_order_hidden_stock",
+      "gain": 248
+    },
+    {
+      "trial": 314,
+      "mode": "different_order_hidden_stock",
+      "gain": 248
+    },
+    {
+      "trial": 315,
+      "mode": "same_order_hidden_stock",
+      "gain": 127
+    },
+    {
+      "trial": 315,
+      "mode": "different_order_hidden_stock",
+      "gain": 82
+    },
+    {
+      "trial": 318,
+      "mode": "same_order_hidden_stock",
+      "gain": 46
+    },
+    {
+      "trial": 318,
+      "mode": "different_order_hidden_stock",
+      "gain": 46
+    },
+    {
+      "trial": 319,
+      "mode": "same_order_hidden_stock",
+      "gain": 25
+    },
+    {
+      "trial": 319,
+      "mode": "different_order_hidden_stock",
+      "gain": 25
+    },
+    {
+      "trial": 320,
+      "mode": "same_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 320,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 322,
+      "mode": "same_order_hidden_stock",
+      "gain": 260
+    },
+    {
+      "trial": 322,
+      "mode": "different_order_hidden_stock",
+      "gain": 100
+    },
+    {
+      "trial": 323,
+      "mode": "same_order_hidden_stock",
+      "gain": 100
+    },
+    {
+      "trial": 323,
+      "mode": "different_order_hidden_stock",
+      "gain": 98
+    },
+    {
+      "trial": 325,
+      "mode": "same_order_hidden_stock",
+      "gain": 1025
+    },
+    {
+      "trial": 325,
+      "mode": "different_order_hidden_stock",
+      "gain": 1023
+    },
+    {
+      "trial": 326,
+      "mode": "same_order_hidden_stock",
+      "gain": 1517
+    },
+    {
+      "trial": 326,
+      "mode": "different_order_hidden_stock",
+      "gain": 36
+    },
+    {
+      "trial": 330,
+      "mode": "same_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 330,
+      "mode": "different_order_hidden_stock",
+      "gain": 30
+    },
+    {
+      "trial": 331,
+      "mode": "same_order_hidden_stock",
+      "gain": 103
+    },
+    {
+      "trial": 331,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 334,
+      "mode": "same_order_hidden_stock",
+      "gain": 51
+    },
+    {
+      "trial": 334,
+      "mode": "different_order_hidden_stock",
+      "gain": -1,
+      "own_stock": {
+        "CARROT": 18,
+        "STRAWBERRY": 2,
+        "WOOL": 13,
+        "TOMATO": 9
+      },
+      "rival_stock": {
+        "CARROT": 24,
+        "STRAWBERRY": 16,
+        "WOOL": 26,
+        "TOMATO": 27
+      },
+      "market_inventory": {
+        "WHEAT": 9586,
+        "CARROT": 9779,
+        "TOMATO": 10000,
+        "STRAWBERRY": 9695,
+        "MELON": 10262,
+        "EGG": 9950,
+        "MILK": 10387,
+        "WOOL": 9532,
+        "FERTILIZER": 9885
+      },
+      "original": [
+        [
+          "SELL",
+          "CARROT",
+          18
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          2
+        ],
+        [
+          "SELL",
+          "WOOL",
+          13
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          9
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "CARROT",
+          18
+        ],
+        [
+          "SELL",
+          "WOOL",
+          13
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          9
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          2
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          9
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          2
+        ],
+        [
+          "SELL",
+          "CARROT",
+          18
+        ],
+        [
+          "SELL",
+          "WOOL",
+          13
+        ]
+      ]
+    },
+    {
+      "trial": 335,
+      "mode": "same_order_hidden_stock",
+      "gain": 254
+    },
+    {
+      "trial": 335,
+      "mode": "different_order_hidden_stock",
+      "gain": 2
+    },
+    {
+      "trial": 336,
+      "mode": "same_order_hidden_stock",
+      "gain": 307
+    },
+    {
+      "trial": 336,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 339,
+      "mode": "same_order_hidden_stock",
+      "gain": 22
+    },
+    {
+      "trial": 339,
+      "mode": "different_order_hidden_stock",
+      "gain": -8,
+      "own_stock": {
+        "STRAWBERRY": 4,
+        "MELON": 20,
+        "CARROT": 13,
+        "TOMATO": 18
+      },
+      "rival_stock": {
+        "STRAWBERRY": 6,
+        "MELON": 6,
+        "CARROT": 29,
+        "TOMATO": 37
+      },
+      "market_inventory": {
+        "WHEAT": 9644,
+        "CARROT": 10254,
+        "TOMATO": 10292,
+        "STRAWBERRY": 9800,
+        "MELON": 9568,
+        "EGG": 9580,
+        "MILK": 10013,
+        "WOOL": 10012,
+        "FERTILIZER": 10193
+      },
+      "original": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          4
+        ],
+        [
+          "SELL",
+          "MELON",
+          20
+        ],
+        [
+          "SELL",
+          "CARROT",
+          13
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          18
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MELON",
+          20
+        ],
+        [
+          "SELL",
+          "CARROT",
+          13
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          18
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          4
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          18
+        ],
+        [
+          "SELL",
+          "MELON",
+          20
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          4
+        ],
+        [
+          "SELL",
+          "CARROT",
+          13
+        ]
+      ]
+    },
+    {
+      "trial": 340,
+      "mode": "same_order_hidden_stock",
+      "gain": 188
+    },
+    {
+      "trial": 340,
+      "mode": "different_order_hidden_stock",
+      "gain": 160
+    },
+    {
+      "trial": 341,
+      "mode": "same_order_hidden_stock",
+      "gain": 93
+    },
+    {
+      "trial": 341,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 342,
+      "mode": "same_order_hidden_stock",
+      "gain": 952
+    },
+    {
+      "trial": 342,
+      "mode": "different_order_hidden_stock",
+      "gain": 938
+    },
+    {
+      "trial": 343,
+      "mode": "same_order_hidden_stock",
+      "gain": 14
+    },
+    {
+      "trial": 343,
+      "mode": "different_order_hidden_stock",
+      "gain": 8
+    },
+    {
+      "trial": 345,
+      "mode": "same_order_hidden_stock",
+      "gain": 78
+    },
+    {
+      "trial": 345,
+      "mode": "different_order_hidden_stock",
+      "gain": 76
+    },
+    {
+      "trial": 347,
+      "mode": "same_order_hidden_stock",
+      "gain": 221
+    },
+    {
+      "trial": 347,
+      "mode": "different_order_hidden_stock",
+      "gain": -2,
+      "own_stock": {
+        "MILK": 1,
+        "CARROT": 13,
+        "WOOL": 3,
+        "MELON": 20
+      },
+      "rival_stock": {
+        "MILK": 16,
+        "CARROT": 8,
+        "WOOL": 9,
+        "MELON": 24
+      },
+      "market_inventory": {
+        "WHEAT": 10173,
+        "CARROT": 9685,
+        "TOMATO": 9726,
+        "STRAWBERRY": 9532,
+        "MELON": 9992,
+        "EGG": 9681,
+        "MILK": 9987,
+        "WOOL": 9908,
+        "FERTILIZER": 10002
+      },
+      "original": [
+        [
+          "SELL",
+          "MILK",
+          1
+        ],
+        [
+          "SELL",
+          "CARROT",
+          13
+        ],
+        [
+          "SELL",
+          "WOOL",
+          3
+        ],
+        [
+          "SELL",
+          "MELON",
+          20
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "CARROT",
+          13
+        ],
+        [
+          "SELL",
+          "WOOL",
+          3
+        ],
+        [
+          "SELL",
+          "MELON",
+          20
+        ],
+        [
+          "SELL",
+          "MILK",
+          1
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MELON",
+          20
+        ],
+        [
+          "SELL",
+          "MILK",
+          1
+        ],
+        [
+          "SELL",
+          "CARROT",
+          13
+        ],
+        [
+          "SELL",
+          "WOOL",
+          3
+        ]
+      ]
+    },
+    {
+      "trial": 350,
+      "mode": "same_order_hidden_stock",
+      "gain": 161
+    },
+    {
+      "trial": 350,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 352,
+      "mode": "same_order_hidden_stock",
+      "gain": 81
+    },
+    {
+      "trial": 352,
+      "mode": "different_order_hidden_stock",
+      "gain": -45,
+      "own_stock": {
+        "TOMATO": 21,
+        "MILK": 16,
+        "EGG": 10,
+        "STRAWBERRY": 14
+      },
+      "rival_stock": {
+        "TOMATO": 14,
+        "MILK": 1,
+        "EGG": 7,
+        "STRAWBERRY": 30
+      },
+      "market_inventory": {
+        "WHEAT": 9834,
+        "CARROT": 9764,
+        "TOMATO": 9920,
+        "STRAWBERRY": 9505,
+        "MELON": 10061,
+        "EGG": 10398,
+        "MILK": 10005,
+        "WOOL": 10256,
+        "FERTILIZER": 9855
+      },
+      "original": [
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "MILK",
+          16
+        ],
+        [
+          "SELL",
+          "EGG",
+          10
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          14
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MILK",
+          16
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          14
+        ],
+        [
+          "SELL",
+          "EGG",
+          10
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          14
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "MILK",
+          16
+        ],
+        [
+          "SELL",
+          "EGG",
+          10
+        ]
+      ]
+    },
+    {
+      "trial": 353,
+      "mode": "same_order_hidden_stock",
+      "gain": 317
+    },
+    {
+      "trial": 353,
+      "mode": "different_order_hidden_stock",
+      "gain": 317
+    },
+    {
+      "trial": 354,
+      "mode": "same_order_hidden_stock",
+      "gain": 1219
+    },
+    {
+      "trial": 354,
+      "mode": "different_order_hidden_stock",
+      "gain": 25
+    },
+    {
+      "trial": 357,
+      "mode": "same_order_hidden_stock",
+      "gain": 19
+    },
+    {
+      "trial": 357,
+      "mode": "different_order_hidden_stock",
+      "gain": 11
+    },
+    {
+      "trial": 358,
+      "mode": "same_order_hidden_stock",
+      "gain": 15
+    },
+    {
+      "trial": 358,
+      "mode": "different_order_hidden_stock",
+      "gain": 3
+    },
+    {
+      "trial": 362,
+      "mode": "same_order_hidden_stock",
+      "gain": 36
+    },
+    {
+      "trial": 362,
+      "mode": "different_order_hidden_stock",
+      "gain": 2
+    },
+    {
+      "trial": 364,
+      "mode": "same_order_hidden_stock",
+      "gain": 48
+    },
+    {
+      "trial": 364,
+      "mode": "different_order_hidden_stock",
+      "gain": 46
+    },
+    {
+      "trial": 365,
+      "mode": "same_order_hidden_stock",
+      "gain": 123
+    },
+    {
+      "trial": 365,
+      "mode": "different_order_hidden_stock",
+      "gain": 111
+    },
+    {
+      "trial": 366,
+      "mode": "same_order_hidden_stock",
+      "gain": -17,
+      "own_stock": {
+        "TOMATO": 21,
+        "CARROT": 15,
+        "MILK": 20,
+        "WOOL": 4
+      },
+      "rival_stock": {
+        "TOMATO": 40,
+        "CARROT": 17,
+        "MILK": 0,
+        "WOOL": 17
+      },
+      "market_inventory": {
+        "WHEAT": 9944,
+        "CARROT": 9912,
+        "TOMATO": 9770,
+        "STRAWBERRY": 10089,
+        "MELON": 9829,
+        "EGG": 10334,
+        "MILK": 9973,
+        "WOOL": 9613,
+        "FERTILIZER": 10063
+      },
+      "original": [
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ],
+        [
+          "SELL",
+          "MILK",
+          20
+        ],
+        [
+          "SELL",
+          "WOOL",
+          4
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "MILK",
+          20
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ],
+        [
+          "SELL",
+          "WOOL",
+          4
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ],
+        [
+          "SELL",
+          "MILK",
+          20
+        ],
+        [
+          "SELL",
+          "WOOL",
+          4
+        ]
+      ]
+    },
+    {
+      "trial": 366,
+      "mode": "different_order_hidden_stock",
+      "gain": -17,
+      "own_stock": {
+        "TOMATO": 21,
+        "CARROT": 15,
+        "MILK": 20,
+        "WOOL": 4
+      },
+      "rival_stock": {
+        "TOMATO": 40,
+        "CARROT": 17,
+        "MILK": 0,
+        "WOOL": 17
+      },
+      "market_inventory": {
+        "WHEAT": 9944,
+        "CARROT": 9912,
+        "TOMATO": 9770,
+        "STRAWBERRY": 10089,
+        "MELON": 9829,
+        "EGG": 10334,
+        "MILK": 9973,
+        "WOOL": 9613,
+        "FERTILIZER": 10063
+      },
+      "original": [
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ],
+        [
+          "SELL",
+          "MILK",
+          20
+        ],
+        [
+          "SELL",
+          "WOOL",
+          4
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "MILK",
+          20
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ],
+        [
+          "SELL",
+          "WOOL",
+          4
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          21
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ],
+        [
+          "SELL",
+          "MILK",
+          20
+        ],
+        [
+          "SELL",
+          "WOOL",
+          4
+        ]
+      ]
+    },
+    {
+      "trial": 367,
+      "mode": "same_order_hidden_stock",
+      "gain": 127
+    },
+    {
+      "trial": 367,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 368,
+      "mode": "same_order_hidden_stock",
+      "gain": 43
+    },
+    {
+      "trial": 368,
+      "mode": "different_order_hidden_stock",
+      "gain": 41
+    },
+    {
+      "trial": 369,
+      "mode": "same_order_hidden_stock",
+      "gain": 250
+    },
+    {
+      "trial": 369,
+      "mode": "different_order_hidden_stock",
+      "gain": 106
+    },
+    {
+      "trial": 371,
+      "mode": "same_order_hidden_stock",
+      "gain": 30
+    },
+    {
+      "trial": 371,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 372,
+      "mode": "same_order_hidden_stock",
+      "gain": 334
+    },
+    {
+      "trial": 372,
+      "mode": "different_order_hidden_stock",
+      "gain": 334
+    },
+    {
+      "trial": 375,
+      "mode": "same_order_hidden_stock",
+      "gain": 34
+    },
+    {
+      "trial": 375,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 376,
+      "mode": "same_order_hidden_stock",
+      "gain": 60
+    },
+    {
+      "trial": 376,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 377,
+      "mode": "same_order_hidden_stock",
+      "gain": 40
+    },
+    {
+      "trial": 377,
+      "mode": "different_order_hidden_stock",
+      "gain": 40
+    },
+    {
+      "trial": 379,
+      "mode": "same_order_hidden_stock",
+      "gain": 51
+    },
+    {
+      "trial": 379,
+      "mode": "different_order_hidden_stock",
+      "gain": 51
+    },
+    {
+      "trial": 380,
+      "mode": "same_order_hidden_stock",
+      "gain": 120
+    },
+    {
+      "trial": 380,
+      "mode": "different_order_hidden_stock",
+      "gain": 98
+    },
+    {
+      "trial": 381,
+      "mode": "same_order_hidden_stock",
+      "gain": 50
+    },
+    {
+      "trial": 381,
+      "mode": "different_order_hidden_stock",
+      "gain": 49
+    },
+    {
+      "trial": 382,
+      "mode": "same_order_hidden_stock",
+      "gain": 20
+    },
+    {
+      "trial": 382,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 383,
+      "mode": "same_order_hidden_stock",
+      "gain": 86
+    },
+    {
+      "trial": 383,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 384,
+      "mode": "same_order_hidden_stock",
+      "gain": 150
+    },
+    {
+      "trial": 384,
+      "mode": "different_order_hidden_stock",
+      "gain": 44
+    },
+    {
+      "trial": 388,
+      "mode": "same_order_hidden_stock",
+      "gain": 627
+    },
+    {
+      "trial": 388,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 390,
+      "mode": "same_order_hidden_stock",
+      "gain": 39
+    },
+    {
+      "trial": 390,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 391,
+      "mode": "same_order_hidden_stock",
+      "gain": 24
+    },
+    {
+      "trial": 391,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 394,
+      "mode": "same_order_hidden_stock",
+      "gain": 69
+    },
+    {
+      "trial": 394,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 395,
+      "mode": "same_order_hidden_stock",
+      "gain": 177
+    },
+    {
+      "trial": 395,
+      "mode": "different_order_hidden_stock",
+      "gain": 177
+    },
+    {
+      "trial": 396,
+      "mode": "same_order_hidden_stock",
+      "gain": 74
+    },
+    {
+      "trial": 396,
+      "mode": "different_order_hidden_stock",
+      "gain": 50
+    },
+    {
+      "trial": 397,
+      "mode": "same_order_hidden_stock",
+      "gain": 84
+    },
+    {
+      "trial": 397,
+      "mode": "different_order_hidden_stock",
+      "gain": 13
+    },
+    {
+      "trial": 399,
+      "mode": "same_order_hidden_stock",
+      "gain": 119
+    },
+    {
+      "trial": 399,
+      "mode": "different_order_hidden_stock",
+      "gain": 39
+    },
+    {
+      "trial": 400,
+      "mode": "same_order_hidden_stock",
+      "gain": 305
+    },
+    {
+      "trial": 400,
+      "mode": "different_order_hidden_stock",
+      "gain": 305
+    },
+    {
+      "trial": 403,
+      "mode": "same_order_hidden_stock",
+      "gain": 95
+    },
+    {
+      "trial": 403,
+      "mode": "different_order_hidden_stock",
+      "gain": 14
+    },
+    {
+      "trial": 404,
+      "mode": "same_order_hidden_stock",
+      "gain": 84
+    },
+    {
+      "trial": 404,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 405,
+      "mode": "same_order_hidden_stock",
+      "gain": 45
+    },
+    {
+      "trial": 405,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 406,
+      "mode": "same_order_hidden_stock",
+      "gain": 203
+    },
+    {
+      "trial": 406,
+      "mode": "different_order_hidden_stock",
+      "gain": 95
+    },
+    {
+      "trial": 407,
+      "mode": "same_order_hidden_stock",
+      "gain": 132
+    },
+    {
+      "trial": 407,
+      "mode": "different_order_hidden_stock",
+      "gain": 3
+    },
+    {
+      "trial": 412,
+      "mode": "same_order_hidden_stock",
+      "gain": 29
+    },
+    {
+      "trial": 412,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 413,
+      "mode": "same_order_hidden_stock",
+      "gain": 55
+    },
+    {
+      "trial": 413,
+      "mode": "different_order_hidden_stock",
+      "gain": 26
+    },
+    {
+      "trial": 415,
+      "mode": "same_order_hidden_stock",
+      "gain": 159
+    },
+    {
+      "trial": 415,
+      "mode": "different_order_hidden_stock",
+      "gain": 109
+    },
+    {
+      "trial": 416,
+      "mode": "same_order_hidden_stock",
+      "gain": 175
+    },
+    {
+      "trial": 416,
+      "mode": "different_order_hidden_stock",
+      "gain": -1,
+      "own_stock": {
+        "EGG": 22,
+        "TOMATO": 19,
+        "MILK": 16,
+        "MELON": 16
+      },
+      "rival_stock": {
+        "EGG": 8,
+        "TOMATO": 5,
+        "MILK": 19,
+        "MELON": 4
+      },
+      "market_inventory": {
+        "WHEAT": 9815,
+        "CARROT": 10322,
+        "TOMATO": 9738,
+        "STRAWBERRY": 9723,
+        "MELON": 10250,
+        "EGG": 9691,
+        "MILK": 9794,
+        "WOOL": 9922,
+        "FERTILIZER": 9721
+      },
+      "original": [
+        [
+          "SELL",
+          "EGG",
+          22
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ],
+        [
+          "SELL",
+          "MILK",
+          16
+        ],
+        [
+          "SELL",
+          "MELON",
+          16
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ],
+        [
+          "SELL",
+          "MILK",
+          16
+        ],
+        [
+          "SELL",
+          "EGG",
+          22
+        ],
+        [
+          "SELL",
+          "MELON",
+          16
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ],
+        [
+          "SELL",
+          "MELON",
+          16
+        ],
+        [
+          "SELL",
+          "EGG",
+          22
+        ],
+        [
+          "SELL",
+          "MILK",
+          16
+        ]
+      ]
+    },
+    {
+      "trial": 417,
+      "mode": "same_order_hidden_stock",
+      "gain": 480
+    },
+    {
+      "trial": 417,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 419,
+      "mode": "same_order_hidden_stock",
+      "gain": 55
+    },
+    {
+      "trial": 419,
+      "mode": "different_order_hidden_stock",
+      "gain": 9
+    },
+    {
+      "trial": 422,
+      "mode": "same_order_hidden_stock",
+      "gain": 185
+    },
+    {
+      "trial": 422,
+      "mode": "different_order_hidden_stock",
+      "gain": -16,
+      "own_stock": {
+        "WOOL": 12,
+        "MELON": 15,
+        "WHEAT": 19,
+        "STRAWBERRY": 10
+      },
+      "rival_stock": {
+        "WOOL": 33,
+        "MELON": 10,
+        "WHEAT": 3,
+        "STRAWBERRY": 18
+      },
+      "market_inventory": {
+        "WHEAT": 9788,
+        "CARROT": 9881,
+        "TOMATO": 10225,
+        "STRAWBERRY": 9691,
+        "MELON": 9990,
+        "EGG": 10037,
+        "MILK": 10119,
+        "WOOL": 9833,
+        "FERTILIZER": 10115
+      },
+      "original": [
+        [
+          "SELL",
+          "WOOL",
+          12
+        ],
+        [
+          "SELL",
+          "MELON",
+          15
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          19
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          10
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "MELON",
+          15
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          19
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          10
+        ],
+        [
+          "SELL",
+          "WOOL",
+          12
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          10
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          19
+        ],
+        [
+          "SELL",
+          "WOOL",
+          12
+        ],
+        [
+          "SELL",
+          "MELON",
+          15
+        ]
+      ]
+    },
+    {
+      "trial": 423,
+      "mode": "same_order_hidden_stock",
+      "gain": 70
+    },
+    {
+      "trial": 423,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 424,
+      "mode": "same_order_hidden_stock",
+      "gain": 152
+    },
+    {
+      "trial": 424,
+      "mode": "different_order_hidden_stock",
+      "gain": -15,
+      "own_stock": {
+        "CARROT": 15,
+        "STRAWBERRY": 24,
+        "MELON": 17,
+        "EGG": 12
+      },
+      "rival_stock": {
+        "CARROT": 9,
+        "STRAWBERRY": 2,
+        "MELON": 30,
+        "EGG": 6
+      },
+      "market_inventory": {
+        "WHEAT": 9676,
+        "CARROT": 9935,
+        "TOMATO": 9852,
+        "STRAWBERRY": 9581,
+        "MELON": 10008,
+        "EGG": 10193,
+        "MILK": 10093,
+        "WOOL": 9553,
+        "FERTILIZER": 9765
+      },
+      "original": [
+        [
+          "SELL",
+          "CARROT",
+          15
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          24
+        ],
+        [
+          "SELL",
+          "MELON",
+          17
+        ],
+        [
+          "SELL",
+          "EGG",
+          12
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          24
+        ],
+        [
+          "SELL",
+          "MELON",
+          17
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ],
+        [
+          "SELL",
+          "EGG",
+          12
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          24
+        ],
+        [
+          "SELL",
+          "EGG",
+          12
+        ],
+        [
+          "SELL",
+          "CARROT",
+          15
+        ],
+        [
+          "SELL",
+          "MELON",
+          17
+        ]
+      ]
+    },
+    {
+      "trial": 425,
+      "mode": "same_order_hidden_stock",
+      "gain": 165
+    },
+    {
+      "trial": 425,
+      "mode": "different_order_hidden_stock",
+      "gain": 7
+    },
+    {
+      "trial": 427,
+      "mode": "same_order_hidden_stock",
+      "gain": 32
+    },
+    {
+      "trial": 427,
+      "mode": "different_order_hidden_stock",
+      "gain": 32
+    },
+    {
+      "trial": 428,
+      "mode": "same_order_hidden_stock",
+      "gain": 65
+    },
+    {
+      "trial": 428,
+      "mode": "different_order_hidden_stock",
+      "gain": 64
+    },
+    {
+      "trial": 429,
+      "mode": "same_order_hidden_stock",
+      "gain": 142
+    },
+    {
+      "trial": 429,
+      "mode": "different_order_hidden_stock",
+      "gain": -72,
+      "own_stock": {
+        "EGG": 19,
+        "STRAWBERRY": 24,
+        "WHEAT": 2,
+        "CARROT": 21
+      },
+      "rival_stock": {
+        "EGG": 27,
+        "STRAWBERRY": 2,
+        "WHEAT": 36,
+        "CARROT": 28
+      },
+      "market_inventory": {
+        "WHEAT": 10213,
+        "CARROT": 10378,
+        "TOMATO": 9975,
+        "STRAWBERRY": 9994,
+        "MELON": 9554,
+        "EGG": 9596,
+        "MILK": 10293,
+        "WOOL": 10063,
+        "FERTILIZER": 9732
+      },
+      "original": [
+        [
+          "SELL",
+          "EGG",
+          19
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          24
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          2
+        ],
+        [
+          "SELL",
+          "CARROT",
+          21
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          24
+        ],
+        [
+          "SELL",
+          "EGG",
+          19
+        ],
+        [
+          "SELL",
+          "CARROT",
+          21
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          2
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "EGG",
+          19
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          2
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          24
+        ],
+        [
+          "SELL",
+          "CARROT",
+          21
+        ]
+      ]
+    },
+    {
+      "trial": 430,
+      "mode": "same_order_hidden_stock",
+      "gain": 203
+    },
+    {
+      "trial": 430,
+      "mode": "different_order_hidden_stock",
+      "gain": 203
+    },
+    {
+      "trial": 431,
+      "mode": "same_order_hidden_stock",
+      "gain": 35
+    },
+    {
+      "trial": 431,
+      "mode": "different_order_hidden_stock",
+      "gain": 11
+    },
+    {
+      "trial": 433,
+      "mode": "same_order_hidden_stock",
+      "gain": 31
+    },
+    {
+      "trial": 433,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 435,
+      "mode": "same_order_hidden_stock",
+      "gain": 111
+    },
+    {
+      "trial": 435,
+      "mode": "different_order_hidden_stock",
+      "gain": 47
+    },
+    {
+      "trial": 436,
+      "mode": "same_order_hidden_stock",
+      "gain": 49
+    },
+    {
+      "trial": 436,
+      "mode": "different_order_hidden_stock",
+      "gain": 49
+    },
+    {
+      "trial": 437,
+      "mode": "same_order_hidden_stock",
+      "gain": 37
+    },
+    {
+      "trial": 437,
+      "mode": "different_order_hidden_stock",
+      "gain": 33
+    },
+    {
+      "trial": 438,
+      "mode": "same_order_hidden_stock",
+      "gain": 517
+    },
+    {
+      "trial": 438,
+      "mode": "different_order_hidden_stock",
+      "gain": 1
+    },
+    {
+      "trial": 439,
+      "mode": "same_order_hidden_stock",
+      "gain": 60
+    },
+    {
+      "trial": 439,
+      "mode": "different_order_hidden_stock",
+      "gain": 5
+    },
+    {
+      "trial": 440,
+      "mode": "same_order_hidden_stock",
+      "gain": 136
+    },
+    {
+      "trial": 440,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 441,
+      "mode": "same_order_hidden_stock",
+      "gain": 37
+    },
+    {
+      "trial": 441,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 444,
+      "mode": "same_order_hidden_stock",
+      "gain": 1002
+    },
+    {
+      "trial": 444,
+      "mode": "different_order_hidden_stock",
+      "gain": 1002
+    },
+    {
+      "trial": 445,
+      "mode": "same_order_hidden_stock",
+      "gain": 1257
+    },
+    {
+      "trial": 445,
+      "mode": "different_order_hidden_stock",
+      "gain": -45,
+      "own_stock": {
+        "TOMATO": 19,
+        "STRAWBERRY": 11,
+        "MILK": 24,
+        "WOOL": 20
+      },
+      "rival_stock": {
+        "TOMATO": 18,
+        "STRAWBERRY": 28,
+        "MILK": 39,
+        "WOOL": 25
+      },
+      "market_inventory": {
+        "WHEAT": 9817,
+        "CARROT": 9592,
+        "TOMATO": 9852,
+        "STRAWBERRY": 9591,
+        "MELON": 9660,
+        "EGG": 9653,
+        "MILK": 9994,
+        "WOOL": 9735,
+        "FERTILIZER": 9855
+      },
+      "original": [
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          11
+        ],
+        [
+          "SELL",
+          "MILK",
+          24
+        ],
+        [
+          "SELL",
+          "WOOL",
+          20
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          11
+        ],
+        [
+          "SELL",
+          "MILK",
+          24
+        ],
+        [
+          "SELL",
+          "WOOL",
+          20
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MILK",
+          24
+        ],
+        [
+          "SELL",
+          "WOOL",
+          20
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          11
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          19
+        ]
+      ]
+    },
+    {
+      "trial": 446,
+      "mode": "same_order_hidden_stock",
+      "gain": 92
+    },
+    {
+      "trial": 446,
+      "mode": "different_order_hidden_stock",
+      "gain": 92
+    },
+    {
+      "trial": 448,
+      "mode": "same_order_hidden_stock",
+      "gain": 556
+    },
+    {
+      "trial": 448,
+      "mode": "different_order_hidden_stock",
+      "gain": 537
+    },
+    {
+      "trial": 449,
+      "mode": "same_order_hidden_stock",
+      "gain": 110
+    },
+    {
+      "trial": 449,
+      "mode": "different_order_hidden_stock",
+      "gain": -12,
+      "own_stock": {
+        "EGG": 8,
+        "TOMATO": 9,
+        "MILK": 10,
+        "CARROT": 22
+      },
+      "rival_stock": {
+        "EGG": 30,
+        "TOMATO": 9,
+        "MILK": 34,
+        "CARROT": 1
+      },
+      "market_inventory": {
+        "WHEAT": 9817,
+        "CARROT": 9536,
+        "TOMATO": 9688,
+        "STRAWBERRY": 9543,
+        "MELON": 10141,
+        "EGG": 10133,
+        "MILK": 9587,
+        "WOOL": 9621,
+        "FERTILIZER": 9898
+      },
+      "original": [
+        [
+          "SELL",
+          "EGG",
+          8
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          9
+        ],
+        [
+          "SELL",
+          "MILK",
+          10
+        ],
+        [
+          "SELL",
+          "CARROT",
+          22
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          9
+        ],
+        [
+          "SELL",
+          "MILK",
+          10
+        ],
+        [
+          "SELL",
+          "CARROT",
+          22
+        ],
+        [
+          "SELL",
+          "EGG",
+          8
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MILK",
+          10
+        ],
+        [
+          "SELL",
+          "EGG",
+          8
+        ],
+        [
+          "SELL",
+          "CARROT",
+          22
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          9
+        ]
+      ]
+    },
+    {
+      "trial": 452,
+      "mode": "same_order_hidden_stock",
+      "gain": 39
+    },
+    {
+      "trial": 452,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 453,
+      "mode": "same_order_hidden_stock",
+      "gain": 140
+    },
+    {
+      "trial": 453,
+      "mode": "different_order_hidden_stock",
+      "gain": -225,
+      "own_stock": {
+        "WOOL": 8,
+        "STRAWBERRY": 25,
+        "WHEAT": 9,
+        "MILK": 15
+      },
+      "rival_stock": {
+        "WOOL": 25,
+        "STRAWBERRY": 36,
+        "WHEAT": 35,
+        "MILK": 21
+      },
+      "market_inventory": {
+        "WHEAT": 9871,
+        "CARROT": 10169,
+        "TOMATO": 9675,
+        "STRAWBERRY": 10043,
+        "MELON": 9696,
+        "EGG": 9592,
+        "MILK": 9794,
+        "WOOL": 10032,
+        "FERTILIZER": 9820
+      },
+      "original": [
+        [
+          "SELL",
+          "WOOL",
+          8
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          9
+        ],
+        [
+          "SELL",
+          "MILK",
+          15
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "WOOL",
+          8
+        ],
+        [
+          "SELL",
+          "MILK",
+          15
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          9
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "WHEAT",
+          9
+        ],
+        [
+          "SELL",
+          "WOOL",
+          8
+        ],
+        [
+          "SELL",
+          "MILK",
+          15
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ]
+      ]
+    },
+    {
+      "trial": 454,
+      "mode": "same_order_hidden_stock",
+      "gain": 26
+    },
+    {
+      "trial": 454,
+      "mode": "different_order_hidden_stock",
+      "gain": 26
+    },
+    {
+      "trial": 455,
+      "mode": "same_order_hidden_stock",
+      "gain": 106
+    },
+    {
+      "trial": 455,
+      "mode": "different_order_hidden_stock",
+      "gain": 107
+    },
+    {
+      "trial": 456,
+      "mode": "same_order_hidden_stock",
+      "gain": 369
+    },
+    {
+      "trial": 456,
+      "mode": "different_order_hidden_stock",
+      "gain": 369
+    },
+    {
+      "trial": 457,
+      "mode": "same_order_hidden_stock",
+      "gain": 70
+    },
+    {
+      "trial": 457,
+      "mode": "different_order_hidden_stock",
+      "gain": 63
+    },
+    {
+      "trial": 458,
+      "mode": "same_order_hidden_stock",
+      "gain": 107
+    },
+    {
+      "trial": 458,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 459,
+      "mode": "same_order_hidden_stock",
+      "gain": -4,
+      "own_stock": {
+        "MELON": 23,
+        "TOMATO": 20,
+        "WOOL": 9,
+        "MILK": 13
+      },
+      "rival_stock": {
+        "MELON": 26,
+        "TOMATO": 1,
+        "WOOL": 1,
+        "MILK": 24
+      },
+      "market_inventory": {
+        "WHEAT": 10244,
+        "CARROT": 10301,
+        "TOMATO": 9973,
+        "STRAWBERRY": 9947,
+        "MELON": 9545,
+        "EGG": 9981,
+        "MILK": 10166,
+        "WOOL": 9526,
+        "FERTILIZER": 10258
+      },
+      "original": [
+        [
+          "SELL",
+          "MELON",
+          23
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          20
+        ],
+        [
+          "SELL",
+          "WOOL",
+          9
+        ],
+        [
+          "SELL",
+          "MILK",
+          13
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          20
+        ],
+        [
+          "SELL",
+          "MELON",
+          23
+        ],
+        [
+          "SELL",
+          "WOOL",
+          9
+        ],
+        [
+          "SELL",
+          "MILK",
+          13
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MELON",
+          23
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          20
+        ],
+        [
+          "SELL",
+          "WOOL",
+          9
+        ],
+        [
+          "SELL",
+          "MILK",
+          13
+        ]
+      ]
+    },
+    {
+      "trial": 459,
+      "mode": "different_order_hidden_stock",
+      "gain": -8,
+      "own_stock": {
+        "MELON": 23,
+        "TOMATO": 20,
+        "WOOL": 9,
+        "MILK": 13
+      },
+      "rival_stock": {
+        "MELON": 26,
+        "TOMATO": 1,
+        "WOOL": 1,
+        "MILK": 24
+      },
+      "market_inventory": {
+        "WHEAT": 10244,
+        "CARROT": 10301,
+        "TOMATO": 9973,
+        "STRAWBERRY": 9947,
+        "MELON": 9545,
+        "EGG": 9981,
+        "MILK": 10166,
+        "WOOL": 9526,
+        "FERTILIZER": 10258
+      },
+      "original": [
+        [
+          "SELL",
+          "MELON",
+          23
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          20
+        ],
+        [
+          "SELL",
+          "WOOL",
+          9
+        ],
+        [
+          "SELL",
+          "MILK",
+          13
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          20
+        ],
+        [
+          "SELL",
+          "MELON",
+          23
+        ],
+        [
+          "SELL",
+          "WOOL",
+          9
+        ],
+        [
+          "SELL",
+          "MILK",
+          13
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "MILK",
+          13
+        ],
+        [
+          "SELL",
+          "MELON",
+          23
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          20
+        ],
+        [
+          "SELL",
+          "WOOL",
+          9
+        ]
+      ]
+    },
+    {
+      "trial": 460,
+      "mode": "same_order_hidden_stock",
+      "gain": 40
+    },
+    {
+      "trial": 460,
+      "mode": "different_order_hidden_stock",
+      "gain": 40
+    },
+    {
+      "trial": 461,
+      "mode": "same_order_hidden_stock",
+      "gain": 524
+    },
+    {
+      "trial": 461,
+      "mode": "different_order_hidden_stock",
+      "gain": 524
+    },
+    {
+      "trial": 462,
+      "mode": "same_order_hidden_stock",
+      "gain": 69
+    },
+    {
+      "trial": 462,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 464,
+      "mode": "same_order_hidden_stock",
+      "gain": 131
+    },
+    {
+      "trial": 464,
+      "mode": "different_order_hidden_stock",
+      "gain": 107
+    },
+    {
+      "trial": 465,
+      "mode": "same_order_hidden_stock",
+      "gain": 210
+    },
+    {
+      "trial": 465,
+      "mode": "different_order_hidden_stock",
+      "gain": 166
+    },
+    {
+      "trial": 468,
+      "mode": "same_order_hidden_stock",
+      "gain": 80
+    },
+    {
+      "trial": 468,
+      "mode": "different_order_hidden_stock",
+      "gain": 54
+    },
+    {
+      "trial": 469,
+      "mode": "same_order_hidden_stock",
+      "gain": 69
+    },
+    {
+      "trial": 469,
+      "mode": "different_order_hidden_stock",
+      "gain": 7
+    },
+    {
+      "trial": 471,
+      "mode": "same_order_hidden_stock",
+      "gain": 465
+    },
+    {
+      "trial": 471,
+      "mode": "different_order_hidden_stock",
+      "gain": 465
+    },
+    {
+      "trial": 472,
+      "mode": "same_order_hidden_stock",
+      "gain": 286
+    },
+    {
+      "trial": 472,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 473,
+      "mode": "same_order_hidden_stock",
+      "gain": 29
+    },
+    {
+      "trial": 473,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 475,
+      "mode": "same_order_hidden_stock",
+      "gain": 1343
+    },
+    {
+      "trial": 475,
+      "mode": "different_order_hidden_stock",
+      "gain": -6,
+      "own_stock": {
+        "MELON": 25,
+        "TOMATO": 14,
+        "STRAWBERRY": 25,
+        "EGG": 21
+      },
+      "rival_stock": {
+        "MELON": 19,
+        "TOMATO": 32,
+        "STRAWBERRY": 36,
+        "EGG": 17
+      },
+      "market_inventory": {
+        "WHEAT": 9982,
+        "CARROT": 9780,
+        "TOMATO": 9910,
+        "STRAWBERRY": 9976,
+        "MELON": 9571,
+        "EGG": 9755,
+        "MILK": 9741,
+        "WOOL": 9529,
+        "FERTILIZER": 9929
+      },
+      "original": [
+        [
+          "SELL",
+          "MELON",
+          25
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          14
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "EGG",
+          21
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          14
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ],
+        [
+          "SELL",
+          "EGG",
+          21
+        ],
+        [
+          "SELL",
+          "MELON",
+          25
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "TOMATO",
+          14
+        ],
+        [
+          "SELL",
+          "EGG",
+          21
+        ],
+        [
+          "SELL",
+          "MELON",
+          25
+        ],
+        [
+          "SELL",
+          "STRAWBERRY",
+          25
+        ]
+      ]
+    },
+    {
+      "trial": 476,
+      "mode": "same_order_hidden_stock",
+      "gain": 43
+    },
+    {
+      "trial": 476,
+      "mode": "different_order_hidden_stock",
+      "gain": 31
+    },
+    {
+      "trial": 478,
+      "mode": "same_order_hidden_stock",
+      "gain": 465
+    },
+    {
+      "trial": 478,
+      "mode": "different_order_hidden_stock",
+      "gain": 465
+    },
+    {
+      "trial": 481,
+      "mode": "same_order_hidden_stock",
+      "gain": 43
+    },
+    {
+      "trial": 481,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 482,
+      "mode": "same_order_hidden_stock",
+      "gain": 25
+    },
+    {
+      "trial": 482,
+      "mode": "different_order_hidden_stock",
+      "gain": 19
+    },
+    {
+      "trial": 483,
+      "mode": "same_order_hidden_stock",
+      "gain": 110
+    },
+    {
+      "trial": 483,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 484,
+      "mode": "same_order_hidden_stock",
+      "gain": 129
+    },
+    {
+      "trial": 484,
+      "mode": "different_order_hidden_stock",
+      "gain": 129
+    },
+    {
+      "trial": 485,
+      "mode": "same_order_hidden_stock",
+      "gain": 117
+    },
+    {
+      "trial": 485,
+      "mode": "different_order_hidden_stock",
+      "gain": -15,
+      "own_stock": {
+        "CARROT": 17,
+        "TOMATO": 18,
+        "WOOL": 16,
+        "WHEAT": 24
+      },
+      "rival_stock": {
+        "CARROT": 17,
+        "TOMATO": 9,
+        "WOOL": 17,
+        "WHEAT": 35
+      },
+      "market_inventory": {
+        "WHEAT": 9963,
+        "CARROT": 10114,
+        "TOMATO": 9841,
+        "STRAWBERRY": 9537,
+        "MELON": 9602,
+        "EGG": 9854,
+        "MILK": 9845,
+        "WOOL": 9646,
+        "FERTILIZER": 9929
+      },
+      "original": [
+        [
+          "SELL",
+          "CARROT",
+          17
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          18
+        ],
+        [
+          "SELL",
+          "WOOL",
+          16
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          24
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "TOMATO",
+          18
+        ],
+        [
+          "SELL",
+          "CARROT",
+          17
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          24
+        ],
+        [
+          "SELL",
+          "WOOL",
+          16
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "CARROT",
+          17
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          24
+        ],
+        [
+          "SELL",
+          "WOOL",
+          16
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          18
+        ]
+      ]
+    },
+    {
+      "trial": 486,
+      "mode": "same_order_hidden_stock",
+      "gain": 82
+    },
+    {
+      "trial": 486,
+      "mode": "different_order_hidden_stock",
+      "gain": 33
+    },
+    {
+      "trial": 488,
+      "mode": "same_order_hidden_stock",
+      "gain": 554
+    },
+    {
+      "trial": 488,
+      "mode": "different_order_hidden_stock",
+      "gain": 12
+    },
+    {
+      "trial": 489,
+      "mode": "same_order_hidden_stock",
+      "gain": 56
+    },
+    {
+      "trial": 489,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 491,
+      "mode": "same_order_hidden_stock",
+      "gain": 56
+    },
+    {
+      "trial": 491,
+      "mode": "different_order_hidden_stock",
+      "gain": 56
+    },
+    {
+      "trial": 492,
+      "mode": "same_order_hidden_stock",
+      "gain": 88
+    },
+    {
+      "trial": 492,
+      "mode": "different_order_hidden_stock",
+      "gain": 0
+    },
+    {
+      "trial": 493,
+      "mode": "same_order_hidden_stock",
+      "gain": 324
+    },
+    {
+      "trial": 493,
+      "mode": "different_order_hidden_stock",
+      "gain": 65
+    },
+    {
+      "trial": 495,
+      "mode": "same_order_hidden_stock",
+      "gain": 419
+    },
+    {
+      "trial": 495,
+      "mode": "different_order_hidden_stock",
+      "gain": 419
+    },
+    {
+      "trial": 497,
+      "mode": "same_order_hidden_stock",
+      "gain": 45
+    },
+    {
+      "trial": 497,
+      "mode": "different_order_hidden_stock",
+      "gain": -4,
+      "own_stock": {
+        "WHEAT": 20,
+        "EGG": 3,
+        "WOOL": 4,
+        "TOMATO": 4
+      },
+      "rival_stock": {
+        "WHEAT": 3,
+        "EGG": 11,
+        "WOOL": 31,
+        "TOMATO": 16
+      },
+      "market_inventory": {
+        "WHEAT": 9594,
+        "CARROT": 10325,
+        "TOMATO": 9517,
+        "STRAWBERRY": 10185,
+        "MELON": 9935,
+        "EGG": 9602,
+        "MILK": 9934,
+        "WOOL": 9929,
+        "FERTILIZER": 9958
+      },
+      "original": [
+        [
+          "SELL",
+          "WHEAT",
+          20
+        ],
+        [
+          "SELL",
+          "EGG",
+          3
+        ],
+        [
+          "SELL",
+          "WOOL",
+          4
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          4
+        ]
+      ],
+      "optimized": [
+        [
+          "SELL",
+          "WHEAT",
+          20
+        ],
+        [
+          "SELL",
+          "WOOL",
+          4
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          4
+        ],
+        [
+          "SELL",
+          "EGG",
+          3
+        ]
+      ],
+      "rival": [
+        [
+          "SELL",
+          "WOOL",
+          4
+        ],
+        [
+          "SELL",
+          "TOMATO",
+          4
+        ],
+        [
+          "SELL",
+          "EGG",
+          3
+        ],
+        [
+          "SELL",
+          "WHEAT",
+          20
+        ]
+      ]
+    },
+    {
+      "trial": 498,
+      "mode": "same_order_hidden_stock",
+      "gain": 279
+    },
+    {
+      "trial": 498,
+      "mode": "different_order_hidden_stock",
+      "gain": 273
+    }
+  ]
+}

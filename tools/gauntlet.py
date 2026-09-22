@@ -107,11 +107,24 @@ OPPONENTS = {
 #    day 30, so `min_sell_price: 2` refuses free money and wastes shed space.
 # `control` carries the feed fix, which is already the default -- the control
 # must be in the SAME batch, since defaults have moved since the last run.
+# TAPE-DERIVED. Replaying a 1358-rated action tape (tools/tape_board.py) against
+# the same `starter` benchmark shows it working 71 tiles to our ~30, at 43% work
+# share against our 23%, with 1-4 weeds against our 24-36. Three concrete build
+# differences fall out, each tested alone and bundled:
+#   ramp   hands 3->14 over the season, vs our 12 hired on day 0 for $376
+#   quad3  it never buys the 4th quadrant; we reach 4 by day 12
+#   sheep6 it holds 6 sheep from day 8; we run target_sheep 0
+# Control is in-batch: defaults have moved twice today (opening herd, feed fix).
+# CONFIRMATION. quad3 read 87% ALL / 66% worst against control's 75% / 56%, but
+# that is ~21/32 vs 18/32 in the deciding cell -- about 1sd. Re-running with more
+# seeds, and probing whether the trend continues to 2 quadrants.
+# The hand RAMP was the worst change of the session (0% worst) and is dropped:
+# our labour ceiling is expected_units * tiles_per_unit, so a smaller early crew
+# collapses the whole tile budget. sheep6 also failed (47% worst); sheep stay 0.
 CANDIDATES = {
-    "control":      {"drop_needs_room": False},
-    "droproom":     {},
-    "sell$1":       {"drop_needs_room": False, "min_sell_price": 1},
-    "both":         {"min_sell_price": 1},
+    "control":      {},
+    "quad3":        {"max_quadrants": 3},
+    "quad2":        {"max_quadrants": 2},
 }
 
 

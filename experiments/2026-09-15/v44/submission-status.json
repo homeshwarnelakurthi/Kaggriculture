@@ -1,0 +1,10 @@
+{
+  "checked_at_utc": "2026-09-15T20:54:49.327131+00:00",
+  "name": "v44.tar.gz",
+  "status": "Pending",
+  "source": "https://www.kaggle.com/competitions/kaggriculture/submissions",
+  "archive_sha256": "fa273acdccb8696c79ad542d601ad789d8a1a43a1a950186e3a60f9c2a1133e5",
+  "source_sha256": "860df5a5fd9bbcaa41e621d0b4d148a0c470fe98e2fb1514cb1cadc786b59e1c",
+  "prior_v43_displayed_score": 2596.5,
+  "confirmation": "Kaggle submission list visibly contains v44.tar.gz with description and Pending status."
+}

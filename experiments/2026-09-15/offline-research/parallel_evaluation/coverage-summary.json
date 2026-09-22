@@ -1,0 +1,104 @@
+{
+  "groups": {
+    "v43/barnyard": {
+      "games": 4,
+      "wins": 4,
+      "mean_margin": 93158.5,
+      "max_turn_ms": 172.193
+    },
+    "v43/legacy_head": {
+      "games": 4,
+      "wins": 4,
+      "mean_margin": 117284.5,
+      "max_turn_ms": 266.541
+    },
+    "v42/barnyard": {
+      "games": 4,
+      "wins": 4,
+      "mean_margin": 93996.5,
+      "max_turn_ms": 265.078
+    },
+    "v42/legacy_head": {
+      "games": 4,
+      "wins": 4,
+      "mean_margin": 116495.25,
+      "max_turn_ms": 267.557
+    }
+  },
+  "pairs": [
+    {
+      "opponent": "barnyard",
+      "seed": 301,
+      "seat": 1,
+      "same_shops": true,
+      "own_money_delta": -142.0,
+      "margin_delta": -342.0,
+      "queue_reorders": 0
+    },
+    {
+      "opponent": "barnyard",
+      "seed": 301,
+      "seat": 0,
+      "same_shops": true,
+      "own_money_delta": -142.0,
+      "margin_delta": -342.0,
+      "queue_reorders": 0
+    },
+    {
+      "opponent": "barnyard",
+      "seed": 302,
+      "seat": 1,
+      "same_shops": true,
+      "own_money_delta": -1432.0,
+      "margin_delta": -1334.0,
+      "queue_reorders": 0
+    },
+    {
+      "opponent": "barnyard",
+      "seed": 302,
+      "seat": 0,
+      "same_shops": true,
+      "own_money_delta": -1432.0,
+      "margin_delta": -1334.0,
+      "queue_reorders": 0
+    },
+    {
+      "opponent": "legacy_head",
+      "seed": 301,
+      "seat": 0,
+      "same_shops": false,
+      "own_money_delta": 1043.0,
+      "margin_delta": 5702.0,
+      "queue_reorders": 0
+    },
+    {
+      "opponent": "legacy_head",
+      "seed": 301,
+      "seat": 1,
+      "same_shops": false,
+      "own_money_delta": -1302.0,
+      "margin_delta": -1395.0,
+      "queue_reorders": 0
+    },
+    {
+      "opponent": "legacy_head",
+      "seed": 302,
+      "seat": 0,
+      "same_shops": true,
+      "own_money_delta": -201.0,
+      "margin_delta": -575.0,
+      "queue_reorders": 0
+    },
+    {
+      "opponent": "legacy_head",
+      "seed": 302,
+      "seat": 1,
+      "same_shops": true,
+      "own_money_delta": -201.0,
+      "margin_delta": -575.0,
+      "queue_reorders": 0
+    }
+  ],
+  "games": 16,
+  "unique_shop_sequences": 6
+}

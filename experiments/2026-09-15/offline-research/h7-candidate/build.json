@@ -1,0 +1,8 @@
+{
+  "status": "experimental, unsubmitted",
+  "horizon": 7,
+  "source_sha256": "237f54f0cf208be51e4225169764057cff113fd60d47e9c7d26a545ef0eab424",
+  "archive_sha256": "c7b4f81e879bb5d134ba021be6a72b1a688d91f3aa5e09b217cc9346814d4a0d",
+  "parent_sha256": "f4b9e7ca732f19d957b111264f50989d655a66e1dd0d11001956f844d35fd12f",
+  "verification": "Exact single-constant source delta; exec without __file__; archive contents checked; game evidence in parallel_sales/summary.json"
+}

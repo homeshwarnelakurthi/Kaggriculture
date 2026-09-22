@@ -1,0 +1,10 @@
+{
+  "version": "V52",
+  "variant": "worker scheduling",
+  "submitted": true,
+  "verified_ui_status": "Pending",
+  "score": null,
+  "filename": "v52.tar.gz",
+  "archive_sha256": "3E651FBC6915BB16840B5ED5C906E7E6323C9DE2AF65C448E3D291615A79EF6F",
+  "url": "https://www.kaggle.com/competitions/kaggriculture/submissions"
+}

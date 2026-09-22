@@ -1,0 +1,11 @@
+{
+  "games": 10,
+  "valid": 10,
+  "wins": 0,
+  "ties": 10,
+  "losses": 0,
+  "max_turn_ms": 308.659,
+  "care_changes": 374,
+  "water_changes": 126,
+  "candidate_sha256": "bba8cb91027a04edcde3abf096494705c704e669b68f5588610f7893dd47aa8b"
+}

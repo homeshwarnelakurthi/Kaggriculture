@@ -1,0 +1,9 @@
+{
+  "version": "V47",
+  "base": "V46",
+  "status": "submitted to Kaggle; Pending",
+  "source_sha256": "6662cf16e45f675d35cab7571cedced4622f91a5b9495bdb63d6d07677be07a0",
+  "archive_sha256": "fea0a1aea31cd0a7d8d0d41cc4cfce6ece88180f07205d668decebd9b506a75d",
+  "archive_bytes": 165728,
+  "change": "Guarded end-of-day harvesting prevents goose holding-cap production losses; tracks self-caused egg-count differences for market confidence; abstains on uncertain similar-farm comparisons."
+}

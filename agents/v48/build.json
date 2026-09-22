@@ -1,0 +1,8 @@
+{
+  "version": "V48",
+  "status": "experimental; NOT submitted; competitive gate failed",
+  "base": "V47",
+  "source_sha256": "bf2bed29e353f345796ac7d8851fa371208e31bf045121e0a8de19961691bb9e",
+  "archive_sha256": "297d4687f445e5bc53d573014a01f42097b82da13608bfee202652584c6b7384",
+  "competitive_failure": "5 wins / 15 losses across 20 stronger timing-opponent tests; 0 wins / 6 losses in last fresh paired cohort"
+}

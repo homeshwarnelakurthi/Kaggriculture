@@ -1,0 +1,7 @@
+{
+  "parent": "submitted V43",
+  "change": "Only feed-protected end-of-day surplus sales. No adaptive reservation or field/production edits.",
+  "initial_invalid_source_sha256": "a67161e6b7368e48be1fde98553e97ecab3c3acff0b4ce29be0707b4539bf1f0",
+  "source_sha256": "481fcc4061315315bf10b3fe3200f30dd79546e94c06dd5abf988e17f5628cce",
+  "status": "experiment complete; not submitted"
+}

@@ -1,0 +1,2658 @@
+{
+  "episode": 110236449,
+  "candidate": "cap",
+  "rewards": [
+    79292.0,
+    81199.0
+  ],
+  "summary": [
+    {
+      "seat": 0,
+      "name": "Homii_N",
+      "produced": 142,
+      "cap_lost": 29,
+      "discarded": 6,
+      "production_days": 87,
+      "fed_days": 80,
+      "care_days": 85,
+      "bonuses": 84,
+      "left_on_animals": 0
+    },
+    {
+      "seat": 1,
+      "name": "Stephen Schott",
+      "produced": 161,
+      "cap_lost": 6,
+      "discarded": 6,
+      "production_days": 87,
+      "fed_days": 80,
+      "care_days": 79,
+      "bonuses": 80,
+      "left_on_animals": 0
+    }
+  ],
+  "events": [
+    {
+      "kind": "production",
+      "step": 239,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 2,
+      "fed": true,
+      "cared": true,
+      "produced": 3,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 239,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 3,
+      "fed": true,
+      "cared": true,
+      "produced": 4,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 239,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 2,
+      "fed": true,
+      "cared": true,
+      "produced": 3,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 239,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 3,
+      "fed": true,
+      "cared": true,
+      "produced": 4,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 263,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 3,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 1
+    },
+    {
+      "kind": "production",
+      "step": 263,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 263,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": false,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 263,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": false,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 287,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 4,
+      "bonus": 0,
+      "fed": false,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 1
+    },
+    {
+      "kind": "production",
+      "step": 287,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 4,
+      "bonus": 0,
+      "fed": false,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 1
+    },
+    {
+      "kind": "production",
+      "step": 287,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 0,
+      "fed": false,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 287,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 2,
+      "bonus": 0,
+      "fed": false,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 311,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 4,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 1
+    },
+    {
+      "kind": "production",
+      "step": 311,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 4,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 1
+    },
+    {
+      "kind": "production",
+      "step": 311,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 311,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 335,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 3,
+      "fed": true,
+      "cared": true,
+      "produced": 4,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 335,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 3,
+      "fed": true,
+      "cared": true,
+      "produced": 4,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 335,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 335,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 335,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 3,
+      "fed": true,
+      "cared": true,
+      "produced": 4,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 335,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 3,
+      "fed": true,
+      "cared": true,
+      "produced": 4,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 335,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 1,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 335,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 1,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 359,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 359,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 359,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 3,
+      "fed": true,
+      "cared": true,
+      "produced": 4,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 359,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 359,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 359,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": false,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 359,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 359,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 3,
+      "fed": true,
+      "cared": true,
+      "produced": 4,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 359,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 359,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 383,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 383,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 383,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 383,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 383,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 383,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 2,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 383,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 383,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": false,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 383,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 383,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 407,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 407,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 407,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 407,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 407,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 407,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 407,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 407,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 2,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 407,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 407,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 431,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 431,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 431,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 431,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 431,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 431,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 431,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 431,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 431,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 431,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 455,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 455,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 455,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 455,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 455,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 455,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": false,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 455,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 455,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 455,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 455,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 479,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 479,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 479,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 479,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 479,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 479,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 479,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 479,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": false,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 479,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 479,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 503,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 503,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 503,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 503,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 503,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 503,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 503,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 503,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 503,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 503,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 527,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 527,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 527,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 527,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 527,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 527,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 527,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 527,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 527,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 527,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 551,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 551,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 551,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 551,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 551,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 551,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 551,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 551,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 551,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 551,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 575,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 575,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 575,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 575,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 575,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 575,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 575,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 575,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 575,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 575,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 599,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 599,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 599,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": false,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 599,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": false,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 599,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 599,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 599,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 599,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": false,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 599,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": false,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 599,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 623,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 623,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": false,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 623,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 1,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 623,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 1,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 623,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "discard",
+      "step": 623,
+      "seat": 0,
+      "eggs": 6
+    },
+    {
+      "kind": "production",
+      "step": 623,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 623,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": false,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 623,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 1,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 623,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 1,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 623,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "discard",
+      "step": 623,
+      "seat": 1,
+      "eggs": 6
+    },
+    {
+      "kind": "production",
+      "step": 647,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 647,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 1,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 647,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 647,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 647,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 647,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 647,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 1,
+      "bonus": 0,
+      "fed": true,
+      "cared": true,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 647,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 647,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 647,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 671,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 671,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 671,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 671,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 671,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 671,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 4,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 0,
+      "cap_lost": 2
+    },
+    {
+      "kind": "production",
+      "step": 671,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 671,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 671,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 671,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 695,
+      "seat": 0,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": false,
+      "cared": false,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 695,
+      "seat": 0,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": false,
+      "cared": false,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 695,
+      "seat": 0,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 695,
+      "seat": 0,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 695,
+      "seat": 0,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 695,
+      "seat": 1,
+      "xy": [
+        4,
+        1
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": false,
+      "cared": false,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 695,
+      "seat": 1,
+      "xy": [
+        3,
+        2
+      ],
+      "held": 0,
+      "bonus": 0,
+      "fed": false,
+      "cared": false,
+      "produced": 1,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 695,
+      "seat": 1,
+      "xy": [
+        2,
+        3
+      ],
+      "held": 0,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 695,
+      "seat": 1,
+      "xy": [
+        5,
+        3
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    },
+    {
+      "kind": "production",
+      "step": 695,
+      "seat": 1,
+      "xy": [
+        5,
+        4
+      ],
+      "held": 2,
+      "bonus": 1,
+      "fed": true,
+      "cared": true,
+      "produced": 2,
+      "cap_lost": 0
+    }
+  ]
+}
